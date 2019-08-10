@@ -1,0 +1,8 @@
+{
+    "schemaType": "LAUNCHER",
+    "id": "datalyzer",
+    "displayName": "Datalyzer",
+    "description": "",
+    "icon": "interface_placeholders_icon-placeholder",
+    "rootNerdletId": "datalyzer.root"
+}

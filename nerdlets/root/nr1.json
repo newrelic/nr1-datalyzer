@@ -1,0 +1,6 @@
+{
+    "schemaType": "NERDLET",
+    "id": "root",
+    "displayName": "Datalyzer",
+    "description": "Slice and dice NRDB Data"
+}
