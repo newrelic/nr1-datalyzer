@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { NerdGraphQuery, Stack, StackItem, Spinner } from 'nr1';
 import AccountPicker from './account-picker'
 import EventTypePicker from './event-type-picker'
+import Datalyzer from '../common/datalyzer'
 
 export default class Root extends React.PureComponent {
   static propTypes = {
@@ -15,6 +16,7 @@ export default class Root extends React.PureComponent {
     super(props)
 
     this._setAccount = this._setAccount.bind(this)
+    this._setEventType = this._setEventType.bind(this)
 
     this.state = {}
   }
@@ -26,6 +28,10 @@ export default class Root extends React.PureComponent {
     await this.setState({ accounts })
     // this._setAccount(accounts[0].id)
     this._setAccount(332029)
+  }
+
+  _setEventType(eventType) {
+    this.setState({eventType})
   }
 
   async _setAccount(accountId) {
@@ -43,7 +49,7 @@ export default class Root extends React.PureComponent {
     // run in batches.
     const batchSize = 30    
     for (var i = 0; i < account.reportingEventTypes.length; i += batchSize) {
-      const batch = account.reportingEventTypes.slice(i, i + batchSize).filter(e => !e.match(/\s|\./))
+      const batch = account.reportingEventTypes.slice(i, i + batchSize).filter(e => !e.match(/\s|\./ && e !== "Metric"))
       const gql = `{
           actor {
             account(id: ${accountId}) {
@@ -63,14 +69,15 @@ export default class Root extends React.PureComponent {
     }
     eventTypes = eventTypes.sort((x, y) => y.count - x.count)
 
-    await this.setState({ eventTypes, eventType: null })
+    await this.setState({ eventTypes, eventType: eventTypes[1] })
   }
 
   render() {
     const { accounts, account, eventTypes, eventType } = this.state
     if(!account) return ""
 
-    return <Stack directionType="vertical" alignmentType="fill">
+    return <div style={{margin: "8px"}}>
+      <Stack directionType="vertical" alignmentType="fill">
       <StackItem>
         <Stack  distributionType="fill" alignmentType="trailing">
           <StackItem grow>
@@ -83,8 +90,10 @@ export default class Root extends React.PureComponent {
       </StackItem>
       <StackItem grow>
         {!eventTypes && <Spinner/>}
-        {eventTypes && !eventType && <EventTypePicker eventTypes={eventTypes}/>}
+        {eventTypes && !eventType && <EventTypePicker eventTypes={eventTypes} setEventType={this._setEventType}/>}
+        {eventTypes && eventType && <Datalyzer eventTypes={eventTypes} eventType={eventType} account={account}/>}
       </StackItem>
     </Stack>
+    </div>
   }
 }

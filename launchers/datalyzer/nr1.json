@@ -3,6 +3,6 @@
     "id": "datalyzer",
     "displayName": "Datalyzer",
     "description": "",
-    "icon": "interface_placeholders_icon-placeholder",
+    "icon": "dataviz_dataviz_line-chart",
     "rootNerdletId": "datalyzer.root"
 }

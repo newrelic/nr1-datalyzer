@@ -8,8 +8,6 @@ export default class AccountPicker extends React.PureComponent {
       return { value: a.id, label: a.name}
     })
 
-    console.log(this.props)
-
     return <Select 
         options={options} 
         value={account.id}
