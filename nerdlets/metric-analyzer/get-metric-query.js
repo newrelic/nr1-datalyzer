@@ -1,4 +1,4 @@
-import quote from '../common/quote';
+import quote from '../lib/quote';
 
 export function getFilterWhere(filters) {
   const clauses = Object.keys(filters).

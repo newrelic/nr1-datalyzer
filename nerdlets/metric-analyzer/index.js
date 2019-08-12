@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { NerdGraphQuery, Stack, StackItem } from 'nr1'
 
-import AccountPicker from '../common/account-picker'
+import AccountPicker from '../lib/account-picker'
 import Analyzer from './analyzer'
 
 function NoMetricData() {

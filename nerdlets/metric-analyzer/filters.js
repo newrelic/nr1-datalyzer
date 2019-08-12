@@ -1,6 +1,11 @@
 import React from "react"
 import {Stack, StackItem} from 'nr1'
 
+function Filter({attribute, value}) {
+  return <span className="filter">
+    {attribute}: {value}
+  </span>
+}
 export default class Filters extends React.Component {
   constructor(props) {
     super(props)
@@ -20,7 +25,7 @@ export default class Filters extends React.Component {
       </StackItem>
       {filters.map(({attribute, value}) => {
         return <StackItem key={`${attribute}/${value}`}>
-          {attribute}: {value}
+          <Filter attribute={attribute} value={value} />
         </StackItem>
       })}
     </Stack>

@@ -2,7 +2,7 @@ import React from "react"
 import Select from 'react-select'
 import { Stack, StackItem } from 'nr1'
 
-import nrdbQuery from '../common/nrdb-query'
+import nrdbQuery from '../lib/nrdb-query'
 
 export default class MetricPicker extends React.Component {
   constructor(props) {
