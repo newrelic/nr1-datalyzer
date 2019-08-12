@@ -57,7 +57,7 @@ export default class DimensionPicker extends React.Component {
     const { dimension, setDimension } = this.props
     if (!dimensions) return <div />
 
-    return <Stack directionType="vertical">
+    return <Stack directionType="vertical" alignmentType="fill">
       {dimensions.map(d => {
         const selected = d.name == dimension ? "selected" : ""
         return <StackItem key={d.name} className={`dimension ${selected}`} >
