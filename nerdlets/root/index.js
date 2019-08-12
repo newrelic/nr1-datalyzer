@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { NerdGraphQuery, Stack, StackItem, Spinner } from 'nr1';
-import AccountPicker from './account-picker'
+import AccountPicker from '../common/account-picker'
 import EventTypePicker from './event-type-picker'
-import Datalyzer from '../common/datalyzer'
+import Datalyzer from './datalyzer'
 
 export default class Root extends React.PureComponent {
   static propTypes = {
@@ -76,24 +76,6 @@ export default class Root extends React.PureComponent {
     const { accounts, account, eventTypes, eventType } = this.state
     if(!account) return ""
 
-    return <div style={{margin: "8px"}}>
-      <Stack directionType="vertical" alignmentType="fill">
-      <StackItem>
-        <Stack  distributionType="fill" alignmentType="trailing">
-          <StackItem grow>
-            <h1>Datalyzer</h1>            
-          </StackItem>
-          <StackItem>
-            <AccountPicker accounts={accounts} account={account} setAccount={this._setAccount}/>
-          </StackItem>
-        </Stack>
-      </StackItem>
-      <StackItem grow>
-        {!eventTypes && <Spinner/>}
-        {eventTypes && !eventType && <EventTypePicker eventTypes={eventTypes} setEventType={this._setEventType}/>}
-        {eventTypes && eventType && <Datalyzer eventTypes={eventTypes} eventType={eventType} account={account}/>}
-      </StackItem>
-    </Stack>
-    </div>
+    return 
   }
 }

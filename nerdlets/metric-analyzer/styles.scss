@@ -1,0 +1,15 @@
+.attributes-table {
+  width: 100%;
+}
+.dimensions-table {
+  width: 100%;
+  font-size: 14px;
+
+  tr:hover {
+    cursor: pointer;    
+  }
+
+  .selected {
+    background-color: azure;
+  }
+}

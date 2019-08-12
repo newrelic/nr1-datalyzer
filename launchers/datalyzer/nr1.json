@@ -4,5 +4,5 @@
     "displayName": "Datalyzer",
     "description": "",
     "icon": "dataviz_dataviz_line-chart",
-    "rootNerdletId": "datalyzer.root"
+    "rootNerdletId": "datalyzer.metric-analyzer"
 }
