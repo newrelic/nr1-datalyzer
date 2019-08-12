@@ -9,7 +9,29 @@
     cursor: pointer;    
   }
 
+  td {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
   .selected {
     background-color: azure;
   }
+}
+
+.dimension {
+  font-size: 14px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.dimension:hover {
+  color: darkblue;
+  cursor: pointer;    
+}
+
+.selected {
+  background-color: azure;
 }

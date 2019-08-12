@@ -7,6 +7,7 @@ import FunctionPicker from './function-picker'
 import Chart from './chart'
 import FacetTable from './facet-table'
 import Filters from './filters'
+import {getFilterWhere} from './get-metric-query'
 
 function Debug({ title }) {
   const style = {
@@ -30,7 +31,7 @@ export default class MetricAnalyzer extends React.Component {
     this._setFilter = this._setFilter.bind(this)
     this._removeFilter = this._removeFilter.bind(this)
 
-    this.state ={ fn: 'average', filters: {} }
+    this.state ={ fn: 'average', filters: {}, filterWhere: null }
   }
 
   onStateChange(prevProps) {
@@ -40,7 +41,7 @@ export default class MetricAnalyzer extends React.Component {
   }
 
   _setMetricName(metricName) {
-    this.setState({ metricName, filters: {} })
+    this.setState({ metricName, filters: {}, filterWhere: null })
   }
 
   _setDimension(dimension) {
@@ -56,14 +57,14 @@ export default class MetricAnalyzer extends React.Component {
     filters[dimension] = filters[dimension] || []
     if(!filters[dimension].includes(value)) filters[dimension].push(value)
 
-    this.setState({filters})
+    const filterWhere = getFilterWhere(filters)
+    this.setState({filters, filterWhere})
   }
 
   _removeFilter(dimension, value) {
     const {filters} = this.state
     filters[dimension] = filters[dimension].select(v => v !== value)
 
-    console.log("Filters", filters)
     this.setState({filters})
   }
 

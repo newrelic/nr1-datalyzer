@@ -1,10 +1,7 @@
 import quote from '../common/quote';
 
-export function getWhere(props, state) {
-  const {filters, dimension} = props
-  
+export function getFilterWhere(filters) {
   const clauses = Object.keys(filters).
-    filter(k => k !== dimension).
     map(attr => {
       const values = filters[attr]
       if (values.length == 1) {
@@ -26,7 +23,7 @@ export function getWhere(props, state) {
 export default function getQuery(props, state) {
   const { dimension, fn, metricName, filters } = props;
   const { timeseries, limit } = state || {};
-  const where = getWhere(props)
+  const where = getFilterWhere(filters)
 
   let query = `SELECT ${fn}(${quote(metricName)}) FROM Metric`;
 

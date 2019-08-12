@@ -3,7 +3,6 @@ import { Stack, StackItem } from 'nr1'
 
 import nrdbQuery from '../common/nrdb-query'
 import quote from '../common/quote'
-import { getWhere } from './get-metric-query'
 
 export default class DimensionPicker extends React.Component {
   constructor(props) {
@@ -12,26 +11,25 @@ export default class DimensionPicker extends React.Component {
     this.state = {}
   }
 
+  
   componentDidUpdate(prevProps) {
-    console.log("check update", prevProps.filters, this.props.filters)
+    console.log("update", prevProps.filterWhere, this.props.filterWhere)
     if ((prevProps.account !== this.props.account) ||
       (prevProps.metricName !== this.props.metricName) ||
-      (prevProps.filters !== this.props.filters)) {
+      (prevProps.filterWhere !== this.props.filterWhere)) {
       
-      console.log("reload")
       this.loadDimensions()
     }
   }
 
   async loadDimensions() {
-    const { account, metricName } = this.props
+    const { account, metricName, filterWhere } = this.props
     if (!metricName) return
 
-    this.setState({ attributes: null })
+    this.setState({ dimensions: null })
 
     let where = `WHERE metricName = '${quote(metricName)}'`
-    const filterWhare = getWhere(this.props)
-    if (filterWhare) where = where.concat(` AND ${filterWhare}`)
+    if (filterWhere) where = where.concat(` AND ${filterWhere}`)
 
     const nrql = `SELECT keySet() FROM Metric ${where}`
     let results = await nrdbQuery(account.id, nrql)
@@ -59,6 +57,19 @@ export default class DimensionPicker extends React.Component {
     const { dimension, setDimension } = this.props
     if (!dimensions) return <div />
 
+    return <>
+      <StackItem>
+        <h4>Dimensions</h4>
+      </StackItem>
+      {dimensions.map(d => {
+        const selected = d.name == dimension ? "selected" : ""
+        return <StackItem key={d.name} className={`dimension ${selected}`} >
+            <div className={dimension} onClick={() => setDimension(d.name)}>
+              {d.name} ({d.count})
+            </div>
+        </StackItem>
+      })}
+    </>
     return <div>
       <h4>Dimensions</h4>
       <table className="dimensions-table">
