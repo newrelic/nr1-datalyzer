@@ -1,24 +1,3 @@
-.attributes-table {
-  width: 100%;
-}
-.dimensions-table {
-  width: 100%;
-  font-size: 14px;
-
-  tr:hover {
-    cursor: pointer;    
-  }
-
-  td {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-
-  .selected {
-    background-color: azure;
-  }
-}
 
 .dimension {
   font-size: 14px;
@@ -40,6 +19,6 @@
   border: 1px solid #AAAAFF;
   background-color: azure;
   border-radius: 4px;
-  margin: 3px; 
+  margin: 8px; 
   padding: 4px;
 }

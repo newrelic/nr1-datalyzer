@@ -25,7 +25,10 @@ export default class MetricPicker extends React.Component {
 
     const metricNames = results.map(r => r.member).sort()
     this.setState({ metricNames })
-    if (metricNames.length > 0) setMetricName(metricNames[0])
+
+    // FIXME for now default to a useful metric
+    // if (metricNames.length > 0) setMetricName(metricNames[0])
+    setMetricName("container_cpu_usage_seconds_total")
   }
 
   render() {
