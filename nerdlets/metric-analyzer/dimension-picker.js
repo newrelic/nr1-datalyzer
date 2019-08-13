@@ -11,7 +11,6 @@ export default class DimensionPicker extends React.Component {
     this.state = {}
   }
 
-
   componentDidUpdate(prevProps) {
     if ((prevProps.account !== this.props.account) ||
       (prevProps.metricName !== this.props.metricName) ||
