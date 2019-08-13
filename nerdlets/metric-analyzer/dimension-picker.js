@@ -13,7 +13,6 @@ export default class DimensionPicker extends React.Component {
 
 
   componentDidUpdate(prevProps) {
-    console.log("update", prevProps.filterWhere, this.props.filterWhere)
     if ((prevProps.account !== this.props.account) ||
       (prevProps.metricName !== this.props.metricName) ||
       (prevProps.filterWhere !== this.props.filterWhere)) {
