@@ -9,17 +9,6 @@ import FacetTable from './facet-table'
 import Filters from './filters'
 import {getFilterWhere} from './get-metric-query'
 
-function Debug({ title }) {
-  const style = {
-    background: "#ffeeee",
-    border: "red solid 1px",
-    padding: "8px"
-  }
-  return <div style={style}>
-    {title}
-  </div>
-}
-
 
 export default class MetricAnalyzer extends React.Component {
   constructor(props) {
