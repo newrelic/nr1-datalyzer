@@ -2,7 +2,7 @@
     "schemaType": "LAUNCHER",
     "id": "datalyzer",
     "displayName": "Datalyzer",
-    "description": "",
+    "description": "Explore, slice and dice the data in NRDB",
     "icon": "dataviz_dataviz_line-chart",
-    "rootNerdletId": "datalyzer.metric-analyzer"
+    "rootNerdletId": "datalyzer.root"
 }
