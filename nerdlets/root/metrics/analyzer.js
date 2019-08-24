@@ -50,9 +50,12 @@ export default class MetricAnalyzer extends React.Component {
     this.setState({filters, filterWhere})
   }
 
-  _removeFilter(dimension, value) {
+  _removeFilter(attribute, value) {
     const {filters} = this.state
-    filters[dimension] = filters[dimension].select(v => v !== value)
+    filters[attribute] = filters[attribute].filter(v => v !== value)
+
+    // if there are no more values on this attribute, delete the empty array
+    if(filters[attribute].length == 0) delete filters[attribute]
 
     this.setState({filters})
   }
