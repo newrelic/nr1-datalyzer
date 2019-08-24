@@ -48,7 +48,6 @@ export default class MetricAnalyzer extends React.Component {
     // get all user accessible accounts
     let gql = `{actor {accounts {name id}}}`
     let { data } = await NerdGraphQuery.query({ query: gql })
-    console.log(data)
 
     const {accounts} = data.actor
     const account = accounts.length > 0 && accounts[0]
