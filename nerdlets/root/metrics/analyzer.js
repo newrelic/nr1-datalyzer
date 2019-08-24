@@ -2,11 +2,11 @@ import React from "react"
 import { Stack, StackItem, Grid, GridItem } from 'nr1'
 
 import MetricPicker from './metric-picker'
-import DimensionPicker from './dimension-picker'
+import DimensionPicker from '../shared/dimension-picker'
 import FunctionPicker from './function-picker'
 import Chart from './chart'
 import FacetTable from './facet-table'
-import Filters from './filters'
+import Filters from '../shared/filters'
 import {getFilterWhere} from './get-metric-query'
 
 
@@ -78,7 +78,12 @@ export default class MetricAnalyzer extends React.Component {
       <StackItem alignmentType="trailing" fill>
         <Grid>
           <GridItem columnSpan={3}>
-            <DimensionPicker {...this.props} {...this.state} setDimension={this._setDimension} />
+            <DimensionPicker 
+                {...this.props} 
+                {...this.state} 
+                where={`metricName = '${this.state.metricName}'`}
+                eventType='Metric'
+                setDimension={this._setDimension} />
           </GridItem>
           <GridItem columnSpan={9}>
             <Stack directionType="vertical" alignmentType="fill">

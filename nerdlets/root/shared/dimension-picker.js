@@ -20,24 +20,28 @@ export default class DimensionPicker extends React.Component {
     }
   }
 
-  async loadDimensions() {
-    const { account, metricName, filterWhere } = this.props
-    if (!metricName) return
+  getNrql(select) {
+    const { filterWhere, where, eventType } = this.props
 
+    let whereClause = `WHERE ${where}`
+    if (filterWhere) whereClause = whereClause.concat(` AND ${filterWhere}`)
+
+    return `SELECT ${select} FROM ${quote(eventType)} ${whereClause}`
+  }
+
+  async loadDimensions() {
+    const { account } = this.props
     this.setState({ dimensions: null })
 
-    let where = `WHERE metricName = '${quote(metricName)}'`
-    if (filterWhere) where = where.concat(` AND ${filterWhere}`)
-
-    const nrql = `SELECT keySet() FROM Metric ${where}`
-    let results = await nrdbQuery(account.id, nrql)
+    // get all of the available string attributes
+    let results = await nrdbQuery(account.id, this.getNrql("keySet()"))
     const keys = results.
       filter(d => d.type == "string" && d.key !== "metricName").
       map(d => { return { name: d.key } })
 
-    // get the # of unique values for each dimension
+    // get the # of unique values for each string attribute
     const select = keys.map(d => `uniqueCount(${quote(d.name)}), latest(${quote(d.name)})`)
-    results = await nrdbQuery(account.id, `SELECT ${select} FROM Metric ${where}`)
+    results = await nrdbQuery(account.id, this.getNrql(select))
 
     keys.forEach(d => {
       d.count = results[0][`uniqueCount.${d.name}`]
