@@ -58,7 +58,7 @@ export default class DimensionPicker extends React.Component {
 
     return <>
       <StackItem>
-        <h4>Dimensions</h4>
+        <h3>Dimensions</h3>
       </StackItem>
       {dimensions.map(d => {
         const selected = d.name == dimension ? "selected" : ""

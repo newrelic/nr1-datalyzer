@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { NerdGraphQuery, Stack, StackItem } from 'nr1'
+import { NerdGraphQuery, Stack, StackItem, Tabs, TabsItem, Radio } from 'nr1'
 
 import AccountPicker from './account-picker'
+import DataTypePicker from './data-type-picker'
+
 import Analyzer from './metrics/analyzer'
 
 function NoMetricData() {
@@ -29,42 +31,50 @@ export default class MetricAnalyzer extends React.Component {
     super(props)
 
     this._setAccount = this._setAccount.bind(this)
-    this.state = {}
+    this._setDataType = this._setDataType.bind(this)
+
+    this.state = {dataType: 'metric'}
   }
 
   _setAccount(account) {
     this.setState({account})
   }
 
-  async componentDidMount() {
-    // get all accounts that report a "Metric" data type
-    let gql = `{actor {accounts {name id reportingEventTypes(filter: "Metric")}}}`
-    let { data } = await NerdGraphQuery.query({ query: gql })
+  _setDataType(dataType) {
+    this.setState({dataType})
+  }
 
-    const accounts = data.actor.accounts.filter(a => a.reportingEventTypes.length > 0)
+  async componentDidMount() {
+    // get all user accessible accounts
+    let gql = `{actor {accounts {name id}}}`
+    let { data } = await NerdGraphQuery.query({ query: gql })
+    console.log(data)
+
+    const {accounts} = data.actor
     const account = accounts.length > 0 && accounts[0]
     this.setState({ accounts, account })
   }
 
   render() {
-    const { accounts, account } = this.state
+    const { accounts, dataType } = this.state
     if (!accounts) return ""
     if (accounts.length == 0) return <NoMetricData />
 
     return <div style={{ margin: "8px" }}>
       <Stack directionType="vertical" alignmentType="fill">
         <StackItem>
-          <Stack distributionType="fill" alignmentType="trailing">
+          <Stack alignmentType={Stack.ALIGNMENT_TYPE.CENTER} distributionType="fill">
             <StackItem grow>
-              <h1>Metrics</h1>
+              <AccountPicker {...this.state} setAccount={this._setAccount} />
             </StackItem>
             <StackItem>
-              <AccountPicker {...this.state} setAccount={this._setAccount} />
+              <DataTypePicker dataType={dataType} setDataType={this._setDataType}/>
             </StackItem>
           </Stack>
         </StackItem>
         <StackItem grow>
-          <Analyzer {...this.state} />
+          {dataType == 'metric' && <Analyzer {...this.state} />}
+          {dataType == 'event' && <h1>Event Analyzer</h1>}  
         </StackItem>
       </Stack>
     </div>

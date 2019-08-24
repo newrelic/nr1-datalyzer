@@ -19,6 +19,8 @@ export default class Filters extends React.Component {
       values.forEach(value => filters.push({attribute, value}))
     })
 
+    if(filters.length == 0) return ''
+    
     return <Stack alignmentType="baseline">
       <StackItem>
         <h3>Filters:</h3>
