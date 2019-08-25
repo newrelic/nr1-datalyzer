@@ -1,5 +1,5 @@
 import React from "react"
-import { Tabs, TabsItem, Stack, StackItem } from 'nr1'
+import { Tabs, TabsItem, Stack, StackItem, Spinner } from 'nr1'
 
 import nrdbQuery from '../../lib/nrdb-query'
 import quote from '../../lib/quote'
@@ -35,6 +35,9 @@ export default class DimensionPicker extends React.Component {
 
   async loadDimensions() {
     const { account } = this.props
+    const dimensions = []
+    const attributes = []
+
     this.setState({ dimensions: null })
 
     // get all of the available string attributes
@@ -43,17 +46,21 @@ export default class DimensionPicker extends React.Component {
       filter(d => d.type == "string" && d.key !== "metricName").
       map(d => { return { name: d.key } })
 
-    // get the # of unique values for each string attribute
-    const select = keys.map(d => `uniqueCount(${quote(d.name)}), latest(${quote(d.name)})`)
-    results = await nrdbQuery(account.id, this.getNrql(select))
+    const BATCH_SIZE = 50
+    for(var i = 0; i < keys.length; i += BATCH_SIZE) {
+      const batch = keys.slice(i, i+BATCH_SIZE)
 
-    keys.forEach(d => {
-      d.count = results[0][`uniqueCount.${d.name}`]
-      d.latest = results[0][`latest.${d.name}`]
-    })
+      // get the # of unique values for each string attribute
+      const select = batch.map(d => `uniqueCount(${quote(d.name)}), latest(${quote(d.name)})`)
+      results = await nrdbQuery(account.id, this.getNrql(select))
+      batch.forEach(d => {
+        d.count = results[0][`uniqueCount.${d.name}`]
+        d.latest = results[0][`latest.${d.name}`]
 
-    const dimensions = keys.filter(k => k.count > 1)
-    const attributes = keys.filter(k => k.count == 1)
+        if(d.count == 1) attributes.push(d)
+        if(d.count > 1) dimensions.push(d)
+      })
+    }
 
     this.setState({ dimensions, attributes })
   }
@@ -89,6 +96,9 @@ export default class DimensionPicker extends React.Component {
   }
 
   render() {
+    const {dimensions} = this.state
+
+    if(!dimensions) return <Spinner/>
     return <Tabs>
       <TabsItem label="Dimensions" itemKey={1} key='1'>
         <div style={{ paddingTop: "16px" }}>

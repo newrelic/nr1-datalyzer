@@ -40,7 +40,7 @@ export default class Analyzer extends React.Component {
   }
 
   _setEventType(eventType) {
-    this.setState({ eventType, dataType: 'event' })
+    this.setState({ eventType, dataType: 'event', filters: {}, filterWhere: null })
   }
 
   _setFunction(fn) {

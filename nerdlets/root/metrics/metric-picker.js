@@ -52,7 +52,5 @@ export default class MetricPicker extends React.Component {
           onChange={(s) => setAttribute(s.value)} />
       </StackItem>
     </Stack>
-
-    return
   }
 }

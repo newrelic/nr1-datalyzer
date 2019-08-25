@@ -12,7 +12,8 @@ export default class FunctionPicker extends React.PureComponent {
   }
 
   render() {
-    const {fn, setFunction} = this.props
+    const {fn, setFunction, attribute} = this.props
+    const disabled = attribute == "__count__"
 
     return <Stack alignmentType="baseline">
       {FUNCTIONS.map(f => {
@@ -20,6 +21,7 @@ export default class FunctionPicker extends React.PureComponent {
         return <StackItem key={f.fn}>
           <Radio 
             onClick={() => setFunction(f.fn)}
+            disabled={disabled}
             checked={checked} 
             label={f.label}/>
         </StackItem>
