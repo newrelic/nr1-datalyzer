@@ -81,7 +81,6 @@ export default class Analyzer extends React.Component {
             <DimensionPicker 
                 {...this.props} 
                 {...this.state} 
-                where={`metricName = '${this.state.attribute}'`}
                 setDimension={this._setDimension} />
           </GridItem>
           <GridItem columnSpan={9}>

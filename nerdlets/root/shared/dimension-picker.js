@@ -21,12 +21,15 @@ export default class DimensionPicker extends React.Component {
   }
 
   getNrql(select) {
-    const { filterWhere, where, eventType } = this.props
+    const { filterWhere, eventType, attribute } = this.props
+    let whereClause = ['true']
+    if(eventType == 'Metric') {
+      whereClause.push(`metricName = '${attribute}'`)
+    }
+    if (filterWhere) whereClause.push(`${filterWhere}`)
 
-    let whereClause = `WHERE ${where}`
-    if (filterWhere) whereClause = whereClause.concat(` AND ${filterWhere}`)
 
-    return `SELECT ${select} FROM ${quote(eventType)} ${whereClause}`
+    return `SELECT ${select} FROM ${quote(eventType)} WHERE ${whereClause.join(" AND ")}`
   }
 
   async loadDimensions() {
