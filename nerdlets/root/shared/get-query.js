@@ -21,15 +21,20 @@ export function getFilterWhere(filters) {
 }
 
 export default function getQuery(props, state) {
-  const { dimension, fn, attribute, filters } = props;
+  const { dimension, fn, attribute, filters, eventType } = props;
   const { timeseries, limit } = state || {};
   const where = getFilterWhere(filters)
 
-  let query = `SELECT ${fn}(${quote(attribute)}) FROM Metric`;
+  // special case for  when the user selects "Count(*)" as the attribute to be plotted
+  const select = attribute ==  "__count__" ? 'count(*)' : `${fn}(${quote(attribute)})`
+
+  let query = `SELECT ${select} FROM ${eventType}`;
 
   if (dimension) query = query.concat(` FACET ${quote(dimension)}`);
   if (timeseries) query = query.concat(` TIMESERIES`);
   if (limit) query = query.concat(` LIMIT ${limit}`);
   if (where) query = query.concat(` WHERE ${where}`);
+
+  console.log(query)
   return query;
 }

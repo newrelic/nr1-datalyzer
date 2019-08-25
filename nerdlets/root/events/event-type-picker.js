@@ -11,29 +11,34 @@ export default class EventTypePicker extends React.Component {
     this.state = {}
   }
 
-  async componentDidMount() {
-    this.loadMetricNames()
+  componentDidMount() {
+    this.loadEventTypes()
   }
 
-  // TODO currently only loads 1000 metrics. We should reload
-  // on change of user input strings
-  async loadMetricNames() {
-    const { account, setAttribute } = this.props
+  componentDidUpdate({dataType, account}) {
+    if(dataType != this.props.dataType ||
+      account.id != this.props.account.id) {
+        this.loadEventTypes()
+      }
+  }
 
-    const nrql = `SELECT uniques(metricName) FROM Metric`
+  async loadEventTypes() {
+    const { account, setEventType } = this.props
+
+    const nrql = `SHOW EVENT TYPES`
     const results = await nrdbQuery(account.id, nrql)
 
-    const metricNames = results.map(r => r.member).sort()
-    this.setState({ metricNames })
-    if (metricNames.length > 0) setAttribute(metricNames[0])
+    const eventTypes = results.map(r => r.eventType).sort()
+    this.setState({ eventTypes })
+    if (eventTypes.length > 0) setEventType(eventTypes[0])
   }
 
   render() {
-    const { metricNames } = this.state
-    const { setAttribute, metricName } = this.props
-    if (!metricNames) return <div />
+    const { eventTypes } = this.state
+    const { setEventType, eventType } = this.props
+    if (!eventTypes) return <div />
 
-    const options = metricNames.map(o => { return { value: o, label: o } })
+    const options = eventTypes.map(o => { return { value: o, label: o } })
     return <Stack alignmentType="baseline">
       <StackItem>
         <h3>Event Type</h3>
@@ -41,11 +46,9 @@ export default class EventTypePicker extends React.Component {
       <StackItem grow>
         <Select
           options={options}
-          value={{value: metricNames, label: metricName}}
-          onChange={(s) => setAttribute(s.value)} />
+          value={{value: eventType, label: eventType}}
+          onChange={(s) => setEventType(s.value)} />
       </StackItem>
     </Stack>
-
-    return
   }
 }

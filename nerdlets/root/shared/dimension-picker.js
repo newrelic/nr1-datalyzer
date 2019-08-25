@@ -14,6 +14,7 @@ export default class DimensionPicker extends React.Component {
   componentDidUpdate(prevProps) {
     if ((prevProps.account !== this.props.account) ||
       (prevProps.attribute !== this.props.attribute) ||
+      (prevProps.eventType !== this.props.eventType) ||
       (prevProps.filterWhere !== this.props.filterWhere)) {
 
       this.loadDimensions()
@@ -21,7 +22,6 @@ export default class DimensionPicker extends React.Component {
   }
 
   getNrql(select) {
-    console.log(this.props)
     const { filterWhere, eventType, attribute } = this.props
     let whereClause = ['true']
     if(eventType == 'Metric') {

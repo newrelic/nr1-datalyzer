@@ -10,10 +10,11 @@ export default async function nrdbQuery(accountId, nrql) {
       }
     }
   }`
-  console.log(nrql)
+
+  console.log(gql)
   const {data, error} = await NerdGraphQuery.query({query: gql})
   if(error) {
-    throw error
+    throw "Bad NRQL Query: " + nrql + ": " + errror
   }
   return data.actor.account.nrql.results
 }

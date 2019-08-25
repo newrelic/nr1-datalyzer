@@ -11,8 +11,15 @@ export default class MetricPicker extends React.Component {
     this.state = {}
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     this.loadMetricNames()
+  }
+
+  componentDidUpdate({dataType, account}) {
+    if(dataType != this.props.dataType ||
+      account.id != this.props.account.id) {
+        this.loadMetricNames()
+      }
   }
 
   // TODO currently only loads 1000 metrics. We should reload
