@@ -30,7 +30,7 @@ export default class MetricAnalyzer extends React.Component {
   }
 
   _setMetricName(metricName) {
-    this.setState({ metricName, filters: {}, filterWhere: null })
+    this.setState({ metricName, attribute: metricName, filters: {}, filterWhere: null })
   }
 
   _setDimension(dimension) {
@@ -81,8 +81,7 @@ export default class MetricAnalyzer extends React.Component {
             <DimensionPicker 
                 {...this.props} 
                 {...this.state} 
-                where={`metricName = '${this.state.metricName}'`}
-                eventType='Metric'
+                where={`metricName = '${this.state.attribute}'`}
                 setDimension={this._setDimension} />
           </GridItem>
           <GridItem columnSpan={9}>

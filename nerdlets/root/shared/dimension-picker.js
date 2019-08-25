@@ -13,7 +13,7 @@ export default class DimensionPicker extends React.Component {
 
   componentDidUpdate(prevProps) {
     if ((prevProps.account !== this.props.account) ||
-      (prevProps.metricName !== this.props.metricName) ||
+      (prevProps.attribute !== this.props.attribute) ||
       (prevProps.filterWhere !== this.props.filterWhere)) {
 
       this.loadDimensions()
@@ -26,7 +26,7 @@ export default class DimensionPicker extends React.Component {
     let whereClause = `WHERE ${where}`
     if (filterWhere) whereClause = whereClause.concat(` AND ${filterWhere}`)
 
-    return `SELECT ${select} FROM ${quote(eventType)} ${whereClause}`
+    return = `SELECT ${select} FROM ${quote(eventType)} ${whereClause}`
   }
 
   async loadDimensions() {

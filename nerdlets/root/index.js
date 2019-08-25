@@ -72,7 +72,7 @@ export default class MetricAnalyzer extends React.Component {
           </Stack>
         </StackItem>
         <StackItem grow>
-          {dataType == 'metric' && <Analyzer {...this.state} />}
+          {dataType == 'metric' && <Analyzer {...this.state} eventType='Metric' />}
           {dataType == 'event' && <h1>Event Analyzer</h1>}  
         </StackItem>
       </Stack>

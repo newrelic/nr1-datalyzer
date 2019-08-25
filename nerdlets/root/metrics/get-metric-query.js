@@ -21,11 +21,11 @@ export function getFilterWhere(filters) {
 }
 
 export default function getQuery(props, state) {
-  const { dimension, fn, metricName, filters } = props;
+  const { dimension, fn, attribute, filters } = props;
   const { timeseries, limit } = state || {};
   const where = getFilterWhere(filters)
 
-  let query = `SELECT ${fn}(${quote(metricName)}) FROM Metric`;
+  let query = `SELECT ${fn}(${quote(attribute)}) FROM Metric`;
 
   if (dimension) query = query.concat(` FACET ${quote(dimension)}`);
   if (timeseries) query = query.concat(` TIMESERIES`);
