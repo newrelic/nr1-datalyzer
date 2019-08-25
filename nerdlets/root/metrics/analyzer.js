@@ -10,17 +10,17 @@ import Filters from '../shared/filters'
 import {getFilterWhere} from './get-metric-query'
 
 
-export default class MetricAnalyzer extends React.Component {
+export default class Analyzer extends React.Component {
   constructor(props) {
     super(props)
 
-    this._setMetricName = this._setMetricName.bind(this)
+    this._setAttribute = this._setAttribute.bind(this)
     this._setDimension = this._setDimension.bind(this)
     this._setFunction = this._setFunction.bind(this)
     this._setFilter = this._setFilter.bind(this)
     this._removeFilter = this._removeFilter.bind(this)
 
-    this.state ={ fn: 'average', filters: {}, filterWhere: null }
+    this.state ={ fn: 'average', filters: {}, filterWhere: null, eventType: this.props.eventType }
   }
 
   onStateChange(prevProps) {
@@ -29,7 +29,7 @@ export default class MetricAnalyzer extends React.Component {
     }
   }
 
-  _setMetricName(metricName) {
+  _setAttribute(metricName) {
     this.setState({ metricName, attribute: metricName, filters: {}, filterWhere: null })
   }
 
@@ -65,7 +65,7 @@ export default class MetricAnalyzer extends React.Component {
       <StackItem>
         <Stack alignmentType="baseline">
           <StackItem grow>
-            <MetricPicker {...this.props} {...this.state} setMetricName={this._setMetricName} />
+            <MetricPicker {...this.props} {...this.state} setMetricName={this._setAttribute} />
           </StackItem>
           <StackItem>
             <FunctionPicker {...this.props} {...this.state} setFunction={this._setFunction} />
