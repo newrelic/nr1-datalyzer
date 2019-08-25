@@ -30,7 +30,7 @@ export default class MetricPicker extends React.Component {
 
   render() {
     const { metricNames } = this.state
-    const { setMetricName, metricName } = this.props
+    const { setAttribute, metricName } = this.props
     if (!metricNames) return <div />
 
     const options = metricNames.map(o => { return { value: o, label: o } })
@@ -42,7 +42,7 @@ export default class MetricPicker extends React.Component {
         <Select
           options={options}
           value={{value: metricNames, label: metricName}}
-          onChange={(s) => setMetricName(s.value)} />
+          onChange={(s) => setAttribute(s.value)} />
       </StackItem>
     </Stack>
 

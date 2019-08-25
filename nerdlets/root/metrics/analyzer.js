@@ -8,7 +8,7 @@ import Chart from './chart'
 import FacetTable from './facet-table'
 import Filters from '../shared/filters'
 import {getFilterWhere} from './get-metric-query'
-
+import Header from './header'
 
 export default class Analyzer extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ export default class Analyzer extends React.Component {
 
   onStateChange(prevProps) {
     if(prevProps.account.id != this.props.account.id) {
-      this.setState({dimension: null, filters: {}, metricName: null})
+      this.setState({dimension: null, filters: {}, attribute: null})
     }
   }
 
@@ -63,14 +63,7 @@ export default class Analyzer extends React.Component {
   render() {
     return <Stack directionType="vertical" alignmentType="fill">
       <StackItem>
-        <Stack alignmentType="baseline">
-          <StackItem grow>
-            <MetricPicker {...this.props} {...this.state} setMetricName={this._setAttribute} />
-          </StackItem>
-          <StackItem>
-            <FunctionPicker {...this.props} {...this.state} setFunction={this._setFunction} />
-          </StackItem>
-        </Stack>
+        <Header {...this.props} {...this.state} setAttribute={this._setAttribute} setFunction={this._setFunction} />
       </StackItem>
       <StackItem>
         <Filters {...this.props} {...this.state} removeFilter={this._removeFilter} />
@@ -78,10 +71,7 @@ export default class Analyzer extends React.Component {
       <StackItem alignmentType="trailing" fill>
         <Grid>
           <GridItem columnSpan={3}>
-            <DimensionPicker 
-                {...this.props} 
-                {...this.state} 
-                setDimension={this._setDimension} />
+            <DimensionPicker {...this.props} {...this.state} setDimension={this._setDimension} />
           </GridItem>
           <GridItem columnSpan={9}>
             <Stack directionType="vertical" alignmentType="fill">
