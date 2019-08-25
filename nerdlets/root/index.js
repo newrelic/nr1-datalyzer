@@ -33,7 +33,7 @@ export default class MetricAnalyzer extends React.Component {
     this._setAccount = this._setAccount.bind(this)
     this._setDataType = this._setDataType.bind(this)
 
-    this.state = {dataType: 'metric'}
+    this.state = {dataType: 'event'}
   }
 
   _setAccount(account) {
@@ -72,8 +72,7 @@ export default class MetricAnalyzer extends React.Component {
           </Stack>
         </StackItem>
         <StackItem grow>
-          {dataType == 'metric' && <Analyzer {...this.state} eventType='Metric' />}
-          {dataType == 'event' && <h1>Event Analyzer</h1>}  
+          <Analyzer {...this.state} dataType = {dataType} eventType="Metric"/>
         </StackItem>
       </Stack>
     </div>
