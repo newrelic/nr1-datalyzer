@@ -1,14 +1,14 @@
 import React from "react"
 import { Stack, StackItem, Grid, GridItem } from 'nr1'
 
-import MetricPicker from './metric-picker'
-import DimensionPicker from '../shared/dimension-picker'
+import MetricPicker from '../metrics/metric-picker'
+import DimensionPicker from './dimension-picker'
 import FunctionPicker from './function-picker'
 import Chart from './chart'
-import FacetTable from './facet-table'
-import Filters from '../shared/filters'
-import {getFilterWhere} from './get-metric-query'
-import Header from './header'
+import FacetTable from '../metrics/facet-table'
+import Filters from './filters'
+import {getFilterWhere} from './get-query'
+import Header from '../metrics/header'
 
 export default class Analyzer extends React.Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React from "react"
 import {TableChart} from "nr1"
 
-import getMetricQuery  from "./get-metric-query";
+import getMetricQuery  from "../shared/get-query";
 
 export default class FacetTable extends React.Component {
   constructor(props) {

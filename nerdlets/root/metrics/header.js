@@ -2,7 +2,7 @@ import React from "react"
 import { Stack, StackItem } from 'nr1'
 
 import MetricPicker from './metric-picker'
-import FunctionPicker from './function-picker'
+import FunctionPicker from '../shared/function-picker'
 import quote from '../../lib/quote'
 
 export default class Header extends React.Component {

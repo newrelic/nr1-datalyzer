@@ -6,7 +6,7 @@ import { NerdGraphQuery, Stack, StackItem, Tabs, TabsItem, Radio } from 'nr1'
 import AccountPicker from './account-picker'
 import DataTypePicker from './data-type-picker'
 
-import Analyzer from './metrics/analyzer'
+import Analyzer from './shared/analyzer'
 
 function NoMetricData() {
   return <div style={{ margin: "8px" }}>

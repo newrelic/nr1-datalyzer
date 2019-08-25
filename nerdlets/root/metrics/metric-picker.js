@@ -15,17 +15,17 @@ export default class MetricPicker extends React.Component {
     this.loadMetricNames()
   }
 
-  // TODO currnetly only loads 1000 metric. We should reload
-  // on every change of user input to search every metric name.
+  // TODO currently only loads 1000 metrics. We should reload
+  // on change of user input strings
   async loadMetricNames() {
-    const { account, setMetricName } = this.props
+    const { account, setAttribute } = this.props
 
     const nrql = `SELECT uniques(metricName) FROM Metric`
     const results = await nrdbQuery(account.id, nrql)
 
     const metricNames = results.map(r => r.member).sort()
     this.setState({ metricNames })
-    if (metricNames.length > 0) setMetricName(metricNames[0])
+    if (metricNames.length > 0) setAttribute(metricNames[0])
   }
 
   render() {
