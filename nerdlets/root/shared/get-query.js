@@ -1,5 +1,6 @@
 import quote from '../../lib/quote';
 
+
 export function getFilterWhere(filters) {
   const clauses = Object.keys(filters).
     map(attr => {
@@ -20,6 +21,16 @@ export function getFilterWhere(filters) {
   }
 }
 
+function timePickerNrql(props) {
+  const {timeRange} = props.launcherUrlState
+  if(timeRange.beginTime && timeRange.endTime) {
+    return `SINCE ${timeRange.beginTime} UNTIL ${timeRange.endTime}`    
+  }
+  else {
+    return `SINCE ${timeRange.duration / 60000} MINUTES AGO`
+  }
+}
+
 export default function getQuery(props, state) {
   const { dimension, fn, attribute, filters, eventType } = props;
   const { timeseries, limit } = state || {};
@@ -28,7 +39,7 @@ export default function getQuery(props, state) {
   // special case for  when the user selects "Count(*)" as the attribute to be plotted
   const select = attribute ==  "__count__" ? 'count(*)' : `${fn}(${quote(attribute)})`
 
-  let query = `SELECT ${select} FROM ${eventType}`;
+  let query = `SELECT ${select} FROM ${eventType} ${timePickerNrql(props)}`;
 
   if (dimension) query = query.concat(` FACET ${quote(dimension)}`);
   if (timeseries) query = query.concat(` TIMESERIES`);

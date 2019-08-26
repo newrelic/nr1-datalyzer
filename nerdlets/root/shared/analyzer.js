@@ -1,9 +1,7 @@
 import React from "react"
 import { Stack, StackItem, Grid, GridItem } from 'nr1'
 
-import MetricPicker from '../metrics/metric-picker'
 import DimensionPicker from './dimension-picker'
-import FunctionPicker from './function-picker'
 import Chart from './chart'
 import FacetTable from './facet-table'
 import Filters from './filters'
@@ -27,7 +25,7 @@ export default class Analyzer extends React.Component {
 
   onStateChange(prevProps) {
     if(prevProps.account.id != this.props.account.id || prevProps.dataType != this.props.dataType) {
-      this.setState({dimension: null, filters: {}, attribute: null})
+      this.setState({dimension: null, filters: {}, attribute: null, filters: {}, filterWhere})
     }
   }
 

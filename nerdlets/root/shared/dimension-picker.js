@@ -29,7 +29,6 @@ export default class DimensionPicker extends React.Component {
     }
     if (filterWhere) whereClause.push(`${filterWhere}`)
 
-
     return `SELECT ${select} FROM ${quote(eventType)} WHERE ${whereClause.join(" AND ")}`
   }
 
@@ -97,8 +96,11 @@ export default class DimensionPicker extends React.Component {
 
   render() {
     const {dimensions} = this.state
+    const {attribute} = this.props
 
+    if(!attribute) return <div/>
     if(!dimensions) return <Spinner/>
+    
     return <Tabs>
       <TabsItem label="Dimensions" itemKey={1} key='1'>
         <div style={{ paddingTop: "16px" }}>

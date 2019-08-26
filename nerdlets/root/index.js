@@ -21,7 +21,7 @@ function NoMetricData() {
   </div>
 }
 
-export default class MetricAnalyzer extends React.Component {
+export default class RootNerdlet extends React.Component {
   static propTypes = {
     width: PropTypes.number,
     height: PropTypes.number,
@@ -67,12 +67,12 @@ export default class MetricAnalyzer extends React.Component {
               <AccountPicker {...this.state} setAccount={this._setAccount} />
             </StackItem>
             <StackItem>
-              <DataTypePicker dataType={dataType} setDataType={this._setDataType}/>
+              <DataTypePicker {...this.state} setDataType={this._setDataType}/>
             </StackItem>
           </Stack>
         </StackItem>
         <StackItem grow>
-          <Analyzer {...this.state} dataType = {dataType} eventType="Metric"/>
+          <Analyzer {...this.props} {...this.state} eventType="Metric"/>
         </StackItem>
       </Stack>
     </div>

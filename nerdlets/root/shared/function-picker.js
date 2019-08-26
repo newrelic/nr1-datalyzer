@@ -13,6 +13,8 @@ export default class FunctionPicker extends React.PureComponent {
 
   render() {
     const {fn, setFunction, attribute} = this.props
+
+    if(!attribute) return <div/>
     const disabled = attribute == "__count__"
 
     return <Stack alignmentType="baseline">
