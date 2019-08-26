@@ -80,12 +80,12 @@ export default class Analyzer extends React.Component {
           </GridItem>
         </Grid>
         <Grid style={{height: "100%"}}>
-          <GridItem columnSpan={2} style={{maxHeight: "100%", overflow: "auto"}}>
+          <GridItem columnSpan={3} style={{maxHeight: "100%", overflow: "auto"}}>
             <div style={{marginBottom: 16}}>
               <DimensionPicker {...this.props} {...this.state} setDimension={this._setDimension} />
             </div>
           </GridItem>
-          <GridItem columnSpan={10}>
+          <GridItem columnSpan={9}>
             <Chart {...this.props} {...this.state} />
             <FacetTable {...this.props} {...this.state} setFilter={this._setFilter} />
           </GridItem>
