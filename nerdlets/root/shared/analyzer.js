@@ -53,7 +53,7 @@ export default class Analyzer extends React.Component {
     if(!filters[dimension].includes(value)) filters[dimension].push(value)
 
     const filterWhere = getFilterWhere(filters)
-    this.setState({filters, filterWhere})
+    this.setState({filters, filterWhere, dimension: null})
   }
 
   _removeFilter(attribute, value) {
@@ -63,7 +63,8 @@ export default class Analyzer extends React.Component {
     // if there are no more values on this attribute, delete the empty array
     if(filters[attribute].length == 0) delete filters[attribute]
 
-    this.setState({filters})
+    const filterWhere = getFilterWhere(filters)
+    this.setState({filters, filterWhere, dimension: null})
   }
 
   render() {
