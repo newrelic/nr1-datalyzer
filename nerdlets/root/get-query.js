@@ -24,7 +24,7 @@ export function getFilterWhere(props, filters) {
   }
 }
 
-function timePickerNrql(props) {
+export function timePickerNrql(props) {
   const {timeRange} = props.launcherUrlState
   if(timeRange.beginTime && timeRange.endTime) {
     return `SINCE ${timeRange.beginTime} UNTIL ${timeRange.endTime}`    
@@ -49,6 +49,5 @@ export default function getQuery(props, state) {
   if (limit) query = query.concat(` LIMIT ${limit}`);
   if (where) query = query.concat(` WHERE ${where}`);
 
-  console.log(query)
   return query;
 }

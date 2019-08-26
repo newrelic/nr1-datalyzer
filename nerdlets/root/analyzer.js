@@ -61,7 +61,7 @@ export default class Analyzer extends React.Component {
     // if there are no more values on this attribute, delete the empty array
     if(filters[attribute].length == 0) delete filters[attribute]
 
-    const filterWhere = getFilterWhere(filters)
+    const filterWhere = getFilterWhere(this.state, filters)
     this.setState({filters, filterWhere, dimension: null})
   }
 

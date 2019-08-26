@@ -3,6 +3,7 @@ import { Tabs, TabsItem, Stack, StackItem, Spinner } from 'nr1'
 
 import nrdbQuery from '../lib/nrdb-query'
 import quote from '../lib/quote'
+import {timePickerNrql} from  './get-query'
 
 export default class DimensionPicker extends React.Component {
   constructor(props) {
@@ -23,6 +24,8 @@ export default class DimensionPicker extends React.Component {
 
   getNrql(select) {
     const { filterWhere, eventType, attribute, entity } = this.props
+    const timeRange = timePickerNrql(this.props)
+
     let whereClause = ['true']
     if(eventType == 'Metric') {
       whereClause.push(`metricName = '${attribute}'`)
@@ -32,8 +35,7 @@ export default class DimensionPicker extends React.Component {
     }
     if (filterWhere) whereClause.push(`${filterWhere}`)
 
-    const nrql = `SELECT ${select} FROM ${quote(eventType)} WHERE ${whereClause.join(" AND ")}`
-    console.log(nrql)
+    const nrql = `SELECT ${select} FROM ${quote(eventType)} WHERE ${whereClause.join(" AND ")} ${timeRange}`
     return nrql
   }
 
@@ -69,7 +71,6 @@ export default class DimensionPicker extends React.Component {
     if(attributes.length > 0) {
       const select = attributes.map(d => `latest(${quote(d.name)})`).join(', ')
       const attributeValues = await nrdbQuery(account.id, this.getNrql(select))
-      console.log(attributeValues)
       attributes.forEach(d => {
         d.latest = attributeValues[0][`latest.${d.name}`]
       })
@@ -114,6 +115,19 @@ export default class DimensionPicker extends React.Component {
 
     if(!attribute) return <div/>
     if(!dimensions) return <Spinner/>
+
+    if(dimensions.length < 10) {
+      return <Stack directionType="vertical">
+        <StackItem>
+          <h3>Dimensions</h3>
+          {this.renderDimensionsTable()}
+        </StackItem>
+        <StackItem style={{borderTop: "1px solid #dddddd"}}>
+          <h3>Attributes</h3>
+          {this.renderAttributesTable()}
+        </StackItem>
+      </Stack>
+    }
     
     return <Tabs>
       <TabsItem label="Dimensions" itemKey={1} key='1'>

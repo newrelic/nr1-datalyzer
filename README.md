@@ -9,8 +9,6 @@ Author: Lew Cirne
 
 ## Running Locally
 
-Current status of the UI is very rough and unintuitive. Given that caveat:
-
 Run the following scripts:
 
 ```
@@ -42,10 +40,12 @@ However, this thing is unlikely to become a very useful package until/unless the
 take some sort of action on the generated charts. The default actions (add to dashboard, etc)
 would go a long way!!
 
-## TODO
-- Embed in explorer for APM/APPLICATION, MOBILE/APPLICATION, INFRA/HOST, etc
+## TODO 
+With Miguel's help:
 - embed params (account, fn, attribute, etc) in UrlState
 - add chart to dashboard
 - proper vertical scrolling for dimension picker and facet table
 - when small # dimensions, show attributes directly underneath
 
+With Design help:
+- lots of cosmetics!
