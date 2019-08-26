@@ -17,6 +17,7 @@ export default class Chart extends React.Component {
     const query = getMetricQuery(this.props, this.state)
     const {ChartType} = this.state
 
+    console.log(this.props.account, query)
     return <div style={{width: "100%", height: "300px"}}>
       <ChartType accountId={this.props.account.id} query={query}/>
     </div>

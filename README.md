@@ -43,8 +43,9 @@ take some sort of action on the generated charts. The default actions (add to da
 would go a long way!!
 
 ## TODO
-- Obey time picker
 - Embed in explorer for APM/APPLICATION, MOBILE/APPLICATION, INFRA/HOST, etc
 - embed params (account, fn, attribute, etc) in UrlState
 - add chart to dashboard
+- proper vertical scrolling for dimension picker and facet table
+- when small # dimensions, show attributes directly underneath
 

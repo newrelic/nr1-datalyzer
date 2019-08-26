@@ -2,5 +2,11 @@
     "schemaType": "NERDLET",
     "id": "root",
     "displayName": "Datalyzer",
-    "description": ""
+    "description": "",
+"actionCategory": "troubleshoot",
+"entities": [
+  {"domain": "APM", "type": "APPLICATION"},
+  {"domain": "MOBILE", "type": "APPLICATION"},
+  {"domain": "BROWSER", "type": "APPLICATION"}
+  ]
 }

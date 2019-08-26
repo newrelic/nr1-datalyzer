@@ -1,7 +1,7 @@
 import quote from '../lib/quote';
 
 
-export function getFilterWhere(filters) {
+export function getFilterWhere(props, filters) {
   const clauses = Object.keys(filters).
     map(attr => {
       const values = filters[attr]
@@ -13,6 +13,9 @@ export function getFilterWhere(filters) {
       }
     })
 
+  if(props.entity) {
+    clauses.push(`appId = ${props.entity.applicationId}`)
+  }
   if (clauses.length > 0) {
     return clauses.join(" AND ")
   }
@@ -34,7 +37,7 @@ function timePickerNrql(props) {
 export default function getQuery(props, state) {
   const { dimension, fn, attribute, filters, eventType } = props;
   const { timeseries, limit } = state || {};
-  const where = getFilterWhere(filters)
+  const where = getFilterWhere(props, filters)
 
   // special case for  when the user selects "Count(*)" as the attribute to be plotted
   const select = attribute ==  "__count__" ? 'count(*)' : `${fn}(${quote(attribute)})`
@@ -46,5 +49,6 @@ export default function getQuery(props, state) {
   if (limit) query = query.concat(` LIMIT ${limit}`);
   if (where) query = query.concat(` WHERE ${where}`);
 
+  console.log(query)
   return query;
 }

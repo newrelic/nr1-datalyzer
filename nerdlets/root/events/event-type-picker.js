@@ -4,6 +4,30 @@ import { Stack, StackItem } from 'nr1'
 
 import nrdbQuery from '../../lib/nrdb-query'
 
+const DOMAIN_EVENT_TYPES = {
+  APM: [
+    'Transaction',
+    'TransactionError',    
+  ],
+  BROWSER: [
+    'PageView',
+    'PageAction',
+    'AjaxRequest',
+    'Ajax',
+    'BrowserInteraction',
+    'JavascriptError'
+  ],
+  MOBILE: [
+    'MobileSession',
+    'Mobile',
+    'MobileUserAction',
+    'MobileRequest',
+    'MobileRequestError',
+    'MobileCrash',
+    'MobileHandledException',
+  ]
+}
+
 export default class EventTypePicker extends React.Component {
   constructor(props) {
     super(props)
@@ -15,14 +39,25 @@ export default class EventTypePicker extends React.Component {
     this.loadEventTypes()
   }
 
-  componentDidUpdate({dataType, account}) {
+  componentDidUpdate({dataType, account, entity}) {
     if(dataType != this.props.dataType ||
-      account.id != this.props.account.id) {
+      account.id != this.props.account.id ||
+      entity != this.props.entity) {
         this.loadEventTypes()
       }
   }
 
   async loadEventTypes() {
+    const {entity} = this.props
+    if(entity) {
+      await this.loadEntityEventTypes()
+    }
+    else {
+      await this.loadAllEventTypes()
+    }
+  }
+
+  async loadAllEventTypes() {
     const { account, setEventType } = this.props
 
     const nrql = `SHOW EVENT TYPES`
@@ -31,6 +66,14 @@ export default class EventTypePicker extends React.Component {
     const eventTypes = results.map(r => r.eventType).sort()
     this.setState({ eventTypes })
     if (eventTypes.length > 0) setEventType(eventTypes[0])
+  }
+
+  loadEntityEventTypes() {
+    const {entity, setEventType} = this.props
+    const eventTypes = DOMAIN_EVENT_TYPES[entity.domain]
+
+    this.setState({eventTypes})
+    setEventType(eventTypes[0])
   }
 
   render() {

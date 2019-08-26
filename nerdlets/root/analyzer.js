@@ -38,7 +38,7 @@ export default class Analyzer extends React.Component {
   }
 
   _setEventType(eventType) {
-    this.setState({ eventType, dataType: 'event', filters: {}, filterWhere: null })
+    this.setState({ eventType, attribute: null,  dataType: 'event', filters: {}, filterWhere: null })
   }
 
   _setFunction(fn) {
@@ -50,7 +50,7 @@ export default class Analyzer extends React.Component {
     filters[dimension] = filters[dimension] || []
     if(!filters[dimension].includes(value)) filters[dimension].push(value)
 
-    const filterWhere = getFilterWhere(filters)
+    const filterWhere = getFilterWhere(this.state, filters)
     this.setState({filters, filterWhere, dimension: null})
   }
 

@@ -22,14 +22,19 @@ export default class DimensionPicker extends React.Component {
   }
 
   getNrql(select) {
-    const { filterWhere, eventType, attribute } = this.props
+    const { filterWhere, eventType, attribute, entity } = this.props
     let whereClause = ['true']
     if(eventType == 'Metric') {
       whereClause.push(`metricName = '${attribute}'`)
     }
+    if(entity) {
+      whereClause.push(`appId = ${entity.applicationId}`)
+    }
     if (filterWhere) whereClause.push(`${filterWhere}`)
 
-    return `SELECT ${select} FROM ${quote(eventType)} WHERE ${whereClause.join(" AND ")}`
+    const nrql = `SELECT ${select} FROM ${quote(eventType)} WHERE ${whereClause.join(" AND ")}`
+    console.log(nrql)
+    return nrql
   }
 
   async loadDimensions() {
@@ -50,14 +55,23 @@ export default class DimensionPicker extends React.Component {
       const batch = keys.slice(i, i+BATCH_SIZE)
 
       // get the # of unique values for each string attribute
-      const select = batch.map(d => `uniqueCount(${quote(d.name)}), latest(${quote(d.name)})`)
+      const select = batch.map(d => `uniqueCount(${quote(d.name)})`)
       results = await nrdbQuery(account.id, this.getNrql(select))
       batch.forEach(d => {
         d.count = results[0][`uniqueCount.${d.name}`]
-        d.latest = results[0][`latest.${d.name}`]
 
         if(d.count == 1) attributes.push(d)
         if(d.count > 1) dimensions.push(d)
+      })
+    }
+
+    // get the attribute values
+    if(attributes.length > 0) {
+      const select = attributes.map(d => `latest(${quote(d.name)})`).join(', ')
+      const attributeValues = await nrdbQuery(account.id, this.getNrql(select))
+      console.log(attributeValues)
+      attributes.forEach(d => {
+        d.latest = attributeValues[0][`latest.${d.name}`]
       })
     }
 

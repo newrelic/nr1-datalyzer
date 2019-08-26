@@ -8,7 +8,9 @@ const KEYWORDS = {
   since: true,
   until: true,
   facet: true,
-  limit: true
+  limit: true,
+  offset: true,
+  id: true
 }
 
 export default function quote(s) {
