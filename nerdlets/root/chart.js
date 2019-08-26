@@ -3,14 +3,26 @@ import {LineChart, Button, navigation} from 'nr1'
 
 import getMetricQuery  from "./get-query";
 
-function openChartBuilder(query) {
+function openChartBuilder(query, account) {
   const nerdlet = {
     id: 'wanda-data-exploration.nrql-editor',
     urlState: {
-      nrql: query
+      initialActiveInterface: 'nrqlEditor',
+      initialAccountId: account.id,
+      initialNrqlValue: query,
+      isViewingQuery: true,
     }
   }
   navigation.openOverlay(nerdlet)
+}
+
+function Nrql({query, account}) {
+  return <div>
+    <h4>NRQL</h4>
+    <div className="nrql" onClick={() => openChartBuilder(query, account)}>
+      {query}
+    </div>
+  </div>
 }
 
 export default class Chart extends React.Component {
@@ -27,9 +39,9 @@ export default class Chart extends React.Component {
     const query = getMetricQuery(this.props, this.state)
     const {ChartType} = this.state
 
-    return <div style={{width: "100%", height: "300px"}}>
-      <ChartType accountId={this.props.account.id} query={query}/>
-      <Button onClick={() => openChartBuilder(query)}>Show Query</Button>
+    return <div style={{width: "100%"}}>
+      <Nrql query={query} account={this.props.account}/>
+      <ChartType accountId={this.props.account.id} query={query} style={{height: "300px"}}/>
     </div>
 
     

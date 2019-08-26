@@ -23,3 +23,17 @@
 
   font-size: 16px;
 }
+
+.nrql {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  background-color: #eeeeee;
+  border: 1px black #aaaaaa;
+  border-radius: 3px;
+}
+
+.nrql:hover {
+  color: blue;
+  text-decoration-line: underline;
+  cursor: pointer;
+}
