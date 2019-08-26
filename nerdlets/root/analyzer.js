@@ -69,31 +69,27 @@ export default class Analyzer extends React.Component {
     const {dataType} = this.props
     const Header = dataType == 'metric' ? MetricsHeader : EventsHeader
 
-    return <Stack directionType="vertical" alignmentType="fill">
-      <StackItem>
-        <Header {...this.props} {...this.state} 
-          setAttribute={this._setAttribute} setFunction={this._setFunction} setEventType={this._setEventType} />
-      </StackItem>
-      <StackItem>
-        <Filters {...this.props} {...this.state} removeFilter={this._removeFilter} />
-      </StackItem>
-      <StackItem alignmentType="trailing" fill>
+    return <div style={{ height: "100%" }}>
         <Grid>
-          <GridItem columnSpan={3}>
-            <DimensionPicker {...this.props} {...this.state} setDimension={this._setDimension} />
-          </GridItem>
-          <GridItem columnSpan={9}>
-            <Stack directionType="vertical" alignmentType="fill">
-              <StackItem>
-                <Chart {...this.props} {...this.state} />
-              </StackItem>
-              <StackItem>
-                <FacetTable {...this.props} {...this.state} setFilter={this._setFilter} />
-              </StackItem>
-            </Stack>
+          <GridItem columnSpan={8}>
+          <div style={{marginBottom: 16}}>
+            <Header {...this.props} {...this.state} 
+              setAttribute={this._setAttribute} setFunction={this._setFunction} setEventType={this._setEventType} />
+            <Filters {...this.props} {...this.state} removeFilter={this._removeFilter} />
+            </div>
           </GridItem>
         </Grid>
-      </StackItem>
-    </Stack>
+        <Grid style={{height: "100%"}}>
+          <GridItem columnSpan={2} style={{maxHeight: "100%", overflow: "auto"}}>
+            <div style={{marginBottom: 16}}>
+              <DimensionPicker {...this.props} {...this.state} setDimension={this._setDimension} />
+            </div>
+          </GridItem>
+          <GridItem columnSpan={10}>
+            <Chart {...this.props} {...this.state} />
+            <FacetTable {...this.props} {...this.state} setFilter={this._setFilter} />
+          </GridItem>
+        </Grid>
+      </div>
   }
 }
