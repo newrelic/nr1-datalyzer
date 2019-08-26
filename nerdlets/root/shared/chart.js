@@ -1,7 +1,7 @@
 import React from "react"
 import {LineChart} from 'nr1'
 
-import getMetricQuery  from "./get-metric-query";
+import getMetricQuery  from "./get-query";
 
 export default class Chart extends React.Component {
   constructor(props) {

@@ -17,7 +17,6 @@ export default class AccountPicker extends React.PureComponent {
       <StackItem grow>
         <Select
           options={options}
-          selectOption={selectedOption}
           value={selectedOption}
           isMulti={false}
           onChange={({ value }) => setAccount(accounts.find(a => a.id == value))}

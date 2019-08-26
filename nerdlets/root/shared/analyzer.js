@@ -1,51 +1,46 @@
 import React from "react"
 import { Stack, StackItem, Grid, GridItem } from 'nr1'
 
-import MetricPicker from './metric-picker'
+import MetricPicker from '../metrics/metric-picker'
 import DimensionPicker from './dimension-picker'
 import FunctionPicker from './function-picker'
 import Chart from './chart'
 import FacetTable from './facet-table'
 import Filters from './filters'
-import {getFilterWhere} from './get-metric-query'
+import {getFilterWhere} from './get-query'
+import MetricsHeader from '../metrics/metrics-header'
+import EventsHeader from '../events/events-header'
 
-function Debug({ title }) {
-  const style = {
-    background: "#ffeeee",
-    border: "red solid 1px",
-    padding: "8px"
-  }
-  return <div style={style}>
-    {title}
-  </div>
-}
-
-
-export default class MetricAnalyzer extends React.Component {
+export default class Analyzer extends React.Component {
   constructor(props) {
     super(props)
 
-    this._setMetricName = this._setMetricName.bind(this)
+    this._setAttribute = this._setAttribute.bind(this)
     this._setDimension = this._setDimension.bind(this)
+    this._setEventType = this._setEventType.bind(this)
     this._setFunction = this._setFunction.bind(this)
     this._setFilter = this._setFilter.bind(this)
     this._removeFilter = this._removeFilter.bind(this)
 
-    this.state ={ fn: 'average', filters: {}, filterWhere: null }
+    this.state ={ fn: 'average', filters: {}, filterWhere: null, eventType: this.props.eventType }
   }
 
   onStateChange(prevProps) {
-    if(prevProps.account.id != this.props.account.id) {
-      this.setState({dimension: null, filters: {}, metricName: null})
+    if(prevProps.account.id != this.props.account.id || prevProps.dataType != this.props.dataType) {
+      this.setState({dimension: null, filters: {}, attribute: null})
     }
   }
 
-  _setMetricName(metricName) {
-    this.setState({ metricName, filters: {}, filterWhere: null })
+  _setAttribute(metricName) {
+    this.setState({ metricName, attribute: metricName, filters: {}, filterWhere: null })
   }
 
   _setDimension(dimension) {
     this.setState({ dimension })
+  }
+
+  _setEventType(eventType) {
+    this.setState({ eventType, dataType: 'event', filters: {}, filterWhere: null })
   }
 
   _setFunction(fn) {
@@ -58,27 +53,28 @@ export default class MetricAnalyzer extends React.Component {
     if(!filters[dimension].includes(value)) filters[dimension].push(value)
 
     const filterWhere = getFilterWhere(filters)
-    this.setState({filters, filterWhere})
+    this.setState({filters, filterWhere, dimension: null})
   }
 
-  _removeFilter(dimension, value) {
+  _removeFilter(attribute, value) {
     const {filters} = this.state
-    filters[dimension] = filters[dimension].select(v => v !== value)
+    filters[attribute] = filters[attribute].filter(v => v !== value)
 
-    this.setState({filters})
+    // if there are no more values on this attribute, delete the empty array
+    if(filters[attribute].length == 0) delete filters[attribute]
+
+    const filterWhere = getFilterWhere(filters)
+    this.setState({filters, filterWhere, dimension: null})
   }
 
   render() {
+    const {dataType} = this.props
+    const Header = dataType == 'metric' ? MetricsHeader : EventsHeader
+
     return <Stack directionType="vertical" alignmentType="fill">
       <StackItem>
-        <Stack alignmentType="baseline">
-          <StackItem grow>
-            <MetricPicker {...this.props} {...this.state} setMetricName={this._setMetricName} />
-          </StackItem>
-          <StackItem>
-            <FunctionPicker {...this.props} {...this.state} setFunction={this._setFunction} />
-          </StackItem>
-        </Stack>
+        <Header {...this.props} {...this.state} 
+          setAttribute={this._setAttribute} setFunction={this._setFunction} setEventType={this._setEventType} />
       </StackItem>
       <StackItem>
         <Filters {...this.props} {...this.state} removeFilter={this._removeFilter} />
