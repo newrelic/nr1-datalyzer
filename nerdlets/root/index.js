@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { NerdGraphQuery, Stack, StackItem,  } from 'nr1'
+import { NerdGraphQuery, Grid, GridItem, Stack, StackItem } from 'nr1'
 
 import AccountPicker from './account-picker'
 import DataTypePicker from './data-type-picker'
@@ -91,22 +91,23 @@ export default class RootNerdlet extends React.Component {
     const { accounts } = this.state
     if (!accounts) return ""
 
-    return <Stack directionType="vertical" alignmentType="fill" distributionType="fill" >
-        <StackItem>
-          <Stack alignmentType="center" distributionType="fill">
-            <StackItem grow>
-              <AccountPicker {...this.state} setAccount={this._setAccount} />
-            </StackItem>
-            <StackItem>
-              <DataTypePicker {...this.state} setDataType={this._setDataType} />
-            </StackItem>
-          </Stack>
-        </StackItem>
-        <StackItem grow>
-          <Analyzer {...this.props} {...this.state}/>
-        </StackItem>
-      </Stack>
-
+    return <>
+      <Grid>
+        <GridItem columnSpan={4}>
+          <div style={{marginBottom: 8}}>
+            <Stack alignmentType="center">
+              <StackItem grow>
+                  <AccountPicker {...this.state} setAccount={this._setAccount} />
+                </StackItem>
+              <StackItem>
+                <DataTypePicker {...this.state} setDataType={this._setDataType} />
+              </StackItem>
+            </Stack>
+          </div>
+        </GridItem>
+      </Grid>
+      <Analyzer {...this.props} {...this.state} />
+    </>
   }
 
   renderEntityDatalyzer() {
@@ -118,7 +119,7 @@ export default class RootNerdlet extends React.Component {
 
   render() {
     const {entityGuid} = this.props.nerdletUrlState
-    return <div style={{ margin: "8px", height: "100%", width: "100%" }}>
+    return <div style={{ padding: "16px", height: "100%", boxSizing: "border-box" }}>
       {entityGuid ? this.renderEntityDatalyzer() : this.renderRootDatalyzer()}
     </div>
   }
