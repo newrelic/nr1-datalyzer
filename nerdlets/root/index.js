@@ -1,18 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react"
+import PropTypes from "prop-types"
 
-import { NerdGraphQuery, Stack, StackItem,  } from 'nr1'
+import { NerdGraphQuery, Grid, GridItem, Stack, StackItem } from 'nr1'
 
-import AccountPicker from './account-picker'
-import DataTypePicker from './data-type-picker'
+import AccountPicker from "./account-picker"
+import DataTypePicker from "./data-type-picker"
 
-import Analyzer from './analyzer'
-
+import Analyzer from "./analyzer"
 
 export default class RootNerdlet extends React.Component {
   static propTypes = {
     width: PropTypes.number,
-    height: PropTypes.number,
+    height: PropTypes.number
   }
 
   constructor(props) {
@@ -21,21 +20,20 @@ export default class RootNerdlet extends React.Component {
     this._setAccount = this._setAccount.bind(this)
     this._setDataType = this._setDataType.bind(this)
 
-    this.state = { dataType: 'event' }
+    this.state = { dataType: "event" }
   }
 
-  componentDidUpdate({nerdletUrlState}) {
-    if(nerdletUrlState.entityGuid != this.props.nerdletUrlState.entityGuid) {
+  componentDidUpdate({ nerdletUrlState }) {
+    if (nerdletUrlState.entityGuid != this.props.nerdletUrlState.entityGuid) {
       this.loadEntity()
     }
   }
 
   async componentDidMount() {
-    const {entityGuid} = this.props.nerdletUrlState
-    if(entityGuid) {
+    const { entityGuid } = this.props.nerdletUrlState
+    if (entityGuid) {
       await this.loadEntity()
-    }
-    else {
+    } else {
       // get all user accessible accounts
       const gql = `{actor {accounts {name id}}}`
       const { data } = await NerdGraphQuery.query({ query: gql })
@@ -43,16 +41,15 @@ export default class RootNerdlet extends React.Component {
       const { accounts } = data.actor
       const account = accounts.length > 0 && accounts[0]
       this.setState({ accounts, account })
-    }    
+    }
   }
 
   async loadEntity() {
-    const {entityGuid} = this.props.nerdletUrlState
+    const { entityGuid } = this.props.nerdletUrlState
 
-    
-    if(entityGuid) {
-      // to work with mobile and browser apps, we need the 
-      // (non guid) id's for these applications, since guid is 
+    if (entityGuid) {
+      // to work with mobile and browser apps, we need the
+      // (non guid) id's for these applications, since guid is
       // not present in events like PageView, MobileSession, etc.
       const gql = `{
         actor {
@@ -69,12 +66,11 @@ export default class RootNerdlet extends React.Component {
         }
       }`
 
-      const {data} = await NerdGraphQuery.query({query: gql})
-      const {entity} = data.actor
-      await this.setState({entity, account: entity.account})
-    }
-    else {
-      await this.setState({entity: null})
+      const { data } = await NerdGraphQuery.query({ query: gql })
+      const { entity } = data.actor
+      await this.setState({ entity, account: entity.account })
+    } else {
+      await this.setState({ entity: null })
     }
   }
 
@@ -86,40 +82,41 @@ export default class RootNerdlet extends React.Component {
     this.setState({ dataType })
   }
 
-
   renderRootDatalyzer() {
     const { accounts } = this.state
     if (!accounts) return ""
 
-    return <Stack directionType="vertical" alignmentType="fill" distributionType="fill" >
-        <StackItem>
-          <Stack alignmentType="center" distributionType="fill">
-            <StackItem grow>
-              <AccountPicker {...this.state} setAccount={this._setAccount} />
-            </StackItem>
-            <StackItem>
-              <DataTypePicker {...this.state} setDataType={this._setDataType} />
-            </StackItem>
-          </Stack>
-        </StackItem>
-        <StackItem grow>
-          <Analyzer {...this.props} {...this.state}/>
-        </StackItem>
-      </Stack>
-
+    return <>
+      <Grid>
+        <GridItem columnSpan={4}>
+          <div style={{marginBottom: 8}}>
+            <Stack alignmentType="center">
+              <StackItem grow>
+                  <AccountPicker {...this.state} setAccount={this._setAccount} />
+                </StackItem>
+              <StackItem>
+                <DataTypePicker {...this.state} setDataType={this._setDataType} />
+              </StackItem>
+            </Stack>
+          </div>
+        </GridItem>
+      </Grid>
+      <Analyzer {...this.props} {...this.state} />
+    </>
   }
 
   renderEntityDatalyzer() {
-    const {entity} = this.state
-    if(!entity) return ""
-    
-    return <Analyzer {...this.props} {...this.state}/>
+    const { entity } = this.state
+    if (!entity) return ""
+
+    return <Analyzer {...this.props} {...this.state} />
   }
 
   render() {
     const {entityGuid} = this.props.nerdletUrlState
-    return <div style={{ margin: "8px", height: "100%", width: "100%" }}>
+    return <div style={{ padding: "16px", height: "100%", boxSizing: "border-box" }}>
       {entityGuid ? this.renderEntityDatalyzer() : this.renderRootDatalyzer()}
     </div>
+
   }
 }

@@ -1,13 +1,13 @@
 import React from "react"
-import { Stack, StackItem, Grid, GridItem } from 'nr1'
+import { Stack, StackItem, Grid, GridItem } from "nr1"
 
-import DimensionPicker from './dimension-picker'
-import Chart from './chart'
-import FacetTable from './facet-table'
-import Filters from './filters'
-import {getFilterWhere} from './get-query'
-import MetricsHeader from './metrics/metrics-header'
-import EventsHeader from './events/events-header'
+import DimensionPicker from "./dimension-picker"
+import Chart from "./chart"
+import FacetTable from "./facet-table"
+import Filters from "./filters"
+import { getFilterWhere } from "./get-query"
+import MetricsHeader from "./metrics/metrics-header"
+import EventsHeader from "./events/events-header"
 
 export default class Analyzer extends React.Component {
   constructor(props) {
@@ -20,17 +20,36 @@ export default class Analyzer extends React.Component {
     this._setFilter = this._setFilter.bind(this)
     this._removeFilter = this._removeFilter.bind(this)
 
-    this.state ={ fn: 'average', filters: {}, filterWhere: null, eventType: this.props.eventType }
+    this.state = {
+      fn: "average",
+      filters: {},
+      filterWhere: null,
+      eventType: this.props.eventType
+    }
   }
 
   onStateChange(prevProps) {
-    if(prevProps.account.id != this.props.account.id || prevProps.dataType != this.props.dataType) {
-      this.setState({dimension: null, filters: {}, attribute: null, filters: {}, filterWhere})
+    if (
+      prevProps.account.id != this.props.account.id ||
+      prevProps.dataType != this.props.dataType
+    ) {
+      this.setState({
+        dimension: null,
+        filters: {},
+        attribute: null,
+        filters: {},
+        filterWhere
+      })
     }
   }
 
   _setAttribute(metricName) {
-    this.setState({ metricName, attribute: metricName, filters: {}, filterWhere: null })
+    this.setState({
+      metricName,
+      attribute: metricName,
+      filters: {},
+      filterWhere: null
+    })
   }
 
   _setDimension(dimension) {
@@ -38,31 +57,37 @@ export default class Analyzer extends React.Component {
   }
 
   _setEventType(eventType) {
-    this.setState({ eventType, attribute: null,  dataType: 'event', filters: {}, filterWhere: null })
+    this.setState({
+      eventType,
+      attribute: null,
+      dataType: "event",
+      filters: {},
+      filterWhere: null
+    })
   }
 
   _setFunction(fn) {
-    this.setState({fn})
+    this.setState({ fn })
   }
 
   _setFilter(dimension, value) {
-    const {filters} = this.state
+    const { filters } = this.state
     filters[dimension] = filters[dimension] || []
-    if(!filters[dimension].includes(value)) filters[dimension].push(value)
+    if (!filters[dimension].includes(value)) filters[dimension].push(value)
 
     const filterWhere = getFilterWhere(this.state, filters)
-    this.setState({filters, filterWhere, dimension: null})
+    this.setState({ filters, filterWhere, dimension: null })
   }
 
   _removeFilter(attribute, value) {
-    const {filters} = this.state
+    const { filters } = this.state
     filters[attribute] = filters[attribute].filter(v => v !== value)
 
     // if there are no more values on this attribute, delete the empty array
-    if(filters[attribute].length == 0) delete filters[attribute]
+    if (filters[attribute].length == 0) delete filters[attribute]
 
     const filterWhere = getFilterWhere(this.state, filters)
-    this.setState({filters, filterWhere, dimension: null})
+    this.setState({ filters, filterWhere, dimension: null })
   }
 
   render() {

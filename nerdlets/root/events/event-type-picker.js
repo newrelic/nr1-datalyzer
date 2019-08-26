@@ -82,16 +82,16 @@ export default class EventTypePicker extends React.Component {
     if (!eventTypes) return <div />
 
     const options = eventTypes.map(o => { return { value: o, label: o } })
-    return <Stack alignmentType="baseline">
-      <StackItem>
-        <h3>Event Type</h3>
-      </StackItem>
-      <StackItem grow>
+    return (
+      <div className="react-select-input-group">
+        <label>Event Type</label>
         <Select
           options={options}
-          value={{value: eventType, label: eventType}}
-          onChange={(s) => setEventType(s.value)} />
-      </StackItem>
-    </Stack>
+          value={{ value: eventType, label: eventType }}
+          onChange={s => setEventType(s.value)}
+          classNamePrefix="react-select"
+        />
+      </div>
+    )
   }
 }

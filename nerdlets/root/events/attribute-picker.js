@@ -44,19 +44,18 @@ export default class AttributePicker extends React.Component {
     const {attributes} = this.state
     const {attribute, setAttribute} = this.props
     if(!attributes) return <div/>
-    
+
     const options = attributes.map(o => { return { value: o, label: label(o) }})
-    return <Stack alignmentType="baseline">
-      <StackItem>
-        <h3>Plot</h3>
-      </StackItem>
-      <StackItem grow>
+    return (
+      <div className="react-select-input-group">
+        <label>Plot</label>
         <Select
           options={options}
           value={{value: attribute, label: label(attribute)}}
-          onChange={(a) => setAttribute(a.value)} />
-      </StackItem>
-    </Stack>
-
+          onChange={(a) => setAttribute(a.value)}
+          classNamePrefix="react-select"
+          />
+      </div>
+    )
   }
 }

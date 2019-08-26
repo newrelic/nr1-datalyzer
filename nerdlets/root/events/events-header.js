@@ -8,20 +8,14 @@ import FunctionPicker from '../function-picker'
 
 export default class EventsHeader extends React.Component {
   render() {
-    return <Stack alignmentType="baseline">
-      <StackItem grow>
-        <Grid>
-          <GridItem columnSpan={4}>
-            <EventTypePicker {...this.props} {...this.state} />
-          </GridItem>
-          <GridItem columnSpan={8}>
-            <AttributePicker {...this.props} {...this.state}/>
-          </GridItem>
-        </Grid>
-      </StackItem>
-      <StackItem>
-        <FunctionPicker {...this.props} {...this.state}/>
-      </StackItem>
-    </Stack>
+    const { setAccount } = this.props
+
+    return (
+      <div className="utility-bar">
+        <EventTypePicker {...this.props} {...this.state} />
+        <AttributePicker {...this.props} {...this.state} />
+        <FunctionPicker {...this.props} {...this.state} />
+      </div>
+    )
   }
 }
