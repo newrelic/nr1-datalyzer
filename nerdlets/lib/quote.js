@@ -6,7 +6,9 @@ const KEYWORDS = {
   from: true,
   where: true,
   since: true,
-  until: true
+  until: true,
+  facet: true,
+  limit: true
 }
 
 export default function quote(s) {

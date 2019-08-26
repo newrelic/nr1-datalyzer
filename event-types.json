@@ -1,0 +1,115 @@
+{
+  "facets": [
+    {
+      "name": "Infra:System",
+      "results": [
+        {
+          "members": [
+            "IntegrationProviderReport",
+            "EntityUsageReport",
+            "IntegrationDataFreshnessReport",
+            "IntegrationError"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Browser",
+      "results": [
+        {
+          "members": [
+            "PageView",
+            "PageAction",
+            "Ajax"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "APM Errors",
+      "results": [
+        {
+          "members": [
+            "Transaction",
+            "TransactionError"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mobile General",
+      "results": [
+        {
+          "members": [
+            "Mobile"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "APM",
+      "results": [
+        {
+          "members": [
+            "Transaction"
+          ]
+        }
+      ]
+    }
+  ],
+  "totalResult": {
+    "results": [
+      {
+        "members": [
+          "PageView",
+          "PageAction",
+          "IntegrationProviderReport",
+          "Transaction",
+          "TransactionError",
+          "EntityUsageReport",
+          "IntegrationDataFreshnessReport",
+          "IntegrationError",
+          "Mobile",
+          "Ajax"
+        ]
+      }
+    ]
+  },
+  "unknownGroup": {
+    "results": [
+      {
+        "members": []
+      }
+    ]
+  },
+  "metadata": {
+    "eventTypes": [
+      "ArchiveFile"
+    ],
+    "eventType": "ArchiveFile",
+    "openEnded": true,
+    "beginTime": "2019-08-26T02:58:46Z",
+    "endTime": "2019-08-26T03:58:46Z",
+    "beginTimeMillis": 1566788326676,
+    "endTimeMillis": 1566791926676,
+    "rawSince": "60 MINUTES AGO",
+    "rawUntil": "NOW",
+    "rawCompareWith": "",
+    "guid": "95cf0057-38a9-26c5-5145-3dec2e7db87b",
+    "routerGuid": "a04c986e-3ead-86a4-dbfc-836025804740",
+    "messages": [],
+    "facet": "storedEventNamespace",
+    "offset": 0,
+    "limit": 10,
+    "contents": {
+      "messages": [],
+      "contents": [
+        {
+          "function": "uniques",
+          "attribute": "storedEventType",
+          "memberLimit": 1000
+        }
+      ]
+    }
+  }
+}
