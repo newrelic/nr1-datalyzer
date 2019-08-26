@@ -18,24 +18,12 @@ npm install
 npm start
 ```
 
-<<<<<<< HEAD
-Open https://staging-one.newrelic.com/?packages=local
-
-You can select an account and metric in the two dropdowns at the top of the window. I haven't
-yet figured out how to make those dropdowns show the default selection to start.
-
-Pick a metric name (I always start with "container" to look for interesting stuff).
-
-On the left, you'll see a set of _dimensions_ and _attributes_:
-- Dimensions are facets that apply to this specific metric, with a cardinality of greater than 1.  The cardinality of each dimension is displayed to give the user a hint about what dimensions might be "interesting".
-=======
 Open https://one.newrelic.com/?packages=local
 
 Pick an account, and select a metric or event data to plot.
 
 On the left, you'll see a set of _dimensions_ and _attributes_:
 - Dimensions are facets that apply to the selected metric/attribute, with a cardinality of greater than 1.  The cardinality of each dimension is displayed to give the user a hint about what dimensions might be "interesting".
->>>>>>> metrics-and-events
 - Attributes are facets with a cardinality of 1. (There's no use in faceting by an attribute
 with a cardinality of 1, you will just get teh identical data. So just show the single for that attribute.)
 
