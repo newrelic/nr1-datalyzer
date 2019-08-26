@@ -45,7 +45,7 @@ With Miguel's help:
 - embed params (account, fn, attribute, etc) in UrlState
 - add chart to dashboard
 - proper vertical scrolling for dimension picker and facet table
-- when small # dimensions, show attributes directly underneath
 
 With Design help:
 - lots of cosmetics!
+- when small # dimensions, show attributes directly underneath

@@ -91,10 +91,9 @@ export default class RootNerdlet extends React.Component {
     const { accounts } = this.state
     if (!accounts) return ""
 
-    return <div style={{ margin: "8px" }}>
-      <Stack directionType="vertical" alignmentType="fill">
+    return <Stack directionType="vertical" alignmentType="fill" distributionType="fill" >
         <StackItem>
-          <Stack alignmentType={Stack.ALIGNMENT_TYPE.CENTER} distributionType="fill">
+          <Stack alignmentType="center" distributionType="fill">
             <StackItem grow>
               <AccountPicker {...this.state} setAccount={this._setAccount} />
             </StackItem>
@@ -107,7 +106,7 @@ export default class RootNerdlet extends React.Component {
           <Analyzer {...this.props} {...this.state}/>
         </StackItem>
       </Stack>
-    </div>
+
   }
 
   renderEntityDatalyzer() {
@@ -119,7 +118,7 @@ export default class RootNerdlet extends React.Component {
 
   render() {
     const {entityGuid} = this.props.nerdletUrlState
-    return <div style={{ margin: "8px" }}>
+    return <div style={{ margin: "8px", height: "100%", width: "100%" }}>
       {entityGuid ? this.renderEntityDatalyzer() : this.renderRootDatalyzer()}
     </div>
   }

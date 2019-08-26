@@ -2,11 +2,11 @@
     "schemaType": "NERDLET",
     "id": "root",
     "displayName": "Datalyzer",
-    "description": "",
-"actionCategory": "troubleshoot",
-"entities": [
-  {"domain": "APM", "type": "APPLICATION"},
-  {"domain": "MOBILE", "type": "APPLICATION"},
-  {"domain": "BROWSER", "type": "APPLICATION"}
+    "description": "Slice and dice all the data in NRDB",
+    "actionCategory": "troubleshoot",
+    "entities": [
+      {"domain": "APM", "type": "APPLICATION"},
+      {"domain": "MOBILE", "type": "APPLICATION"},
+      {"domain": "BROWSER", "type": "APPLICATION"}
   ]
 }
