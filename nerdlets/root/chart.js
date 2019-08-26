@@ -1,7 +1,7 @@
 import React from "react"
 import {LineChart, Button, navigation} from 'nr1'
 
-import getMetricQuery  from "./get-query";
+import getQuery  from "./get-query";
 
 function openChartBuilder(query, account) {
   const nerdlet = {
@@ -36,7 +36,7 @@ export default class Chart extends React.Component {
 
   render() {
     if(!this.props.metricName) return <div/>
-    const query = getMetricQuery(this.props, this.state)
+    const query = getQuery(this.props, this.state)
     const {ChartType} = this.state
 
     return <div style={{width: "100%"}}>

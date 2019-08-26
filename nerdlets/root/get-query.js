@@ -45,9 +45,9 @@ export default function getQuery(props, state) {
   let query = `SELECT ${select} FROM ${eventType} ${timePickerNrql(props)}`;
 
   if (dimension) query = query.concat(` FACET ${quote(dimension)}`);
-  if (timeseries) query = query.concat(` TIMESERIES`);
   if (limit) query = query.concat(` LIMIT ${limit}`);
   if (where) query = query.concat(` WHERE ${where}`);
+  if (timeseries) query = query.concat(` TIMESERIES`);
 
   return query;
 }
