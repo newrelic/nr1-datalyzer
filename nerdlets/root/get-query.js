@@ -1,4 +1,4 @@
-import quote from '../../lib/quote';
+import quote from '../lib/quote';
 
 
 export function getFilterWhere(filters) {
@@ -46,6 +46,5 @@ export default function getQuery(props, state) {
   if (limit) query = query.concat(` LIMIT ${limit}`);
   if (where) query = query.concat(` WHERE ${where}`);
 
-  console.log(query)
   return query;
 }

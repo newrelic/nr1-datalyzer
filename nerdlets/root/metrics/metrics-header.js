@@ -2,7 +2,7 @@ import React from "react"
 import { Stack, StackItem } from 'nr1'
 
 import MetricPicker from './metric-picker'
-import FunctionPicker from '../shared/function-picker'
+import FunctionPicker from '../function-picker'
 
 export default class EventsHeader extends React.Component {
   render() {

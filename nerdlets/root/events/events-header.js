@@ -4,7 +4,7 @@ import { Stack, StackItem, Grid, GridItem } from 'nr1'
 import EventTypePicker from './event-type-picker'
 import AttributePicker from './attribute-picker'
 
-import FunctionPicker from '../shared/function-picker'
+import FunctionPicker from '../function-picker'
 
 export default class EventsHeader extends React.Component {
   render() {

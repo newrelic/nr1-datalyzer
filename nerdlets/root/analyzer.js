@@ -6,8 +6,8 @@ import Chart from './chart'
 import FacetTable from './facet-table'
 import Filters from './filters'
 import {getFilterWhere} from './get-query'
-import MetricsHeader from '../metrics/metrics-header'
-import EventsHeader from '../events/events-header'
+import MetricsHeader from './metrics/metrics-header'
+import EventsHeader from './events/events-header'
 
 export default class Analyzer extends React.Component {
   constructor(props) {

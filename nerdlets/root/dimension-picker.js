@@ -1,8 +1,8 @@
 import React from "react"
 import { Tabs, TabsItem, Stack, StackItem, Spinner } from 'nr1'
 
-import nrdbQuery from '../../lib/nrdb-query'
-import quote from '../../lib/quote'
+import nrdbQuery from '../lib/nrdb-query'
+import quote from '../lib/quote'
 
 export default class DimensionPicker extends React.Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 # Datalyzer
 
-Explore, slice and dice dimensional metrics with this handy NerdPack
+Explore, slice and dice event and dimensional metric data with this handy NerdPack
 
 Author: Lew Cirne
 
@@ -45,4 +45,6 @@ would go a long way!!
 ## TODO
 - Obey time picker
 - Embed in explorer for APM/APPLICATION, MOBILE/APPLICATION, INFRA/HOST, etc
+- embed params (account, fn, attribute, etc) in UrlState
+- add chart to dashboard
 
