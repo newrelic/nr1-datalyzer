@@ -94,25 +94,25 @@ export default class Analyzer extends React.Component {
     const {dataType} = this.props
     const Header = dataType == 'metric' ? MetricsHeader : EventsHeader
 
-    return <Stack directionType="vertical" alignmentType="fill">
-      <StackItem>
-        <Header {...this.props} {...this.state} 
-          setAttribute={this._setAttribute} setFunction={this._setFunction} setEventType={this._setEventType} />
-      </StackItem>
-      <StackItem>
-        <Filters {...this.props} {...this.state} removeFilter={this._removeFilter} />
-      </StackItem>
-      <StackItem alignmentType="trailing" fill>
-        <Grid>
-          <GridItem columnSpan={3} collapseGapAfter className="col-1">
-            <DimensionPicker {...this.props} {...this.state} setDimension={this._setDimension} />
-          </GridItem>
-          <GridItem columnSpan={9} className="primary-chart-grid-item">
-                <Chart {...this.props} {...this.state} />
-                <FacetTable {...this.props} {...this.state} setFilter={this._setFilter} />
-          </GridItem>
-        </Grid>
-      </StackItem>
-    </Stack>
+    return <>
+      <Stack directionType="vertical" alignmentType="fill" className="analyzer-stack">
+        <StackItem>
+          <Header {...this.props} {...this.state} 
+            setAttribute={this._setAttribute} setFunction={this._setFunction} setEventType={this._setEventType} />
+        </StackItem>
+        <StackItem>
+          <Filters {...this.props} {...this.state} removeFilter={this._removeFilter} />
+        </StackItem>
+      </Stack>
+      <Grid className="primary-body-stack-item-grid">
+        <GridItem columnSpan={3} collapseGapAfter className="col-1">
+          <DimensionPicker {...this.props} {...this.state} setDimension={this._setDimension} />
+        </GridItem>
+        <GridItem columnSpan={9} className="primary-chart-grid-item">
+              <Chart {...this.props} {...this.state} />
+              <FacetTable {...this.props} {...this.state} setFilter={this._setFilter} />
+        </GridItem>
+      </Grid>
+    </>
   }
 }

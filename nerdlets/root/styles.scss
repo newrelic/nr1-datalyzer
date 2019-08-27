@@ -149,6 +149,8 @@
 }
 
 .dimensions-table {
+  height: 95.8%;
+  overflow: scroll;
   list-style-type: none;
   border-radius: 2px;
   background-color: #fff;
@@ -176,10 +178,15 @@
 
 .col-1 {
   margin-right: -4px;
+  height: 100%;
+  overflow: hidden;
+  grid-row: 1 / 1;
 }
 
 .primary-chart-grid-item {
   margin-right: 4px;
+  height: 100%;
+  grid-row: 1 / 1;
 }
 
 .primary-chart {
@@ -213,4 +220,35 @@
 [class*=-viz-table] [class*=-nr-css-TableHeaderCell] {
   background-color: #fff;
   border-bottom: 1px solid #F4F5F5;
+}
+
+.analyzer-stack {
+  max-height: 100%;
+}
+
+.primary-body-stack-item {
+  height: 100%;
+}
+
+.primary-body-stack-item-grid {
+  height: 100%;
+  grid-template-rows: 100%;
+  height: calc(100% - 130px);
+}
+
+.col-1-tabs-container {
+  height: 100%;
+}
+
+[class*=Tabs-pane] {
+  height: 100%;
+}
+
+.col-1-tabs-item {
+  height: 100%;
+
+}
+
+.dimensions-table-container {
+  height: 100%;
 }
