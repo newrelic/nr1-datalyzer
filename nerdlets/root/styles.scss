@@ -133,6 +133,7 @@
 .utility-bar {
   width: 100%;
   display: flex;
+  box-sizing: border-box;
   padding-bottom: 8px;
   padding-left: 16px;
 }
@@ -151,6 +152,7 @@
 
 .account-and-data-picker {
   padding-left: 16px;
+  box-sizing: border-box;
 }
 
 .data-type-picker-radio label {
@@ -161,6 +163,11 @@
 .attributes-container {
   list-style-type: none;
   border-radius: 2px;
+}
+
+.attributes-container {
+  height: 93%;
+  overflow: scroll;
 }
 
 .dimensions-table-item {
@@ -187,6 +194,8 @@
 }
 
 .col-1 {
+  display: flex;
+  flex-direction: column;
   margin-right: -5px;
   height: 100%;
   overflow: hidden;
@@ -252,7 +261,7 @@
 .primary-body-stack-item-grid {
   height: 100%;
   grid-template-rows: 100%;
-  height: calc(100% - 130px);
+  height: calc(100% - 106px);
   border-top: 1px solid #E7E7E7;
 }
 
@@ -272,17 +281,34 @@
 }
 
 .dimensions-table-container {
-  height: 97.95%;
+  height: 95.3%;
   overflow: scroll;
 }
 
-.attributes-container {
-  padding-left:  16px;
+.attributes-container li {
+  color: #464e4e;
+  display: flex;
+  justify-content: space-between;
+  text-align:right;
+  padding: 7px 16px;
+  border-bottom: 1px solid rgba(0,0,0, .05)
 }
 
-.attributes-container li {
-  padding: 3px 0;
+
+.attribute-name {
+  flex-grow: 0;
+  font-weight: 600;
+  text-align: right;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.attribute-value {
+  flex-grow: 1;
   color: #464e4e;
+  text-align: right;
+  overflow-wrap: break-word;
+  min-width: 40px;
 }
 
 [class*=Tabs-navigation] {
