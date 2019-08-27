@@ -107,7 +107,7 @@ export default class DimensionPicker extends React.Component {
     return <ul className="attributes-container">
       {attributes.map(a => {
         return <li key={`${a.name}:${a.value}`}>
-          <span>{a.name}: {a.latest}</span>
+          <span className="attribute-name">{a.name}: </span><span className="attribute-value">{a.latest}</span>
         </li>
       })}
     </ul>
@@ -137,10 +137,8 @@ export default class DimensionPicker extends React.Component {
           {this.renderDimensionsTable()}
         </div>
       </TabsItem>
-      <TabsItem label="Attributes" itemKey={2} key='2'>
-        <div style={{ paddingTop: "16px", paddingRight: '8px' }}>
-          {this.renderAttributesTable()}
-        </div>
+      <TabsItem className="col-1-tabs-item" label="Attributes" itemKey={2} key='2'>
+        {this.renderAttributesTable()}
       </TabsItem>
     </Tabs>
   }
