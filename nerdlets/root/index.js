@@ -1,10 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import { NerdGraphQuery, Grid, GridItem, Stack, StackItem } from 'nr1'
-
-import AccountPicker from "./account-picker"
-import DataTypePicker from "./data-type-picker"
+import { NerdGraphQuery } from "nr1"
 
 import Analyzer from "./analyzer"
 
@@ -34,9 +31,10 @@ export default class RootNerdlet extends React.Component {
     if (entityGuid) {
       await this.loadEntity()
     } else {
+
       // get all user accessible accounts
       const gql = `{actor {accounts {name id}}}`
-      const { data } = await NerdGraphQuery.query({ query: gql })
+      const { data, error } = await NerdGraphQuery.query({ query: gql })
 
       const { accounts } = data.actor
       const account = accounts.length > 0 && accounts[0]
@@ -69,7 +67,8 @@ export default class RootNerdlet extends React.Component {
       const { data } = await NerdGraphQuery.query({ query: gql })
       const { entity } = data.actor
       await this.setState({ entity, account: entity.account })
-    } else {
+    } 
+    else {
       await this.setState({ entity: null })
     }
   }
@@ -82,34 +81,12 @@ export default class RootNerdlet extends React.Component {
     this.setState({ dataType })
   }
 
-  renderRootDatalyzer() {
-    const { accounts } = this.state
-    if (!accounts) return ""
-
-    return <>
-      <Stack className="account-and-data-picker" gapType={Stack.GAP_TYPE.TIGHT}>
-        <StackItem className="account-picker-stack-item">
-          <AccountPicker {...this.state} setAccount={this._setAccount} className="freedom" />
-        </StackItem>
-        <StackItem>
-          <DataTypePicker {...this.state} setDataType={this._setDataType} className="freedom" />
-        </StackItem>
-      </Stack>
-      <Analyzer {...this.props} {...this.state} />
-    </>
-  }
-
-  renderEntityDatalyzer() {
-    const { entity } = this.state
-    if (!entity) return ""
-
-    return <Analyzer {...this.props} {...this.state} />
-  }
 
   render() {
-    const {entityGuid} = this.props.nerdletUrlState
     return <div style={{ height: "100%", boxSizing: "border-box" }}>
-      {entityGuid ? this.renderEntityDatalyzer() : this.renderRootDatalyzer()}
+      <Analyzer {...this.props} {...this.state} 
+          setAccount={this._setAccount} 
+          setDataType={this._setDataType}/>
     </div>
 
   }

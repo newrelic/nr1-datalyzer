@@ -1,8 +1,8 @@
-import { Stack, StackItem, Radio } from 'nr1'
+
+import React from "react"
+import { Radio } from 'nr1'
 
 export default function DataTypePicker({ setDataType, dataType }) {
-  dataType = dataType || 'event'
-
   return (
     <div className="data-type-picker">
       <Radio onClick={() => setDataType('event')} checked={dataType=='event'} label="Events" className="data-type-picker-radio" />

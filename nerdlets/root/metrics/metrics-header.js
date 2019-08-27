@@ -1,18 +1,19 @@
 import React from "react"
 import { Stack, StackItem } from 'nr1'
 
+import AccountPicker from '../account-picker'
+import DataTypePicker from '../data-type-picker'
 import MetricPicker from './metric-picker'
 import FunctionPicker from '../function-picker'
 
-export default class EventsHeader extends React.Component {
+export default class MetricsHeader extends React.Component {
   render() {
-    return <Stack alignmentType="baseline">
-      <StackItem grow>
-        <MetricPicker {...this.props} {...this.state} />
-      </StackItem>
-      <StackItem>
-        <FunctionPicker {...this.props} {...this.state}/>
-      </StackItem>
-    </Stack>
+
+    return <div className="utility-bar">
+      <AccountPicker {...this.props} className="freedom" />
+      <DataTypePicker {...this.props} dataType="metric" className="freedom"/>
+      <MetricPicker {...this.props} {...this.state}/>
+      <FunctionPicker {...this.props} {...this.state}/>
+    </div>
   }
 }

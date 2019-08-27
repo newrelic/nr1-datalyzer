@@ -3,22 +3,6 @@
   background-color: #f4f5f5;
 }
 
-.dimension {
-  font-size: 16px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.dimension:hover {
-  cursor: pointer;
-}
-
-.selected {
-  color: darkblue;
-  background-color: lightblue;
-}
-
 .filter {
   display: inline-flex;
   justify-content: center;
@@ -131,9 +115,11 @@
 }
 
 .utility-bar {
+  background-color: rgba(0,0,0,0.06);
   width: 100%;
   display: flex;
   padding-bottom: 8px;
+  padding-top: 8px;
   padding-left: 16px;
 }
 
@@ -151,6 +137,12 @@
 
 .account-and-data-picker {
   padding-left: 16px;
+}
+
+.data-type-picker {
+  border-right: 1px dotted  #dddddd;
+  margin-right: 6px;
+  padding-right: 6px;
 }
 
 .data-type-picker-radio label {
@@ -306,5 +298,5 @@
 
 .filters-container {
   margin-top: 0;
-  padding: 0 0 8px;
+  padding: 8px 0 8px;
 }

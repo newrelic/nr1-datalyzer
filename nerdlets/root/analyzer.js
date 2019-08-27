@@ -28,7 +28,7 @@ export default class Analyzer extends React.Component {
     }
   }
 
-  onStateChange(prevProps) {
+  __onStateChange(prevProps) {
     if (
       prevProps.account.id != this.props.account.id ||
       prevProps.dataType != this.props.dataType
@@ -43,10 +43,18 @@ export default class Analyzer extends React.Component {
     }
   }
 
-  _setAttribute(metricName) {
+  _setAttribute(attribute) {
+    let {eventType} = this.state
+    let {dataType} = this.props
+
+    if(dataType == 'metric') {
+      eventType = 'Metric'
+    }
+
     this.setState({
-      metricName,
-      attribute: metricName,
+      metricName: attribute,
+      attribute,
+      eventType,
       filters: {},
       filterWhere: null
     })
@@ -59,8 +67,6 @@ export default class Analyzer extends React.Component {
   _setEventType(eventType) {
     this.setState({
       eventType,
-      attribute: null,
-      dataType: "event",
       filters: {},
       filterWhere: null
     })
@@ -91,16 +97,16 @@ export default class Analyzer extends React.Component {
   }
 
   render() {
-    const {dataType} = this.props
+    const {dataType, accounts} = this.props
+
+    if(!accounts) return ""
     const Header = dataType == 'metric' ? MetricsHeader : EventsHeader
 
     return <>
-      <Stack directionType="vertical" alignmentType="fill" className="analyzer-stack">
-        <StackItem>
-          <Header {...this.props} {...this.state} 
-            setAttribute={this._setAttribute} setFunction={this._setFunction} setEventType={this._setEventType} />
-        </StackItem>
-        </Stack>
+      <Header {...this.props} {...this.state} 
+        setAttribute={this._setAttribute} 
+        setFunction={this._setFunction} 
+        setEventType={this._setEventType} />      
       <Filters {...this.props} {...this.state} removeFilter={this._removeFilter} />
       <Grid className="primary-body-stack-item-grid">
         <GridItem columnSpan={3} collapseGapAfter className="col-1">

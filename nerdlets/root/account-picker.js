@@ -5,6 +5,7 @@ import { Stack, StackItem } from "nr1"
 export default class AccountPicker extends React.PureComponent {
   render() {
     const { account, accounts, setAccount } = this.props
+    
     const options = accounts.map(a => {
       return { value: a.id, label: a.name }
     })

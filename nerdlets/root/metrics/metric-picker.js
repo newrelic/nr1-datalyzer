@@ -45,32 +45,31 @@ export default class MetricPicker extends React.Component {
 
     const metricNames = results.map(r => r.member).sort()
     this.setState({ metricNames })
+    
     if (metricNames.length > 0) {
-      setAttribute(metricNames[0])
+      await setAttribute(metricNames[0])
     }
     else {
-      setAttribute(null)
+      await setAttribute(null)
     }
-    setEventType('Metric')
   }
 
   render() {
     const { metricNames } = this.state
-    const { setAttribute, metricName, account } = this.props
+    const { setAttribute, attribute, account } = this.props
     if (!metricNames) return <div />
 
     if(metricNames.length == 0) {
       return <h2>No Metric Data in {account.name}</h2>
     }
-
     const options = metricNames.map(o => { return { value: o, label: o } })
     return (
       <div className="react-select-input-group">
         <label>Metric</label>
         <Select
           options={options}
-          value={{ value: metricNames, label: metricName }}
-          onChangef={s => setAttribute(s.value)}
+          value={{ value: attribute, label: attribute }}
+          onChange={s => setAttribute(s.value)}
           classNamePrefix="react-select"
         />
       </div>
