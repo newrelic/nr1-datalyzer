@@ -1,6 +1,6 @@
-import React from 'react';
-import Select from 'react-select'
-import { Stack, StackItem } from 'nr1'
+import React from "react"
+import Select from "react-select"
+import { Stack, StackItem } from "nr1"
 
 export default class AccountPicker extends React.PureComponent {
   render() {
@@ -10,18 +10,20 @@ export default class AccountPicker extends React.PureComponent {
     })
     const selectedOption = { value: account.id, label: account.name }
 
-    return <Stack alignmentType="baseline">
-      <StackItem>
-        <h3>Account</h3>
-      </StackItem>
-      <StackItem grow>
+    return (
+      <div className="react-select-input-group account-picker">
+        <label>Account</label>
         <Select
           options={options}
+          label="hi there"
           value={selectedOption}
           isMulti={false}
-          onChange={({ value }) => setAccount(accounts.find(a => a.id == value))}
+          onChange={({ value }) =>
+            setAccount(accounts.find(a => a.id == value))
+          }
+          classNamePrefix="react-select"
         />
-      </StackItem>
-    </Stack>
+      </div>
+    )
   }
 }

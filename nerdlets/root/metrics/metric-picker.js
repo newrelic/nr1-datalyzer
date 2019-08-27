@@ -64,16 +64,16 @@ export default class MetricPicker extends React.Component {
     }
 
     const options = metricNames.map(o => { return { value: o, label: o } })
-    return <Stack alignmentType="baseline">
-      <StackItem>
-        <h3>Metric</h3>
-      </StackItem>
-      <StackItem grow>
+    return (
+      <div className="react-select-input-group">
+        <label>Metric</label>
         <Select
           options={options}
-          value={{value: metricNames, label: metricName}}
-          onChange={(s) => setAttribute(s.value)} />
-      </StackItem>
-    </Stack>
+          value={{ value: metricNames, label: metricName }}
+          onChangef={s => setAttribute(s.value)}
+          classNamePrefix="react-select"
+        />
+      </div>
+    )
   }
 }
