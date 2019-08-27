@@ -90,7 +90,7 @@ export default class DimensionPicker extends React.Component {
         return (
           <li
             key={d.name}
-            className={`dimensions-table-item ${dimension !== undefined ? dimension : ''}`}
+            className={`dimensions-table-item ${dimension !== undefined ? dimension : ''} ${selected}`}
             onClick={() => setDimension(d.name)}
           >
             {d.name} ({d.count})

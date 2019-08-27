@@ -158,6 +158,11 @@
 .attributes-container {
   list-style-type: none;
   border-radius: 2px;
+
+  .selected {
+    background-color: #f8f8f8;
+    font-weight: bold;
+  }
 }
 
 .attributes-container {
@@ -176,6 +181,7 @@
     color: #000d0d;
     cursor: pointer;
   }
+  
 }
 
 .dimensions-table-header,
