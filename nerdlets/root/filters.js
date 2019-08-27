@@ -3,7 +3,7 @@ import { Stack, StackItem, Button } from 'nr1'
 
 function Filter({ attribute, value, removeFilter }) {
 
-  return <StackItem className="filter">
+  return <div className="filter">
     <span>
       {attribute}: {value}
     </span>
@@ -13,7 +13,7 @@ function Filter({ attribute, value, removeFilter }) {
       type="plainNeutral"
       onClick={() => removeFilter(attribute, value)}
     />
-  </StackItem>
+  </div>
 }
 
 export default class Filters extends React.Component {
@@ -32,10 +32,8 @@ export default class Filters extends React.Component {
 
     if (filters.length == 0) return ''
 
-    return <Stack alignmentType="baseline">
-      <StackItem>
-        <h3>Filters:</h3>
-      </StackItem>
+    return <div className="filters-container">
+      <h3 className="filters-header">Filters:</h3>
       {filters.map(({ attribute, value }) => {
         return <Filter 
           key={`${attribute}/${value}`} 
@@ -43,6 +41,6 @@ export default class Filters extends React.Component {
           value={value} 
           removeFilter={removeFilter}/>
       })}
-    </Stack>
+    </div>
   }
 }
