@@ -23,7 +23,7 @@ export default class FacetTable extends React.Component {
     }
 
     return <div style={{height: "2000px"}}>
-      <TableChart accountId={account.id} query={query} onClickTable={onClickRow} />
+      <TableChart className="primary-table" accountId={account.id} query={query} onClickTable={onClickRow} />
     </div>
   }
 }

@@ -84,16 +84,20 @@ export default class DimensionPicker extends React.Component {
     const { dimension, setDimension } = this.props
     if (!dimensions) return <div />
 
-    return <Stack directionType="vertical" alignmentType="fill">
+    return <ul className="dimensions-table">
       {dimensions.map(d => {
         const selected = d.name == dimension ? "selected" : ""
-        return <StackItem key={d.name} className={`dimension ${selected}`} >
-          <div className={dimension} onClick={() => setDimension(d.name)}>
+        return (
+          <li
+            key={d.name}
+            className={`dimensions-table-item ${dimension !== undefined ? dimension : ''}`}
+            onClick={() => setDimension(d.name)}
+          >
             {d.name} ({d.count})
-            </div>
-        </StackItem>
+          </li>
+        )
       })}
-    </Stack>
+    </ul>
   }
 
   renderAttributesTable() {
@@ -117,21 +121,19 @@ export default class DimensionPicker extends React.Component {
     if(!dimensions) return <Spinner/>
 
     if(dimensions.length < 10) {
-      return <Stack directionType="vertical">
-        <StackItem>
-          <h3>Dimensions</h3>
+      return (
+        <>
+          <h3 className="dimensions-table-header">Dimensions</h3>
           {this.renderDimensionsTable()}
-        </StackItem>
-        <StackItem style={{borderTop: "1px solid #dddddd"}}>
-          <h3>Attributes</h3>
+          <h3 className="attributes-table-header">Attributes</h3>
           {this.renderAttributesTable()}
-        </StackItem>
-      </Stack>
+        </>
+      )
     }
-    
+
     return <Tabs>
       <TabsItem label="Dimensions" itemKey={1} key='1'>
-        <div style={{ paddingTop: "16px" }}>
+        <div className="dimensions-table-container">
           {this.renderDimensionsTable()}
         </div>
       </TabsItem>

@@ -104,18 +104,12 @@ export default class Analyzer extends React.Component {
       </StackItem>
       <StackItem alignmentType="trailing" fill>
         <Grid>
-          <GridItem columnSpan={3}>
+          <GridItem columnSpan={3} collapseGapAfter className="col-1">
             <DimensionPicker {...this.props} {...this.state} setDimension={this._setDimension} />
           </GridItem>
-          <GridItem columnSpan={9}>
-            <Stack directionType="vertical" alignmentType="fill">
-              <StackItem>
+          <GridItem columnSpan={9} className="primary-chart-grid-item">
                 <Chart {...this.props} {...this.state} />
-              </StackItem>
-              <StackItem>
                 <FacetTable {...this.props} {...this.state} setFilter={this._setFilter} />
-              </StackItem>
-            </Stack>
           </GridItem>
         </Grid>
       </StackItem>

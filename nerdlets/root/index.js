@@ -96,7 +96,7 @@ export default class RootNerdlet extends React.Component {
         </StackItem>
       </Stack>
       <Analyzer {...this.props} {...this.state} />
-    </>
+      </>
   }
 
   renderEntityDatalyzer() {
@@ -108,7 +108,7 @@ export default class RootNerdlet extends React.Component {
 
   render() {
     const {entityGuid} = this.props.nerdletUrlState
-    return <div style={{ padding: "16px", height: "100%", boxSizing: "border-box" }}>
+    return <div style={{ height: "100%", boxSizing: "border-box" }}>
       {entityGuid ? this.renderEntityDatalyzer() : this.renderRootDatalyzer()}
     </div>
 

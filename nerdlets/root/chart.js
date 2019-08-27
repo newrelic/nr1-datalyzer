@@ -17,9 +17,9 @@ function openChartBuilder(query, account) {
 }
 
 function Nrql({query, account}) {
-  return <div>
-    <h4>NRQL</h4>
-    <div className="nrql" onClick={() => openChartBuilder(query, account)}>
+  return <div className="nrql-query-container" onClick={() => openChartBuilder(query, account)}>
+    <h4 className="nrql-query-header">NRQL</h4>
+    <div className="nrql-query" >
       {query}
     </div>
   </div>
@@ -39,9 +39,9 @@ export default class Chart extends React.Component {
     const query = getMetricQuery(this.props, this.state)
     const {ChartType} = this.state
 
-    return <div style={{width: "100%"}}>
+    return <div style={{width: "100%"}} className="primary-chart-container">
       <Nrql query={query} account={this.props.account}/>
-      <ChartType accountId={this.props.account.id} query={query} style={{height: "300px"}}/>
+      <ChartType className="primary-chart" accountId={this.props.account.id} query={query} style={{height: "300px"}}/>
     </div>
 
     
