@@ -10,13 +10,15 @@ const KEYWORDS = {
   facet: true,
   limit: true,
   offset: true,
-  id: true
+  id: true,
+  order: true,
+  by: true
 }
 
 export default function quote(s) {
   if(!s) return ''
   
-  if (s.match(/[\.\s:]/)) {
+  if (s.match(/[\.\s:-]/)) {
     return "`"+s+"`"
   }
   if(KEYWORDS[s.toLowerCase()]) {

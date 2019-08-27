@@ -34,7 +34,7 @@ export default class RootNerdlet extends React.Component {
 
       // get all user accessible accounts
       const gql = `{actor {accounts {name id}}}`
-      const { data, error } = await NerdGraphQuery.query({ query: gql })
+      const { data } = await NerdGraphQuery.query({ query: gql })
 
       const { accounts } = data.actor
       const account = accounts.length > 0 && accounts[0]
