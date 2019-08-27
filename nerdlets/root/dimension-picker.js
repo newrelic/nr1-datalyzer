@@ -104,13 +104,13 @@ export default class DimensionPicker extends React.Component {
     const { attributes } = this.state
     if (!attributes) return <div />
 
-    return <Stack directionType="vertical">
+    return <ul className="attributes-container">
       {attributes.map(a => {
-        return <StackItem key={`${a.name}:${a.value}`}>
+        return <li key={`${a.name}:${a.value}`}>
           <span>{a.name}: {a.latest}</span>
-        </StackItem>
+        </li>
       })}
-    </Stack>
+    </ul>
   }
 
   render() {

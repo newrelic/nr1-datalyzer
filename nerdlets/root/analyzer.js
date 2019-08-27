@@ -100,10 +100,8 @@ export default class Analyzer extends React.Component {
           <Header {...this.props} {...this.state} 
             setAttribute={this._setAttribute} setFunction={this._setFunction} setEventType={this._setEventType} />
         </StackItem>
-        <StackItem>
-          <Filters {...this.props} {...this.state} removeFilter={this._removeFilter} />
-        </StackItem>
-      </Stack>
+        </Stack>
+      <Filters {...this.props} {...this.state} removeFilter={this._removeFilter} />
       <Grid className="primary-body-stack-item-grid">
         <GridItem columnSpan={3} collapseGapAfter className="col-1">
           <DimensionPicker {...this.props} {...this.state} setDimension={this._setDimension} />
