@@ -1,20 +1,21 @@
 import React from "react"
 import Select from 'react-select'
-import { Stack, StackItem } from 'nr1'
+import { Stack, StackItem, BlockText } from 'nr1'
 
 import nrdbQuery from '../../lib/nrdb-query'
 
 function NoMetricData() {
-  return <div style={{ margin: "8px" }}>
-    <h1>No Metric Data Found</h1>
-    <p>
-      It's easy to collect and present dimensional metrics in New Relic One. Get started
-      by following the setup instructions <a href="#">here</a>.
-    </p>
-    <p>
-      <strong>Fix me.</strong>put in real documentation/getting started stuff here.
-    </p>
-  </div>
+  return <Stack directionType="vertical">
+    <StackItem>
+      <h3>No Dimensional Metric Data in this Account</h3>
+    </StackItem>
+    <StackItem>
+      <BlockText>
+        Import dimensional metric data from Prometheus today! 
+        Learn more <a href="#">here!</a>
+      </BlockText>
+    </StackItem>
+  </Stack>
 }
 
 export default class MetricPicker extends React.Component {
@@ -28,11 +29,11 @@ export default class MetricPicker extends React.Component {
     this.loadMetricNames()
   }
 
-  componentDidUpdate({dataType, account}) {
-    if(dataType != this.props.dataType ||
+  componentDidUpdate({ dataType, account }) {
+    if (dataType != this.props.dataType ||
       account.id != this.props.account.id) {
-        this.loadMetricNames()
-      }
+      this.loadMetricNames()
+    }
   }
 
   // TODO currently only loads 1000 metrics. We should reload
@@ -45,7 +46,7 @@ export default class MetricPicker extends React.Component {
 
     const metricNames = results.map(r => r.member).sort()
     this.setState({ metricNames })
-    
+
     if (metricNames.length > 0) {
       await setAttribute(metricNames[0])
     }
@@ -59,8 +60,8 @@ export default class MetricPicker extends React.Component {
     const { setAttribute, attribute, account } = this.props
     if (!metricNames) return <div />
 
-    if(metricNames.length == 0) {
-      return <h2>No Metric Data in {account.name}</h2>
+    if (metricNames.length == 0) {
+      return <NoMetricData />
     }
     const options = metricNames.map(o => { return { value: o, label: o } })
     return (

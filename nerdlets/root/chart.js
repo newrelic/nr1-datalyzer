@@ -35,7 +35,7 @@ export default class Chart extends React.Component {
   }
 
   render() {
-    if(!this.props.metricName) return <div/>
+    if(!this.props.attribute) return <div/>
     const query = getQuery(this.props, this.state)
     const {ChartType} = this.state
 

@@ -12,8 +12,8 @@ export default class FacetTable extends React.Component {
   }
 
   render() {
-    const {account, setFilter, metricName, dimension} = this.props
-    if(!metricName || !dimension) return <div/>
+    const {account, setFilter, attribute, dimension} = this.props
+    if(!attribute || !dimension) return <div/>
     
     const query = getMetricQuery(this.props, this.state)
     const onClickRow = (key, row) => {      

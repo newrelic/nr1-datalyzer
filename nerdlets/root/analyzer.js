@@ -52,7 +52,6 @@ export default class Analyzer extends React.Component {
     }
 
     this.setState({
-      metricName: attribute,
       attribute,
       eventType,
       filters: {},
@@ -67,6 +66,7 @@ export default class Analyzer extends React.Component {
   _setEventType(eventType) {
     this.setState({
       eventType,
+      dimension: null,
       filters: {},
       filterWhere: null
     })
