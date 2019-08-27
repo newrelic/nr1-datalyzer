@@ -17,8 +17,9 @@ export default class EventsHeader extends React.Component {
     return (
       <div className="utility-bar">
         {showAccountPicker && <>
-          <AccountPicker {...this.props} className="freedom" />
-          <DataTypePicker {...this.props} className="freedom"/>
+          <AccountPicker {...this.props} />
+          <DataTypePicker {...this.props} />
+          <hr />
         </>}
         <EventTypePicker {...this.props} {...this.state} />
         <AttributePicker {...this.props} {...this.state} />
