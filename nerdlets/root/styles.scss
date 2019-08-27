@@ -130,6 +130,7 @@
   display: flex;
   border-bottom: 1px solid #E7E7E7;
   padding-bottom: 20px;
+  padding-left: 16px;
 }
 
 .account-picker-stack-item .react-select-input-group {
@@ -142,6 +143,10 @@
 .function-picker-radio:first-child {
   margin-top: 3px;
   margin-bottom: 6px;
+}
+
+.account-and-data-picker {
+  padding-left: 16px;
 }
 
 .data-type-picker-radio label {
@@ -174,6 +179,7 @@
   font-size: 13px;
   color: #464e4e;
   font-weight: 600;
+  padding-left: 16px;
 }
 
 .col-1 {
@@ -184,6 +190,8 @@
 }
 
 .primary-chart-grid-item {
+  display: flex;
+  flex-direction: column;
   margin-right: 4px;
   height: 100%;
   grid-row: 1 / 1;

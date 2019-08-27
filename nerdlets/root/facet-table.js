@@ -22,8 +22,8 @@ export default class FacetTable extends React.Component {
       setFilter(key, value)
     }
 
-    return <div style={{height: "2000px"}}>
+    return <>
       <TableChart className="primary-table" accountId={account.id} query={query} onClickTable={onClickRow} />
-    </div>
+    </>
   }
 }
