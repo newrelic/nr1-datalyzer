@@ -13,9 +13,9 @@ export default class FunctionPicker extends React.PureComponent {
 
   render() {
     const {fn, setFunction, attribute} = this.props
+    const isCount = attribute == "__count__"
 
-    if(!attribute) return <div/>
-    const disabled = attribute == "__count__"
+    if(!attribute || isCount) return <div/>
 
     return <div className="function-picker-radio-container">
       {FUNCTIONS.map(f => {
@@ -24,7 +24,6 @@ export default class FunctionPicker extends React.PureComponent {
           <Radio
             key={f.fn}
             onClick={() => setFunction(f.fn)}
-            disabled={disabled}
             checked={checked}
             label={f.label}
             className="function-picker-radio"
