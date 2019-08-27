@@ -28,7 +28,7 @@ export default class Analyzer extends React.Component {
     }
   }
 
-  __onStateChange(prevProps) {
+  onStateChange(prevProps) {
     if (
       prevProps.account.id != this.props.account.id ||
       prevProps.dataType != this.props.dataType
@@ -97,9 +97,9 @@ export default class Analyzer extends React.Component {
   }
 
   render() {
-    const {dataType, accounts} = this.props
+    const {dataType, accounts, entity} = this.props
 
-    if(!accounts) return ""
+    if(!accounts && !entity) return ""
     const Header = dataType == 'metric' ? MetricsHeader : EventsHeader
 
     return <>
