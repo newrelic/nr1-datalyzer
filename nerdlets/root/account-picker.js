@@ -11,7 +11,7 @@ export default class AccountPicker extends React.PureComponent {
     const selectedOption = { value: account.id, label: account.name }
 
     return (
-      <div className="react-select-input-group">
+      <div className="react-select-input-group account-picker">
         <label>Account</label>
         <Select
           options={options}

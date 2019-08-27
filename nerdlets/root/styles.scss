@@ -1,3 +1,8 @@
+#root {
+  padding: 0;
+  background-color: #f4f5f5;
+}
+
 .dimension {
   font-size: 16px;
   text-overflow: ellipsis;
@@ -77,4 +82,21 @@
 .utility-bar {
   width: 100%;
   display: flex;
+  background-color: #EDEEEE;
+}
+
+.account-picker-stack-item .react-select-input-group {
+  min-width: 325px;
+  width: auto;
+  margin-bottom: 8px;
+}
+
+.data-type-picker-radio:first-child,
+.function-picker-radio:first-child {
+  margin-top: 3px;
+  margin-bottom: 6px;
+}
+
+.data-type-picker-radio label {
+    font-size: 12px;
 }

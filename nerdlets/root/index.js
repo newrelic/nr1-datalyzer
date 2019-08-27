@@ -87,20 +87,14 @@ export default class RootNerdlet extends React.Component {
     if (!accounts) return ""
 
     return <>
-      <Grid>
-        <GridItem columnSpan={4}>
-          <div style={{marginBottom: 8}}>
-            <Stack alignmentType="center">
-              <StackItem grow>
-                  <AccountPicker {...this.state} setAccount={this._setAccount} />
-                </StackItem>
-              <StackItem>
-                <DataTypePicker {...this.state} setDataType={this._setDataType} />
-              </StackItem>
-            </Stack>
-          </div>
-        </GridItem>
-      </Grid>
+      <Stack className="account-and-data-picker" gapType={Stack.GAP_TYPE.TIGHT}>
+        <StackItem className="account-picker-stack-item">
+          <AccountPicker {...this.state} setAccount={this._setAccount} className="freedom" />
+        </StackItem>
+        <StackItem>
+          <DataTypePicker {...this.state} setDataType={this._setDataType} className="freedom" />
+        </StackItem>
+      </Stack>
       <Analyzer {...this.props} {...this.state} />
     </>
   }
