@@ -25,27 +25,3 @@ On the left, you'll see a set of _dimensions_ and _attributes_:
 - Attributes are facets with a cardinality of 1. (There's no use in faceting by an attribute
 with a cardinality of 1, you will just get teh identical data. So just show the single for that attribute.)
 
-## Where it could go
-There's lots of overlap between this and the chart builder, so I can imagine this gets shelved when 
-we add support for dimensional metrics in the chart builder.
-
-That having been said, really like the usability beneifts that come with seeing all of
-the relevant  facets/dimensions, with cardinality, on the left. And calling out 
-a facet with a cardinality of 1 as just an attribute of the data set.  So maybe
-we look to incorporate some of these ideas into the core product.
-
-We could apply many of the same UI concepts to an event data analyzer too.
-
-However, this thing is unlikely to become a very useful package until/unless the user can 
-take some sort of action on the generated charts. The default actions (add to dashboard, etc)
-would go a long way!!
-
-## TODO 
-With Miguel's help:
-- embed params (account, fn, attribute, etc) in UrlState
-- add chart to dashboard
-- proper vertical scrolling for dimension picker and facet table
-
-With Design help:
-- lots of cosmetics!
-- when small # dimensions, show attributes directly underneath
