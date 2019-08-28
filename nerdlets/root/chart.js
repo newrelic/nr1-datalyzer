@@ -1,5 +1,13 @@
 import React from "react"
-import {LineChart, Button, navigation} from 'nr1'
+import {LineChart, AreaChart, BarChart, PieChart, 
+  Radio, Stack, StackItem, navigation} from 'nr1'
+
+const CHART_TYPES = [
+  {ChartType: LineChart, timeseries: true, title: "Line"},
+  {ChartType: AreaChart, timeseries: true, title: "Area"},
+  {ChartType: BarChart, timeseries: false, title: "Bar"},
+  {ChartType: PieChart, timeseries: false, title: "Pie"},
+]
 
 import getQuery  from "./get-query";
 
@@ -25,22 +33,44 @@ function Nrql({query, account}) {
   </div>
 }
 
+class ChartPicker extends React.Component {
+  render() {
+    const {chart, setChartType} = this.props
+    return <Stack distributionType="trailing" className="chart-picker">
+      {CHART_TYPES.map(chartType => {
+        return <StackItem>
+          <Radio 
+            key={chartType.title}
+            label={chartType.title}
+            checked={chartType == chart}
+            onClick={() => {setChartType(chartType)}}/>
+        </StackItem>
+      })}
+    </Stack>
+  }
+}
 export default class Chart extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      ChartType: LineChart,
+      chart: CHART_TYPES[0],
       timeseries: true
     }
   }
 
+  setChartType(chart) {
+    this.setState({chart})
+  }
+
   render() {
     if(!this.props.attribute) return <div/>
-    const query = getQuery(this.props, this.state)
-    const {ChartType} = this.state
+    const {chart} = this.state
+    const {ChartType} = chart
+    const query = getQuery(this.props, {timeseries: chart.timeseries})
 
     return <div style={{width: "100%"}} className="primary-chart-container">
       <Nrql query={query} account={this.props.account}/>
+      <ChartPicker chart={chart} setChartType={(chart) => this.setState({chart})}/>
       <ChartType className="primary-chart" accountId={this.props.account.id} query={query} style={{height: "300px"}}/>
     </div>
 
