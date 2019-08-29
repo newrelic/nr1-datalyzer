@@ -2,7 +2,7 @@
   "private": true,
   "name": "datalyzer",
   "description": "NR1 UI Package datalyzer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "bugs": {
     "email": "opensource@newrelic.com"
   },
@@ -11,7 +11,7 @@
     "test": "exit 0"
   },
   "nr1": {
-    "uuid": "1141b7ad-08c0-4360-8e2d-3b9097e2b218",
+    "uuid": "5f62bba1-1bfe-4c9f-a2fe-3d0fa8a76fbb",
     "sdkVersion": 2
   },
   "dependencies": {
