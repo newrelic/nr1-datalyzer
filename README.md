@@ -6,6 +6,12 @@ data in NRDB in a simple, fast and intuitive way.
 
 ![screenshot](./screenshots/screenshot.png)
 
+Note the Datalyzer is offered as a launcher (providing global visibility across
+all accounts, metrics and events) and also in the Entity Explorer. In the latter
+case, you can select a Service, Mobile App or Browser App and use the Datalyzer
+to slice and dice relevant data specific to that entity:
+
+![screenshot](./screenshots/screenshot-2.png)
 
 ## Open Source License
 
@@ -18,8 +24,8 @@ A New Relic account with some data in it.
 **Note**: When you select _Metrics_ (as opposed to _Events_), Datalyzer 
 allows you to explore dimensional metric data that was introduced by New Relic
 in September, 2019, and is supported by products such as the New Relic
-Prometheus Adapter. Traditional (nondimensional) metrics collected by older 
-New Relic products are not currently supported.
+[Prometheus OpenMetrics Integration](#). Traditional (nondimensional) metrics 
+collected by older New Relic products are not currently supported.
 
 ## Getting started
 
