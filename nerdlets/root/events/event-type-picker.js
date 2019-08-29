@@ -63,7 +63,8 @@ export default class EventTypePicker extends React.Component {
     const nrql = `SHOW EVENT TYPES`
     const results = await nrdbQuery(account.id, nrql)
 
-    const eventTypes = results.map(r => r.eventType).sort()
+    const eventTypes = results.map(r => r.eventType)
+      .sort().filter(e => e != "Metric" && e != "MetricRaw")
     this.setState({ eventTypes })
     if (eventTypes.length > 0) setEventType(eventTypes[0])
   }
