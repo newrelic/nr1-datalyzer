@@ -1,27 +1,58 @@
 # Datalyzer
 
-Explore, slice and dice event and dimensional metric data with this handy NerdPack
+## Usage
+The Datalyzer enables a user to explore, slice and dice Event and Metric
+data in NRDB in a simple, fast and intuitive way. 
 
-Author: Lew Cirne
-
-## Screenshot
 ![screenshot](./screenshots/screenshot.png)
 
-## Running Locally
 
-Run the following scripts:
+## Open Source License
 
-```
+This project is distributed under the [Apache 2 license](blob/master/LICENSE).
+
+## What do you need to make this work?
+
+A New Relic account with some data in it.
+
+**Note**: When you select _Metrics_ (as opposed to _Events_), Datalyzer 
+allows you to explore dimensional metric data that was introduced by New Relic
+in September, 2019, and is supported by products such as the New Relic
+Prometheus Adapter. Traditional (nondimensional) metrics collected by older 
+New Relic products are not currently supported.
+
+## Getting started
+
+Clone this repository and run the following scripts:
+
+```bash
+git clone https://github.com/newrelic/nr1-datalyzer
+cd nr1-datalyzer
 npm install
 npm start
 ```
 
-Open https://one.newrelic.com/?packages=local
+Visit https://one.newrelic.com/?nerdpacks=local, navigate to the Datalyzer, and :sparkles:
 
-Pick an account, and select a metric or event data to plot.
+# Support
 
-On the left, you'll see a set of _dimensions_ and _attributes_:
-- Dimensions are facets that apply to the selected metric/attribute, with a cardinality of greater than 1.  The cardinality of each dimension is displayed to give the user a hint about what dimensions might be "interesting".
-- Attributes are facets with a cardinality of 1. (There's no use in faceting by an attribute
-with a cardinality of 1, you will just get teh identical data. So just show the single for that attribute.)
+New Relic has open-sourced this project. This project is provided AS-IS WITHOUT WARRANTY OR SUPPORT, although you can report issues and contribute to the project here on GitHub.
 
+_Please do not report issues with this software to New Relic Global Technical Support._
+
+## Community
+
+New Relic hosts and moderates an online forum where customers can interact with New Relic employees as well as other customers to get help and share best practices. Like all official New Relic open source projects, there's a related Community topic in the New Relic Explorer's Hub. You can find this project's topic/threads here:
+
+https://discuss.newrelic.com/c/build-on-new-relic/nr1-datalyzer
+*(Note: URL subject to change before GA)*
+
+## Issues / Enhancement Requests
+
+Issues and enhancement requests can be submitted in the [Issues tab of this repository](issues). Please search for and review the existing open issues before submitting a new issue.
+
+# Contributing
+
+Contributions are welcome (and if you submit a Enhancement Request, expect to be invited to contribute it yourself :grin:). Please review our [Contributors Guide](blob/master/CONTRIBUTING.md).
+
+Keep in mind that when you submit your pull request, you'll need to sign the CLA via the click-through using CLA-Assistant. If you'd like to execute our corporate CLA, or if you have any questions, please drop us an email at opensource@newrelic.com.
