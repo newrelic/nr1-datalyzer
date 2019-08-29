@@ -270,8 +270,12 @@
 .primary-body-stack-item-grid {
   height: 100%;
   grid-template-rows: 100%;
-  height: calc(100% - 106px);
+  height: calc(100% - 60px);
   border-top: 1px solid #E7E7E7;
+
+  &.has-filters {
+    height: calc(100% - 100px);
+  }
 }
 
 .col-1-tabs-container {

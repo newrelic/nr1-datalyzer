@@ -103,12 +103,12 @@ export default class Analyzer extends React.Component {
     const Header = dataType == 'metric' ? MetricsHeader : EventsHeader
 
     return <>
-      <Header {...this.props} {...this.state} 
-        setAttribute={this._setAttribute} 
-        setFunction={this._setFunction} 
-        setEventType={this._setEventType} />      
+      <Header {...this.props} {...this.state}
+        setAttribute={this._setAttribute}
+        setFunction={this._setFunction}
+        setEventType={this._setEventType} />
       <Filters {...this.props} {...this.state} removeFilter={this._removeFilter} />
-      <Grid className="primary-body-stack-item-grid">
+      <Grid className={`primary-body-stack-item-grid ${Object.keys(this.state.filters).length > 0 ? 'has-filters' : ''}`}>
         <GridItem columnSpan={3} collapseGapAfter className="col-1">
           <DimensionPicker {...this.props} {...this.state} setDimension={this._setDimension} />
         </GridItem>
