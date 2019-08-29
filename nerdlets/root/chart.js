@@ -38,9 +38,8 @@ class ChartPicker extends React.Component {
     const {chart, setChartType} = this.props
     return <Stack distributionType="trailing" className="chart-picker">
       {CHART_TYPES.map(chartType => {
-        return <StackItem>
+        return <StackItem key={chartType.title}>
           <Radio 
-            key={chartType.title}
             label={chartType.title}
             checked={chartType == chart}
             onClick={() => {setChartType(chartType)}}/>

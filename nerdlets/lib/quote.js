@@ -12,7 +12,8 @@ const KEYWORDS = {
   offset: true,
   id: true,
   order: true,
-  by: true
+  by: true,
+  nocache: true,
 }
 
 export default function quote(s) {

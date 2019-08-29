@@ -45,6 +45,7 @@ export default class DimensionPicker extends React.Component {
     const attributes = []
 
     this.setState({ dimensions: null })
+    if(!this.props.eventType) return;
 
     // get all of the available string attributes
     let results = await nrdbQuery(account.id, this.getNrql("keySet()"))
