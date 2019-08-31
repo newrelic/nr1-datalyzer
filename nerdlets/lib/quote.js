@@ -14,6 +14,7 @@ const KEYWORDS = {
   order: true,
   by: true,
   nocache: true,
+  end: true,
 }
 
 export default function quote(s) {
