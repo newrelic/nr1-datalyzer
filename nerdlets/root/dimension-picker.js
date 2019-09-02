@@ -1,5 +1,5 @@
 import React from "react"
-import { Tabs, TabsItem, Stack, StackItem, Spinner } from 'nr1'
+import { Tabs, TabsItem, Spinner } from 'nr1'
 
 import nrdbQuery from '../lib/nrdb-query'
 import quote from '../lib/quote'
