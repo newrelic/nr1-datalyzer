@@ -326,6 +326,15 @@
   min-width: 40px;
 }
 
+.linked-value {
+  color: #0079bf;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration-line: underline;
+  }
+}
+
 [class*=Tabs-navigation] {
   background-color: #f4f5f5;
 }

@@ -4,6 +4,7 @@ import { Tabs, TabsItem, Stack, StackItem, Spinner } from 'nr1'
 import nrdbQuery from '../lib/nrdb-query'
 import quote from '../lib/quote'
 import {timePickerNrql} from  './get-query'
+import Attribute from './attribute'
 
 export default class DimensionPicker extends React.Component {
   constructor(props) {
@@ -107,8 +108,8 @@ export default class DimensionPicker extends React.Component {
 
     return <ul className="attributes-container">
       {attributes.map(a => {
-        return <li key={`${a.name}:${a.value}`}>
-          <span className="attribute-name">{a.name}: </span><span className="attribute-value">{a.latest}</span>
+        return <li key={`${a.name}`}>
+          <Attribute name={a.name} value={a.latest}/>
         </li>
       })}
     </ul>
