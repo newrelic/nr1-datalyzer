@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "datalyzer",
-  "description": "NR1 UI Package datalyzer",
-  "version": "0.2.0",
+  "name": "nr1-datalyzer",
+  "description": "NR1 Nerdpack for data exploration.",
+  "version": "0.2.1",
   "bugs": {
     "email": "opensource@newrelic.com"
   },
