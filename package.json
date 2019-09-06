@@ -8,13 +8,21 @@
   },
   "scripts": {
     "start": "nr1 nerdpack:serve",
-    "test": "exit 0"
+    "test": "exit 0",
+    "eslint-check": "eslint nerdlets/",
+    "eslint-fix": "eslint nerdlets/ --fix"
   },
   "nr1": {
     "uuid": "5f62bba1-1bfe-4c9f-a2fe-3d0fa8a76fbb",
     "sdkVersion": 2
   },
   "dependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.3.0",
+    "eslint-config-prettier": "^6.2.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "prettier": "^1.18.2",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
