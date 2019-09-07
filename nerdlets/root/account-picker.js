@@ -8,7 +8,7 @@ export default class AccountPicker extends React.PureComponent {
     
     const options = accounts.map(a => {
       return { value: a.id, label: a.name }
-    })
+    }).sort(a => a.name)
     const selectedOption = { value: account.id, label: account.name }
 
     return (

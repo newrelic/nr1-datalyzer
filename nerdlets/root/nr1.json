@@ -7,6 +7,7 @@
     "entities": [
       {"domain": "APM", "type": "APPLICATION"},
       {"domain": "MOBILE", "type": "APPLICATION"},
-      {"domain": "BROWSER", "type": "APPLICATION"}
+      {"domain": "BROWSER", "type": "APPLICATION"},
+      {"domain": "INFRA", "type": "HOST"}
   ]
 }

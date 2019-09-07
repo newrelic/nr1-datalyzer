@@ -25,6 +25,10 @@ const DOMAIN_EVENT_TYPES = {
     'MobileRequestError',
     'MobileCrash',
     'MobileHandledException',
+  ],
+  INFRA: [
+    'SystemSample',
+    'ProcessSample'
   ]
 }
 

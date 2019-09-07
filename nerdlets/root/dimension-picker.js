@@ -31,7 +31,10 @@ export default class DimensionPicker extends React.Component {
     if(eventType == 'Metric') {
       whereClause.push(`metricName = '${attribute}'`)
     }
-    if(entity) {
+    if(entity && entity.domain == 'INFRA') {
+      whereClause.push(`entityGuid = '${entity.guid}'`)
+    }
+    else if(entity) {
       whereClause.push(`appId = ${entity.applicationId}`)
     }
     if (filterWhere) whereClause.push(`${filterWhere}`)

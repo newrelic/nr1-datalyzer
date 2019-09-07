@@ -13,7 +13,10 @@ export function getFilterWhere(props, filters) {
       }
     })
 
-  if(props.entity) {
+  if(props.entity && props.entity.domain == 'INFRA') {
+    clauses.push(`entityGuid = '${props.entity.guid}'`)
+  }
+  else if(props.entity) {
     clauses.push(`appId = ${props.entity.applicationId}`)
   }
   if (clauses.length > 0) {
