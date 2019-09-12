@@ -6,7 +6,7 @@ export default function Attribute({name, value}) {
     onClick = async () => {
       // fetch domain and type required as well as guid.
       const {data} = await EntityByGuidQuery.query({entityGuid: value})
-      const entity = data.actor.entities[0]
+      const entity = data.entities[0]
       navigation.openStackedEntity(entity)
     }
   }
