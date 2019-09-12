@@ -2,7 +2,7 @@
 
 ## Usage
 
-The Datalyzer enables a user to explore, slice and dice Event and Metric
+The Datalyzer enables a user to explore, slice and dice event and metric
 data in NRDB in a simple, fast and intuitive way. 
 
 ![screenshot](./screenshots/screenshot.png)
@@ -25,7 +25,7 @@ A New Relic account with some data in it.
 **Note**: When you select _Metrics_ (as opposed to _Events_), Datalyzer
 allows you to explore dimensional metric data that was introduced by New Relic
 in September, 2019, and is supported by products such as the New Relic
-[Prometheus OpenMetrics Integration](#). Traditional (nondimensional) metrics
+[Prometheus OpenMetrics Integration](https://docs.newrelic.com/docs/new-relic-prometheus-openmetrics-integration-kubernetes). Traditional (nondimensional) metrics
 collected by older New Relic products are not currently supported.
 
 ## Getting started
