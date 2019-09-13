@@ -123,7 +123,7 @@ export default class DimensionPicker extends React.Component {
     const {attribute} = this.props
 
     if(!attribute) return <div/>
-    if(!dimensions) return <Spinner fillContainer/>
+    if(!dimensions) return <Spinner/>
 
     if(dimensions.length < 10) {
       return (
