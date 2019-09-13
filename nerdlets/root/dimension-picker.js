@@ -137,12 +137,12 @@ export default class DimensionPicker extends React.Component {
     }
 
     return <Tabs className="col-1-tabs-container">
-      <TabsItem className="col-1-tabs-item" label="Dimensions" itemKey={1} key='1'>
+      <TabsItem className="col-1-tabs-item" label="Dimensions" value={1} key='1'>
         <div className="dimensions-table-container">
           {this.renderDimensionsTable()}
         </div>
       </TabsItem>
-      <TabsItem className="col-1-tabs-item" label="Attributes" itemKey={2} key='2'>
+      <TabsItem className="col-1-tabs-item" label="Attributes" value={2} key='2'>
         {this.renderAttributesTable()}
       </TabsItem>
     </Tabs>
