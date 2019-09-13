@@ -2,9 +2,17 @@ import React from 'react';
 import { Dropdown, DropdownItem } from 'nr1';
 
 export default class AccountPicker extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      filter: '',
+    };
+  }
+
   render() {
     let { account, accounts, setAccount } = this.props;
-    const { filter } = this.state || {};
+    const { filter } = this.state;
 
     if (filter && filter.length > 0) {
       const re = new RegExp(filter, 'i');
@@ -16,9 +24,9 @@ export default class AccountPicker extends React.PureComponent {
     return (
       <Dropdown
         title={account.name}
-        filterable
+        search={filter}
         label="Account"
-        onChangeFilter={event => this.setState({ filter: event.target.value })}
+        onSearch={event => this.setState({ filter: event.target.value })}
       >
         {accounts.map(a => {
           return (
