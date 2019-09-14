@@ -36,7 +36,7 @@ function Nrql({query, account}) {
 class ChartPicker extends React.Component {
   render() {
     const {chart, setChartType} = this.props
-    return <Stack distributionType="trailing" className="chart-picker">
+    return <Stack verticalType={Stack.VERTICAL_TYPE.TRAILING} className="chart-picker">
       {CHART_TYPES.map(chartType => {
         return <StackItem key={chartType.title}>
           <Radio 
@@ -70,7 +70,7 @@ export default class Chart extends React.Component {
     return <div style={{width: "100%"}} className="primary-chart-container">
       <Nrql query={query} account={this.props.account}/>
       <ChartPicker chart={chart} setChartType={(chart) => this.setState({chart})}/>
-      <ChartType className="primary-chart" accountId={this.props.account.id} query={query} style={{height: "300px"}}/>
+      <ChartType fullWidth className="primary-chart" accountId={this.props.account.id} query={query} style={{height: "300px"}}/>
     </div>
 
     

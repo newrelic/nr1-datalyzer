@@ -8,9 +8,9 @@ function Filter({ attribute, value, removeFilter }) {
       {attribute}: {value}
     </span>
     <Button
-      iconType="interface_operations_remove_v-alternate"
-      sizeType="slim"
-      type="plainNeutral"
+      iconType={Button.ICON_TYPE.INTERFACE__OPERATIONS__REMOVE__V_ALTERNATE}
+      sizeType={Button.SIZE_TYPE.SMALL}
+      type={Button.TYPE.PLAIN_NEUTRAL}
       onClick={() => removeFilter(attribute, value)}
     />
   </div>

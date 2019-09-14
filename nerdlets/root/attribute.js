@@ -7,7 +7,7 @@ export default function Attribute({name, value}) {
       // fetch domain and type required as well as guid.
       const {data} = await EntityByGuidQuery.query({entityGuid: value})
       const entity = data.entities[0]
-      navigation.openStackedEntity(entity)
+      navigation.openStackedEntity(entity.guid)
     }
   }
 

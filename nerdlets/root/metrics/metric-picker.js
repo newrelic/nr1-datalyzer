@@ -5,7 +5,7 @@ import { Stack, StackItem, BlockText } from 'nr1'
 import nrdbQuery from '../../lib/nrdb-query'
 
 function NoMetricData() {
-  return <Stack directionType="vertical">
+  return <Stack directionType={Stack.DIRECTION_TYPE.VERTICAL}>
     <StackItem>
       <h3>No Dimensional Metric Data in this Account</h3>
     </StackItem>
