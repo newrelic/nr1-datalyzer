@@ -55,11 +55,12 @@
   line-height: 19px;
 }
 
-.chart-picker {
-  background-color: #fff;  
+[class*=wnd-Stack].chart-picker {
+  box-sizing: border-box;
+  background-color: #fff;
   margin-left: 0px;
   margin-top: 0px;
-  padding-right: 16px;  
+  padding: 16px;
   margin-bottom: -16px;
 }
 
@@ -189,7 +190,7 @@
     color: #000d0d;
     cursor: pointer;
   }
-  
+
 }
 
 .dimensions-table-header,
@@ -236,6 +237,7 @@
 }
 
 .primary-table {
+  height: 100%;
   box-sizing: border-box;
   background-color: #fff;
   border-radius: 2px;
@@ -254,7 +256,7 @@
   }
 }
 
-[class*=-viz-table] [class*=-nr-css-TableHeaderCell] {
+[class*=-viz-table] [class*=-nr-css-TableHeaderCell]:not([class*=TableHeaderCell-title]):not([class*=TableHeaderCell-arrow]) {
   background-color: #fff;
   border-bottom: 1px solid #F4F5F5;
 }
@@ -272,6 +274,7 @@
   grid-template-rows: 100%;
   height: calc(100% - 60px);
   border-top: 1px solid #E7E7E7;
+  margin: 0;
 
   &.has-filters {
     height: calc(100% - 100px);
@@ -357,4 +360,13 @@
 .filters-container {
   margin-top: 0;
   padding: 8px 0 8px;
+}
+
+.accountPicker [class*=wnd-Dropdown-trigger] {
+  position: relative;
+  right: 9px;
+}
+
+[class*=TableHeaderCell-title] {
+  border-bottom: none;
 }

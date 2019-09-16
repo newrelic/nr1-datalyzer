@@ -27,6 +27,7 @@ export default class AccountPicker extends React.PureComponent {
         search={filter}
         label="Account"
         onSearch={event => this.setState({ filter: event.target.value })}
+        className="accountPicker"
       >
         {accounts.map(a => {
           return (

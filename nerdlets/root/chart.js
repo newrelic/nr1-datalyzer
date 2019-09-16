@@ -36,10 +36,10 @@ function Nrql({query, account}) {
 class ChartPicker extends React.Component {
   render() {
     const {chart, setChartType} = this.props
-    return <Stack verticalType={Stack.VERTICAL_TYPE.TRAILING} className="chart-picker">
+    return <Stack verticalType={Stack.VERTICAL_TYPE.TRAILING} horizontalType={Stack.HORIZONTAL_TYPE.RIGHT} className="chart-picker" fullWidth>
       {CHART_TYPES.map(chartType => {
         return <StackItem key={chartType.title}>
-          <Radio 
+          <Radio
             label={chartType.title}
             checked={chartType == chart}
             onClick={() => {setChartType(chartType)}}/>
