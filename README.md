@@ -25,8 +25,8 @@ A New Relic account with some data in it.
 **Note**: When you select _Metrics_ (as opposed to _Events_), Datalyzer
 allows you to explore dimensional metric data that was introduced by New Relic
 in September, 2019, and is supported by products such as the New Relic
-[Prometheus OpenMetrics Integration](https://docs.newrelic.com/docs/new-relic-prometheus-openmetrics-integration-kubernetes). Traditional (nondimensional) metrics
-collected by older New Relic products are not currently supported.
+[Prometheus OpenMetrics integration](https://docs.newrelic.com/docs/new-relic-prometheus-openmetrics-integration-kubernetes) and the [Metric API](https://docs.newrelic.com/docs/introduction-new-relic-metric-api). 
+Traditional (nondimensional) metrics collected by older New Relic products are not currently supported.
 
 ## Getting started
 
