@@ -3,6 +3,5 @@
     "id": "datalyzer",
     "displayName": "Datalyzer",
     "description": "Explore, slice and dice the data in NRDB",
-    "icon": "dataviz_dataviz_line-chart",
-    "rootNerdletId": "5f62bba1-1bfe-4c9f-a2fe-3d0fa8a76fbb.root"
+    "rootNerdletId": "root"
 }
