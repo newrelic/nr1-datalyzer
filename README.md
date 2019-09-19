@@ -3,7 +3,7 @@
 ## Usage
 
 The Datalyzer enables a user to explore, slice and dice event and metric
-data in NRDB in a simple, fast and intuitive way. 
+data in NRDB in a simple, fast and intuitive way.
 
 ![screenshot](./screenshots/screenshot.png)
 
@@ -25,7 +25,7 @@ A New Relic account with some data in it.
 **Note**: When you select _Metrics_ (as opposed to _Events_), Datalyzer
 allows you to explore dimensional metric data that was introduced by New Relic
 in September, 2019, and is supported by products such as the New Relic
-[Prometheus OpenMetrics integration](https://docs.newrelic.com/docs/new-relic-prometheus-openmetrics-integration-kubernetes) and the [Metric API](https://docs.newrelic.com/docs/introduction-new-relic-metric-api). 
+[Prometheus OpenMetrics integration](https://docs.newrelic.com/docs/new-relic-prometheus-openmetrics-integration-kubernetes) and the [Metric API](https://docs.newrelic.com/docs/introduction-new-relic-metric-api).
 Traditional (nondimensional) metrics collected by older New Relic products are not currently supported.
 
 ## Getting started
@@ -33,7 +33,7 @@ Traditional (nondimensional) metrics collected by older New Relic products are n
 Clone this repository and run the following scripts:
 
 ```bash
-git clone https://github.com/newrelic/nr1-datalyzer.git
+nr1 nerdpack:clone -r https://github.com/newrelic/nr1-datalyzer.git
 cd nr1-datalyzer
 nr1 nerdpack:uuid -gf
 npm install
