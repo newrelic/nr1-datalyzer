@@ -1,7 +1,7 @@
 {
     "schemaType": "NERDLET",
     "id": "root",
-    "displayName": "Datalyzer",
+    "displayName": "Datalyzer - JRR",
     "description": "Slice and dice all the data in NRDB",
     "actionCategory": "troubleshoot",
     "entities": [

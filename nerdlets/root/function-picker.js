@@ -5,6 +5,10 @@ const FUNCTIONS = [
   {fn: 'average', label: 'avg'},
   {fn: 'sum', label: 'sum'},
 ]
+const FUNCTIONS2 = [
+  {fn: 'latest', label: 'latest'},
+  {fn: 'median', label: 'median'}
+]
 
 export default class FunctionPicker extends React.PureComponent {
   constructor(props) {
@@ -18,19 +22,34 @@ export default class FunctionPicker extends React.PureComponent {
     if(!attribute || isCount) return <div/>
 
     return <div className="function-picker-radio-container">
-      {FUNCTIONS.map(f => {
-        const checked = fn == f.fn
-        return (
-          <Radio
-            key={f.fn}
-            onClick={() => setFunction(f.fn)}
-            checked={checked}
-            label={f.label}
-            className="function-picker-radio"
-            />
-        )
-      })}
-
+      <div className="function-picker-radio-container-child">
+        {FUNCTIONS.map(f => {
+          const checked = fn == f.fn
+          return (
+            <Radio
+              key={f.fn}
+              onClick={() => setFunction(f.fn)}
+              checked={checked}
+              label={f.label}
+              className="function-picker-radio"
+              />
+          )
+        })}
+      </div>
+      <div className="function-picker-radio-container-child">
+        {FUNCTIONS2.map(f => {
+          const checked = fn == f.fn
+          return (
+            <Radio
+              key={f.fn}
+              onClick={() => setFunction(f.fn)}
+              checked={checked}
+              label={f.label}
+              className="function-picker-radio"
+              />
+          )
+        })}
+      </div>
     </div>
   }
 }
