@@ -1,5 +1,7 @@
 # Datalyzer
 
+![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/newrelic/nr1-datalyzer?include_prereleases) [![Snyk](https://snyk.io/test/github/newrelic/nr1-datalyzer/badge.svg)](https://snyk.io/test/github/newrelic/nr1-datalyzer)
+
 ## Usage
 
 The Datalyzer enables a user to explore, slice and dice event and metric
