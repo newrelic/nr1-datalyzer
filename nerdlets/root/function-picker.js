@@ -1,16 +1,16 @@
 import React from "react"
-import {Stack, StackItem, Radio} from 'nr1'
+import Select from 'react-select'
+import {Stack, StackItem } from 'nr1'
 
 const FUNCTIONS = [
   {fn: 'average', label: 'avg'},
   {fn: 'sum', label: 'sum'},
-]
-const FUNCTIONS2 = [
   {fn: 'latest', label: 'latest'},
-  {fn: 'median', label: 'median'}
+  {fn: 'median', label: 'median'},
+  {fn: 'max', label:'max'}
 ]
 
-export default class FunctionPicker extends React.PureComponent {
+export default class FunctionPicker extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -21,35 +21,17 @@ export default class FunctionPicker extends React.PureComponent {
 
     if(!attribute || isCount) return <div/>
 
-    return <div className="function-picker-radio-container">
-      <div className="function-picker-radio-container-child">
-        {FUNCTIONS.map(f => {
-          const checked = fn == f.fn
-          return (
-            <Radio
-              key={f.fn}
-              onClick={() => setFunction(f.fn)}
-              checked={checked}
-              label={f.label}
-              className="function-picker-radio"
-              />
-          )
-        })}
+    const options = FUNCTIONS
+    return (
+      <div className="react-select-input-group">
+        <label>Function</label>
+        <Select
+          options={options}
+          value={{ value: fn, label: 'label' }} //TODO: get label to update based on state
+          onChange={s => setFunction(s.fn)}
+          classNamePrefix="react-select"
+        />
       </div>
-      <div className="function-picker-radio-container-child">
-        {FUNCTIONS2.map(f => {
-          const checked = fn == f.fn
-          return (
-            <Radio
-              key={f.fn}
-              onClick={() => setFunction(f.fn)}
-              checked={checked}
-              label={f.label}
-              className="function-picker-radio"
-              />
-          )
-        })}
-      </div>
-    </div>
+    )
   }
 }
