@@ -3,11 +3,12 @@ import Select from 'react-select'
 import {Stack, StackItem } from 'nr1'
 
 const FUNCTIONS = [
-  {fn: 'average', label: 'avg'},
-  {fn: 'sum', label: 'sum'},
-  {fn: 'latest', label: 'latest'},
-  {fn: 'median', label: 'median'},
-  {fn: 'max', label:'max'}
+  {value: 'average', label: 'Average'},
+  {value: 'sum', label: 'Sum'},
+  {value: 'latest', label: 'Latest'},
+  {value: 'median', label: 'Median'},
+  {value: 'max', label:'Maximum'},
+  {value: 'min', label:'Minimum'}
 ]
 
 export default class FunctionPicker extends React.Component {
@@ -16,7 +17,7 @@ export default class FunctionPicker extends React.Component {
   }
 
   render() {
-    const {fn, setFunction, attribute} = this.props
+    const {value, setFunction, attribute} = this.props
     const isCount = attribute == "__count__"
 
     if(!attribute || isCount) return <div/>
@@ -27,8 +28,7 @@ export default class FunctionPicker extends React.Component {
         <label>Function</label>
         <Select
           options={options}
-          value={{ value: fn, label: 'label' }} //TODO: get label to update based on state
-          onChange={s => setFunction(s.fn)}
+          onChange={s => setFunction(s.value)}
           classNamePrefix="react-select"
         />
       </div>
