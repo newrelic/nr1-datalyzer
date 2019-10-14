@@ -1,36 +1,37 @@
 import React from "react"
-import {Stack, StackItem, Radio} from 'nr1'
+import Select from 'react-select'
+import {Stack, StackItem } from 'nr1'
 
 const FUNCTIONS = [
-  {fn: 'average', label: 'avg'},
-  {fn: 'sum', label: 'sum'},
+  {value: 'average', label: 'Average'},
+  {value: 'sum', label: 'Sum'},
+  {value: 'latest', label: 'Latest'},
+  {value: 'median', label: 'Median'},
+  {value: 'max', label:'Maximum'},
+  {value: 'min', label:'Minimum'}
 ]
 
-export default class FunctionPicker extends React.PureComponent {
+export default class FunctionPicker extends React.Component {
   constructor(props) {
     super(props)
   }
 
   render() {
-    const {fn, setFunction, attribute} = this.props
+    const {value, setFunction, attribute} = this.props
     const isCount = attribute == "__count__"
 
     if(!attribute || isCount) return <div/>
 
-    return <div className="function-picker-radio-container">
-      {FUNCTIONS.map(f => {
-        const checked = fn == f.fn
-        return (
-          <Radio
-            key={f.fn}
-            onClick={() => setFunction(f.fn)}
-            checked={checked}
-            label={f.label}
-            className="function-picker-radio"
-            />
-        )
-      })}
-
-    </div>
+    const options = FUNCTIONS
+    return (
+      <div className="react-select-input-group">
+        <label>Function</label>
+        <Select
+          options={options}
+          onChange={s => setFunction(s.value)}
+          classNamePrefix="react-select"
+        />
+      </div>
+    )
   }
 }

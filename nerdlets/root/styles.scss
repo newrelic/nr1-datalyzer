@@ -148,6 +148,15 @@
   margin-bottom: 8px;
 }
 
+.function-picker-radio-container {
+  display:flex; 
+  flex-direction:row;
+}
+
+.function-picker-radio-container-child {
+  margin-right: 12px;
+}
+
 .data-type-picker-radio:first-child,
 .function-picker-radio:first-child {
   margin-top: 3px;
