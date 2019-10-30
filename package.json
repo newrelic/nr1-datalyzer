@@ -2,7 +2,7 @@
   "private": true,
   "name": "nr1-datalyzer",
   "description": "NR1 Nerdpack for data exploration.",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "bugs": {
     "email": "opensource@newrelic.com"
   },
@@ -13,7 +13,7 @@
     "eslint-fix": "eslint nerdlets/ --fix"
   },
   "nr1": {
-    "uuid": "1141b7ad-08c0-4360-8e2d-3b9097e2b218",
+    "uuid": "7d47cdc1-4b4a-4089-b046-a86557ec2c28",
     "sdkVersion": 2
   },
   "dependencies": {
