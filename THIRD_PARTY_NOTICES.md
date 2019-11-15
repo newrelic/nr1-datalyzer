@@ -14,19 +14,20 @@ code, the source code can be found at [https://github.com/newrelic/nr1-datalyzer
 
 **[dependencies](#dependencies)**
 
-- [prop-types](#prop-types)
-- [react-dom](#react-dom)
-- [react-select](#react-select)
-- [react](#react)
+* [prop-types](#prop-types)
+* [react-dom](#react-dom)
+* [react-select](#react-select)
+* [react](#react)
 
 **[devDependencies](#devDependencies)**
 
-- [babel-eslint](#babel-eslint)
-- [eslint-config-prettier](#eslint-config-prettier)
-- [eslint-plugin-prettier](#eslint-plugin-prettier)
-- [eslint-plugin-react](#eslint-plugin-react)
-- [eslint](#eslint)
-- [prettier](#prettier)
+* [babel-eslint](#babel-eslint)
+* [eslint-config-prettier](#eslint-config-prettier)
+* [eslint-plugin-prettier](#eslint-plugin-prettier)
+* [eslint-plugin-react](#eslint-plugin-react)
+* [eslint](#eslint)
+* [prettier](#prettier)
+
 
 ## dependencies
 
@@ -130,6 +131,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ```
+
 
 ## devDependencies
 
@@ -295,3 +297,4 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ```
+
