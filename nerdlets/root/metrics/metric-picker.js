@@ -41,10 +41,10 @@ export default class MetricPicker extends React.Component {
   async loadMetricNames() {
     const { account, setAttribute, setEventType } = this.props
 
-    const nrql = `SELECT uniques(metricName) FROM Metric`
+    const nrql = `SELECT uniques(metricName) as member FROM Metric`
     const results = await nrdbQuery(account.id, nrql)
 
-    const metricNames = results.map(r => r.member).sort()
+    const metricNames = results.map(r => r.member).flat().sort()
     this.setState({ metricNames })
 
     if (metricNames.length > 0) {
