@@ -1,21 +1,18 @@
-import React from "react"
-import Select from 'react-select'
-import { Stack, StackItem } from 'nr1'
+import React from 'react';
+import Select from 'react-select';
+import { Stack, StackItem } from 'nr1';
 
-import nrdbQuery from '../../lib/nrdb-query'
+import nrdbQuery from '../../lib/nrdb-query';
 
 const DOMAIN_EVENT_TYPES = {
-  APM: [
-    'Transaction',
-    'TransactionError',    
-  ],
+  APM: ['Transaction', 'TransactionError'],
   BROWSER: [
     'PageView',
     'PageAction',
     'AjaxRequest',
     'Ajax',
     'BrowserInteraction',
-    'JavascriptError'
+    'JavascriptError',
   ],
   MOBILE: [
     'MobileSession',
@@ -26,67 +23,69 @@ const DOMAIN_EVENT_TYPES = {
     'MobileCrash',
     'MobileHandledException',
   ],
-  INFRA: [
-    'SystemSample',
-    'ProcessSample'
-  ]
-}
+  INFRA: ['SystemSample', 'ProcessSample'],
+};
 
 export default class EventTypePicker extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.state = {}
+    this.state = {};
   }
 
   componentDidMount() {
-    this.loadEventTypes()
+    this.loadEventTypes();
   }
 
-  componentDidUpdate({dataType, account, entity}) {
-    if(dataType != this.props.dataType ||
+  componentDidUpdate({ dataType, account, entity }) {
+    if (
+      dataType != this.props.dataType ||
       account.id != this.props.account.id ||
-      entity != this.props.entity) {
-        this.loadEventTypes()
-      }
+      entity != this.props.entity
+    ) {
+      this.loadEventTypes();
+    }
   }
 
   async loadEventTypes() {
-    const {entity} = this.props
-    if(entity) {
-      await this.loadEntityEventTypes()
-    }
-    else {
-      await this.loadAllEventTypes()
+    const { entity } = this.props;
+    if (entity) {
+      await this.loadEntityEventTypes();
+    } else {
+      await this.loadAllEventTypes();
     }
   }
 
   async loadAllEventTypes() {
-    const { account, setEventType } = this.props
+    const { account, setEventType } = this.props;
 
-    const nrql = `SHOW EVENT TYPES`
-    const results = await nrdbQuery(account.id, nrql)
+    const nrql = `SHOW EVENT TYPES`;
+    const results = await nrdbQuery(account.id, nrql);
 
-    const eventTypes = results.map(r => r.eventType)
-      .sort().filter(e => e != "Metric" && e != "MetricRaw")
-    this.setState({ eventTypes })
-    if (eventTypes.length > 0) setEventType(eventTypes[0])
+    const eventTypes = results
+      .map(r => r.eventType)
+      .sort()
+      .filter(e => e != 'Metric' && e != 'MetricRaw');
+    this.setState({ eventTypes });
+    if (eventTypes.length > 0) setEventType(eventTypes[0]);
   }
 
   loadEntityEventTypes() {
-    const {entity, setEventType} = this.props
-    const eventTypes = DOMAIN_EVENT_TYPES[entity.domain]
+    const { entity, setEventType } = this.props;
+    const eventTypes = DOMAIN_EVENT_TYPES[entity.domain];
 
-    this.setState({eventTypes})
-    setEventType(eventTypes[0])
+    this.setState({ eventTypes });
+    setEventType(eventTypes[0]);
   }
 
   render() {
-    const { eventTypes } = this.state
-    const { setEventType, eventType } = this.props
-    if (!eventTypes) return <div />
+    const { eventTypes } = this.state;
+    const { setEventType, eventType } = this.props;
+    if (!eventTypes) return <div />;
 
-    const options = eventTypes.map(o => { return { value: o, label: o } })
+    const options = eventTypes.map(o => {
+      return { value: o, label: o };
+    });
     return (
       <div className="react-select-input-group">
         <label>Event Type</label>
@@ -97,6 +96,6 @@ export default class EventTypePicker extends React.Component {
           classNamePrefix="react-select"
         />
       </div>
-    )
+    );
   }
 }
