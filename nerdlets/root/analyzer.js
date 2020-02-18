@@ -1,5 +1,5 @@
 import React from "react"
-import { Stack, StackItem, Grid, GridItem } from "nr1"
+import { Grid, GridItem, Spinner } from 'nr1'
 
 import DimensionPicker from "./dimension-picker"
 import Chart from "./chart"
@@ -99,10 +99,12 @@ export default class Analyzer extends React.Component {
   render() {
     const {dataType, accounts, entity} = this.props
 
-    if(!accounts && !entity) return ""
+    if(!accounts && !entity) {
+      return <Spinner fillContainer />
+    }
     const Header = dataType == 'metric' ? MetricsHeader : EventsHeader
 
-    return <>
+    return <div style={{ height: '100%', boxSizing: 'border-box' }}>
       <Header {...this.props} {...this.state}
         setAttribute={this._setAttribute}
         setFunction={this._setFunction}
@@ -117,7 +119,6 @@ export default class Analyzer extends React.Component {
               <FacetTable {...this.props} {...this.state} setFilter={this._setFilter} />
         </GridItem>
       </Grid>
-    </>
-
+    </div>
   }
 }
