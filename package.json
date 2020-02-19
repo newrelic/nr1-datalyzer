@@ -12,11 +12,11 @@
     "eslint-check": "eslint nerdlets/",
     "eslint-fix": "eslint nerdlets/ --fix"
   },
-  "nr1": {
-    "uuid": "7d47cdc1-4b4a-4089-b046-a86557ec2c28",
-    "sdkVersion": 2
-  },
   "dependencies": {
+    "@newrelic/nr1-community": "^1.0.1",
+    "graphql": "^14.6.0",
+    "graphql-tag": "^2.10.3",
+    "lodash.get": "^4.4.2",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
