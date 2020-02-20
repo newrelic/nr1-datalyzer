@@ -4,15 +4,15 @@
 
 ## Usage
 
-The Datalyzer enables a user to explore, slice and dice event and metric
-data in NRDB in a simple, fast and intuitive way.
+Datalyzer provides a simple, curated way to explore your data within New Relic.
+
+Users can create basic charts and queries, which can be run inside the Chart Builder. From the Chart Builder, you can change the chart type, change the query and add the chart to a dashboard.
+
+Datalyzer can be accessed both globally, and in the context of a Service, Mobile or Browser application.
 
 ![screenshot](./screenshots/screenshot.png)
 
-Note the Datalyzer is offered as a launcher (providing global visibility across
-all accounts, metrics and events) and also in the Entity Explorer. In the latter
-case, you can select a Service, Mobile App or Browser App and use the Datalyzer
-to slice and dice relevant data specific to that entity:
+Using Datalyzer from a Service, Mobile or Browser application limits the events, metrics, attributes and dimensions to data reported by those entities.
 
 ![screenshot](./screenshots/screenshot-2.png)
 
@@ -20,15 +20,15 @@ to slice and dice relevant data specific to that entity:
 
 This project is distributed under the [Apache 2 license](blob/master/LICENSE).
 
-## What do you need to make this work?
+## Dependencies
 
-A New Relic account with some data in it.
+Requires data in NRDB from any or all of the New Relic products.
 
-**Note**: When you select _Metrics_ (as opposed to _Events_), Datalyzer
-allows you to explore dimensional metric data that was introduced by New Relic
-in September, 2019, and is supported by products such as the New Relic
-[Prometheus OpenMetrics integration](https://docs.newrelic.com/docs/new-relic-prometheus-openmetrics-integration-kubernetes) and the [Metric API](https://docs.newrelic.com/docs/introduction-new-relic-metric-api).
-Traditional (nondimensional) metrics collected by older New Relic products are not currently supported.
+> **Note**: When you select _Metrics_ (as opposed to _Events_), Datalyzer
+> allows you to explore dimensional metric data that was introduced by New Relic
+> in September, 2019, and is supported by products such as the New Relic
+> [Prometheus OpenMetrics integration](https://docs.newrelic.com/docs/new-relic-prometheus-openmetrics-integration-kubernetes) and the [Metric API](https://docs.newrelic.com/docs/introduction-new-relic-metric-api).
+> Traditional (nondimensional) metrics collected by older New Relic products are not currently supported.
 
 ## Getting started
 
@@ -66,20 +66,16 @@ nr1 nerdpack:subscribe [-c [DEV|BETA|STABLE]] [--profile=your_profile_name]
 
 Visit [https://one.newrelic.com](https://one.newrelic.com), navigate to the Nerdpack, and :sparkles:
 
-## Support
+## Community Support
 
-New Relic has open-sourced this project. This project is provided AS-IS WITHOUT WARRANTY OR SUPPORT, although you can report issues and contribute to the project here on GitHub.
-
-_Please do not report issues with this software to New Relic Global Technical Support._
-
-### Community
-
-New Relic hosts and moderates an online forum where customers can interact with New Relic employees as well as other customers to get help and share best practices. Like all official New Relic open source projects, there's a related Community topic in the New Relic Explorers Hub. You can find this project's topic/threads here:
+New Relic hosts and moderates an online forum where you can interact with New Relic employees as well as other customers to get help and share best practices. Like all New Relic open source community projects, there's a related topic in the New Relic Explorers Hub. You can find this project's topic/threads here:
 
 [https://discuss.newrelic.com/t/the-datalyzer-nerdpack/82720](https://discuss.newrelic.com/t/the-datalyzer-nerdpack/82720)
-*(Note: URL subject to change before GA)*
+_(Note: URL subject to change before GA)_
 
-### Issues / Enhancement Requests
+Please do not report issues with Datalyzer to New Relic Global Technical Support. Instead, visit the [`Explorers Hub`](https://discuss.newrelic.com/c/build-on-new-relic) for troubleshooting and best-practices.
+
+## Issues / Enhancement Requests
 
 Issues and enhancement requests can be submitted in the [Issues tab of this repository](../../issues). Please search for and review the existing open issues before submitting a new issue.
 
