@@ -1,3 +1,10 @@
+# [0.4.0](https://github.com/newrelic/nr1-datalyzer/compare/v0.3.1...v0.4.0) (2020-03-09)
+
+
+### Features
+
+* **catalog:** add catalog metadata files ([#29](https://github.com/newrelic/nr1-datalyzer/issues/29)) ([bc0704b](https://github.com/newrelic/nr1-datalyzer/commit/bc0704b7722cb6ad1d47e82edaf7556b3e7af930)), closes [newrelic/nr1-datalyzer#26](https://github.com/newrelic/nr1-datalyzer/issues/26)
+
 ## [0.3.1](https://github.com/newrelic/nr1-datalyzer/compare/v0.3.0...v0.3.1) (2020-02-19)
 
 
