@@ -1,0 +1,17 @@
+{
+  "tagline": "Explore event and metric data related in a simple, fast, intuitive way.",
+  "repository": "https://github.com/newrelic/nr1-datalyzer.git",
+  "details": "Datalyzer provides a simple, curated way to explore your data within New Relic.\n\nUsers can create basic charts and queries, which can be run inside the Chart Builder. From the Chart Builder, you can change the chart type, change the query and add the chart to a dashboard.\n\nDatalyzer can be accessed both globally, and in the context of a Service, Mobile or Browser application.\n\nUsing Datalyzer from a Service, Mobile or Browser application limits the events, metrics, attributes and dimensions to data reported by those entities.",
+  "support": {
+    "issues": {
+      "url": "https://github.com/newrelic/nr1-datalyzer/issues"
+    },
+    "email": {
+      "address": "opensource+nr1-datalyzer@newrelic.com"
+    },
+    "community": {
+      "url": "https://discuss.newrelic.com/t/the-datalyzer-nerdpack/82720"
+    }
+  },
+  "whatsNew": "- Fix: Implementing metrics naming fix\n- Fix: Refactor the datalyzer file out and resolve issues with the NerdGraphQuery static calls"
+}

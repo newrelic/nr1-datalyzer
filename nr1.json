@@ -1,6 +1,6 @@
 {
   "schemaType": "NERDPACK",
   "id": "7d47cdc1-4b4a-4089-b046-a86557ec2c28",
-  "displayName": "nr1-datalyzer",
-  "description": "NR1 Nerdpack for data exploration."
+  "displayName": "Datalyzer",
+  "description": "Explore event and metric data related in a simple, fast, intuitive way."
 }
