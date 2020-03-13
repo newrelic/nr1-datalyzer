@@ -1,9 +1,3 @@
-[![New Relic One Catalog Project header](https://github.com/newrelic/open-source-office/raw/master/examples/categories/images/New_Relic_One_Catalog_Project.png)](https://github.com/newrelic/open-source-office/blob/master/examples/categories/index.md#nr1-catalog)
-
-# Datalyzer
-
-![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/newrelic/nr1-datalyzer?include_prereleases) [![Snyk](https://snyk.io/test/github/newrelic/nr1-datalyzer/badge.svg)](https://snyk.io/test/github/newrelic/nr1-datalyzer)
-
 ## Usage
 
 Datalyzer provides a simple, curated way to explore your data within New Relic.
@@ -12,11 +6,7 @@ Users can create basic charts and queries, which can be run inside the Chart Bui
 
 Datalyzer can be accessed both globally, and in the context of a Service, Mobile or Browser application.
 
-![screenshot](https://github.com/newrelic/nr1-datalyzer/blob/master/catalog/screenshots/nr1-datalyzer-1.png)
-
 Using Datalyzer from a Service, Mobile or Browser application limits the events, metrics, attributes and dimensions to data reported by those entities.
-
-![screenshot](https://github.com/newrelic/nr1-datalyzer/blob/master/catalog/screenshots/nr1-datalyzer-2.png)
 
 ## Open Source License
 
