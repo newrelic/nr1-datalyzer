@@ -371,9 +371,8 @@
   padding: 8px 0 8px;
 }
 
-.accountPicker [class*=wnd-Dropdown-trigger] {
-  position: relative;
-  right: 9px;
+.accountPicker {
+  margin-right: 16px;
 }
 
 [class*=TableHeaderCell-title] {
