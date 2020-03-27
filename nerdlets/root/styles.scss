@@ -378,3 +378,7 @@
 [class*=TableHeaderCell-title] {
   border-bottom: none;
 }
+
+.react-select__menu {
+  z-index: 100;
+}
