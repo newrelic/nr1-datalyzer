@@ -44,7 +44,7 @@ function Nrql({ query, account }) {
   );
 }
 
-class ChartPicker extends React.Component {
+class ChartPicker extends React.PureComponent {
   render() {
     const { chart, setChartType } = this.props;
     return (
@@ -71,7 +71,7 @@ class ChartPicker extends React.Component {
     );
   }
 }
-export default class Chart extends React.Component {
+export default class Chart extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {

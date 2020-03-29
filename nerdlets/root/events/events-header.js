@@ -7,7 +7,7 @@ import EventTypePicker from './event-type-picker';
 import AttributePicker from './attribute-picker';
 import FunctionPicker from '../function-picker';
 
-export default class EventsHeader extends React.Component {
+export default class EventsHeader extends React.PureComponent {
   render() {
     // if there is an entity guid then this header is appearing
     // in the data explorer; no need to show an account picker or

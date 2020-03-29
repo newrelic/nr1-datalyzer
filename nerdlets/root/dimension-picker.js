@@ -6,7 +6,7 @@ import quote from '../lib/quote';
 import { timeRangeToNrql } from '@newrelic/nr1-community';
 import Attribute from './attribute';
 
-export default class DimensionPicker extends React.Component {
+export default class DimensionPicker extends React.PureComponent {
   constructor(props) {
     super(props);
 

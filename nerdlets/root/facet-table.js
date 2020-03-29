@@ -3,7 +3,7 @@ import { TableChart } from 'nr1';
 
 import getMetricQuery from './get-query';
 
-export default class FacetTable extends React.Component {
+export default class FacetTable extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {

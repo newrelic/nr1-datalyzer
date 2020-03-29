@@ -20,7 +20,7 @@ function NoMetricData() {
   );
 }
 
-export default class MetricPicker extends React.Component {
+export default class MetricPicker extends React.PureComponent {
   constructor(props) {
     super(props);
 

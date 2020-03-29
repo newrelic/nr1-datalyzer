@@ -6,7 +6,7 @@ import DataTypePicker from '../data-type-picker';
 import MetricPicker from './metric-picker';
 import FunctionPicker from '../function-picker';
 
-export default class MetricsHeader extends React.Component {
+export default class MetricsHeader extends React.PureComponent {
   render() {
     return (
       <div className="utility-bar">

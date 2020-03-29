@@ -26,7 +26,7 @@ const DOMAIN_EVENT_TYPES = {
   INFRA: ['SystemSample', 'ProcessSample'],
 };
 
-export default class EventTypePicker extends React.Component {
+export default class EventTypePicker extends  {
   constructor(props) {
     super(props);
 

@@ -33,7 +33,7 @@ const entityFragmentExtension = gql`
   }
 `;
 
-export default class RootNerdlet extends React.Component {
+export default class RootNerdlet extends React.PureComponent {
   constructor(props) {
     super(props);
     this._setAccount = this._setAccount.bind(this);

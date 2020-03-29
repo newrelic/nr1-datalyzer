@@ -17,7 +17,7 @@ function Filter({ attribute, value, removeFilter }) {
   );
 }
 
-export default class Filters extends React.Component {
+export default class Filters extends React.PureComponent {
   constructor(props) {
     super(props);
   }

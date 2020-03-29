@@ -11,7 +11,7 @@ const FUNCTIONS = [
   { value: 'min', label: 'Minimum' },
 ];
 
-export default class FunctionPicker extends React.Component {
+export default class FunctionPicker extends React.PureComponent {
   constructor(props) {
     super(props);
   }
