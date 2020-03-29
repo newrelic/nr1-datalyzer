@@ -9,7 +9,7 @@ function label(attr) {
   if (attr == '__count__') return 'count(*)';
   return attr;
 }
-export default class AttributePicker extends  {
+export default class AttributePicker extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
