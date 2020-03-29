@@ -9,7 +9,7 @@ import { getFilterWhere } from './get-query';
 import MetricsHeader from './metrics/metrics-header';
 import EventsHeader from './events/events-header';
 
-export default class Analyzer extends React.Component {
+export default class Analyzer extends React.PureComponent {
   constructor(props) {
     super(props);
 

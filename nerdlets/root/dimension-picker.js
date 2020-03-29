@@ -3,7 +3,7 @@ import { Tabs, TabsItem, Spinner } from 'nr1';
 
 import nrdbQuery from '../lib/nrdb-query';
 import quote from '../lib/quote';
-import { timePickerNrql } from './get-query';
+import { timeRangeToNrql } from '@newrelic/nr1-community';
 import Attribute from './attribute';
 
 export default class DimensionPicker extends React.Component {
@@ -25,8 +25,14 @@ export default class DimensionPicker extends React.Component {
   }
 
   getNrql(select) {
-    const { filterWhere, eventType, attribute, entity } = this.props;
-    const timeRange = timePickerNrql(this.props);
+    const {
+      filterWhere,
+      eventType,
+      attribute,
+      entity,
+      platformUrlState,
+    } = this.props;
+    const timeRange = timeRangeToNrql(platformUrlState);
 
     let whereClause = ['true'];
     if (eventType == 'Metric') {
