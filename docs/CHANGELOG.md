@@ -1,3 +1,20 @@
+# [0.4.0](https://github.com/newrelic/nr1-datalyzer/compare/v0.3.1...v0.4.0) (2020-03-09)
+
+
+### Features
+
+* **catalog:** add catalog metadata files ([#29](https://github.com/newrelic/nr1-datalyzer/issues/29)) ([bc0704b](https://github.com/newrelic/nr1-datalyzer/commit/bc0704b7722cb6ad1d47e82edaf7556b3e7af930)), closes [newrelic/nr1-datalyzer#26](https://github.com/newrelic/nr1-datalyzer/issues/26)
+
+## [0.3.1](https://github.com/newrelic/nr1-datalyzer/compare/v0.3.0...v0.3.1) (2020-02-19)
+
+
+### Bug Fixes
+
+* add nr1.json to root. ([a5cb15a](https://github.com/newrelic/nr1-datalyzer/commit/a5cb15ae0218b5d1b8140bb0302dcfb4d9f16927))
+* implementing the metrics naming fix that [@binaryseed](https://github.com/binaryseed) originally PR'd. ([3db9549](https://github.com/newrelic/nr1-datalyzer/commit/3db954985302395e8fa8233db9039b77e591de41))
+* refactor the datalyzer file out and resolve issues with the NerdGraphQuery static calls. ([774c535](https://github.com/newrelic/nr1-datalyzer/commit/774c535087a4d677bc9ea7e2032df50c94191aa4))
+* using the lodash get to overcome a potential null result. ([1b59567](https://github.com/newrelic/nr1-datalyzer/commit/1b59567f8a82cd05db2bcbd6ab33adcafae34d54))
+
 # [0.3.0](https://github.com/newrelic/nr1-datalyzer/compare/v0.2.4...v0.3.0) (2019-11-15)
 
 

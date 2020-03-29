@@ -1,8 +1,8 @@
 {
   "private": true,
   "name": "nr1-datalyzer",
-  "description": "NR1 Nerdpack for data exploration.",
-  "version": "0.3.0",
+  "description": "Explore event and metric data related in a simple, fast, intuitive way.",
+  "version": "0.4.0",
   "bugs": {
     "email": "opensource@newrelic.com"
   },
