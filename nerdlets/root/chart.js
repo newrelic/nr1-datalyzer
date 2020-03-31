@@ -52,7 +52,7 @@ Nrql.propTypes = {
 
 class ChartPicker extends React.PureComponent {
   static propTypes = {
-    chart: PropTypes.string,
+    chart: PropTypes.object,
     setChartType: PropTypes.func
   };
 

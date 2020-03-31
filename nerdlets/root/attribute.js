@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { navigation, EntityByGuidQuery } from 'nr1';
+import get from 'lodash.get';
 
 export default function Attribute({ name, value }) {
   let onClick = null;
@@ -8,8 +9,10 @@ export default function Attribute({ name, value }) {
     onClick = async () => {
       // fetch domain and type required as well as guid.
       const { data } = await EntityByGuidQuery.query({ entityGuid: value });
-      const entity = data.entities[0];
-      navigation.openStackedEntity(entity.guid);
+      const entity = get(data, 'entities[0]');
+      if (entity) {
+        navigation.openStackedEntity(value);
+      }
     };
   }
 
@@ -25,6 +28,6 @@ export default function Attribute({ name, value }) {
 }
 
 Attribute.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   name: PropTypes.string
 };

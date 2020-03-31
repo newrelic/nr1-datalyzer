@@ -32,7 +32,6 @@ export default class AccountPicker extends React.PureComponent {
       <Dropdown
         title={account.name}
         search={filter}
-        label="Account"
         onSearch={event => this.setState({ filter: event.target.value })}
         className="accountPicker"
       >

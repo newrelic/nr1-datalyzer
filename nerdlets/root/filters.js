@@ -27,7 +27,7 @@ Filter.propTypes = {
 export default class Filters extends React.PureComponent {
   static propTypes = {
     removeFilter: PropTypes.func,
-    filters: PropTypes.array
+    filters: PropTypes.object
   };
 
   constructor(props) {
