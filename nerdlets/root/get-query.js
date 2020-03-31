@@ -4,14 +4,14 @@ import { timeRangeToNrql } from '@newrelic/nr1-community';
 export function getFilterWhere(props, filters) {
   const clauses = Object.keys(filters).map(attr => {
     const values = filters[attr];
-    if (values.length == 1) {
+    if (values.length === 1) {
       return `${quote(attr)} = '${values[0]}'`;
     } else {
       return `${quote(attr)} IN (${values.map(v => `'${v}'`).join(',')})`;
     }
   });
 
-  if (props.entity && props.entity.domain == 'INFRA') {
+  if (props.entity && props.entity.domain === 'INFRA') {
     clauses.push(`entityGuid = '${props.entity.guid}'`);
   } else if (props.entity) {
     clauses.push(`appId = ${props.entity.applicationId}`);
@@ -30,14 +30,14 @@ export default function getQuery(props, state) {
     attribute,
     filters,
     eventType,
-    platformUrlState,
+    platformUrlState
   } = props;
   const { timeseries, limit } = state || {};
   const where = getFilterWhere(props, filters);
 
   // special case for  when the user selects "Count(*)" as the attribute to be plotted
   const select =
-    attribute == '__count__' ? 'count(*)' : `${fn}(${quote(attribute)})`;
+    attribute === '__count__' ? 'count(*)' : `${fn}(${quote(attribute)})`;
 
   let query = `SELECT ${select} FROM ${eventType} ${timeRangeToNrql(
     platformUrlState

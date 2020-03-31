@@ -1,6 +1,4 @@
 import React from 'react';
-import { Stack, StackItem } from 'nr1';
-
 import AccountPicker from '../account-picker';
 import DataTypePicker from '../data-type-picker';
 import MetricPicker from './metric-picker';

@@ -1,8 +1,10 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import { navigation, EntityByGuidQuery } from 'nr1';
 
 export default function Attribute({ name, value }) {
   let onClick = null;
-  if (name == 'guid' || name == 'entityGuid') {
+  if (name === 'guid' || name === 'entityGuid') {
     onClick = async () => {
       // fetch domain and type required as well as guid.
       const { data } = await EntityByGuidQuery.query({ entityGuid: value });
@@ -21,3 +23,8 @@ export default function Attribute({ name, value }) {
     </>
   );
 }
+
+Attribute.propTypes = {
+  value: PropTypes.string,
+  name: PropTypes.string
+};

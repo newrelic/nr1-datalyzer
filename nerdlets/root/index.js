@@ -4,7 +4,7 @@ import {
   NerdletStateContext,
   EntityByGuidQuery,
   NerdGraphQuery,
-  Spinner,
+  Spinner
 } from 'nr1';
 import { NerdGraphError } from '@newrelic/nr1-community';
 import gql from 'graphql-tag';
@@ -52,11 +52,11 @@ export default class RootNerdlet extends React.PureComponent {
 
   render() {
     const { dataType } = this.state;
-    let { account } = this.state; //if we don't have an account, we're going to default to one below
+    let { account } = this.state; // if we don't have an account, we're going to default to one below
     return (
       <NerdletStateContext.Consumer>
         {nerdletUrlState => {
-          //entity explorer
+          // entity explorer
           if (nerdletUrlState && nerdletUrlState.entityGuid) {
             return (
               <EntityByGuidQuery
@@ -71,7 +71,7 @@ export default class RootNerdlet extends React.PureComponent {
                   if (error) {
                     return <NerdGraphError error={error} />;
                   }
-                  //console.log(data);
+                  // console.log(data);
                   const entity = get(data, 'entities[0]');
                   return (
                     <PlatformStateContext.Consumer>
@@ -92,7 +92,7 @@ export default class RootNerdlet extends React.PureComponent {
               </EntityByGuidQuery>
             );
           } else {
-            //launcher
+            // launcher
             return (
               <NerdGraphQuery query={`{actor {accounts {name id}}}`}>
                 {({ loading, error, data }) => {

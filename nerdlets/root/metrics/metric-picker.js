@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Select from 'react-select';
 import { Stack, StackItem, BlockText } from 'nr1';
 
@@ -21,6 +22,13 @@ function NoMetricData() {
 }
 
 export default class MetricPicker extends React.PureComponent {
+  static propTypes = {
+    dataType: PropTypes.string,
+    account: PropTypes.object,
+    setAttribute: PropTypes.func,
+    attribute: PropTypes.string
+  };
+
   constructor(props) {
     super(props);
 
@@ -33,8 +41,8 @@ export default class MetricPicker extends React.PureComponent {
 
   componentDidUpdate({ dataType, account }) {
     if (
-      dataType != this.props.dataType ||
-      account.id != this.props.account.id
+      dataType !== this.props.dataType ||
+      account.id !== this.props.account.id
     ) {
       this.loadMetricNames();
     }
@@ -43,7 +51,7 @@ export default class MetricPicker extends React.PureComponent {
   // TODO currently only loads 1000 metrics. We should reload
   // on change of user input strings
   async loadMetricNames() {
-    const { account, setAttribute, setEventType } = this.props;
+    const { account, setAttribute } = this.props;
 
     const nrql = `SELECT uniques(metricName) as member FROM Metric`;
     const results = await nrdbQuery(account.id, nrql);
@@ -63,10 +71,10 @@ export default class MetricPicker extends React.PureComponent {
 
   render() {
     const { metricNames } = this.state;
-    const { setAttribute, attribute, account } = this.props;
+    const { setAttribute, attribute } = this.props;
     if (!metricNames) return <div />;
 
-    if (metricNames.length == 0) {
+    if (metricNames.length === 0) {
       return <NoMetricData />;
     }
     const options = metricNames.map(o => {

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Stack, StackItem, Button } from 'nr1';
+import PropTypes from 'prop-types';
+import { Button } from 'nr1';
 
 function Filter({ attribute, value, removeFilter }) {
   return (
@@ -17,7 +18,18 @@ function Filter({ attribute, value, removeFilter }) {
   );
 }
 
+Filter.propTypes = {
+  attribute: PropTypes.string,
+  value: PropTypes.string,
+  removeFilter: PropTypes.func
+};
+
 export default class Filters extends React.PureComponent {
+  static propTypes = {
+    removeFilter: PropTypes.func,
+    filters: PropTypes.array
+  };
+
   constructor(props) {
     super(props);
   }
@@ -31,7 +43,7 @@ export default class Filters extends React.PureComponent {
       values.forEach(value => filters.push({ attribute, value }));
     });
 
-    if (filters.length == 0) return '';
+    if (filters.length === 0) return '';
 
     return (
       <div className="filters-container">

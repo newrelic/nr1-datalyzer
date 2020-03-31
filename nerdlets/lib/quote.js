@@ -14,17 +14,20 @@ const KEYWORDS = {
   order: true,
   by: true,
   nocache: true,
-  end: true,
+  end: true
 };
 
 export default function quote(s) {
   if (!s) return '';
 
+  /* eslint-disable no-useless-escape */
   if (s.match(/[\.\s:-@#\!\\\/]/)) {
-    return '`' + s + '`';
+    return `\`${s}\``;
   }
+  /* eslint-enable */
+
   if (KEYWORDS[s.toLowerCase()]) {
-    return '`' + s + '`';
+    return `\`${s}\``;
   }
   return s;
 }

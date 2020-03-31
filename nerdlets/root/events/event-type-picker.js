@@ -1,7 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Select from 'react-select';
-import { Stack, StackItem } from 'nr1';
-
 import nrdbQuery from '../../lib/nrdb-query';
 
 const DOMAIN_EVENT_TYPES = {
@@ -12,7 +11,7 @@ const DOMAIN_EVENT_TYPES = {
     'AjaxRequest',
     'Ajax',
     'BrowserInteraction',
-    'JavascriptError',
+    'JavascriptError'
   ],
   MOBILE: [
     'MobileSession',
@@ -21,12 +20,20 @@ const DOMAIN_EVENT_TYPES = {
     'MobileRequest',
     'MobileRequestError',
     'MobileCrash',
-    'MobileHandledException',
+    'MobileHandledException'
   ],
-  INFRA: ['SystemSample', 'ProcessSample'],
+  INFRA: ['SystemSample', 'ProcessSample']
 };
 
 export default class EventTypePicker extends React.PureComponent {
+  static propTypes = {
+    dataType: PropTypes.string,
+    eventType: PropTypes.string,
+    account: PropTypes.object,
+    entity: PropTypes.object,
+    setEventType: PropTypes.func
+  };
+
   constructor(props) {
     super(props);
 
@@ -39,9 +46,9 @@ export default class EventTypePicker extends React.PureComponent {
 
   componentDidUpdate({ dataType, account, entity }) {
     if (
-      dataType != this.props.dataType ||
-      account.id != this.props.account.id ||
-      entity != this.props.entity
+      dataType !== this.props.dataType ||
+      account.id !== this.props.account.id ||
+      entity !== this.props.entity
     ) {
       this.loadEventTypes();
     }
@@ -65,7 +72,7 @@ export default class EventTypePicker extends React.PureComponent {
     const eventTypes = results
       .map(r => r.eventType)
       .sort()
-      .filter(e => e != 'Metric' && e != 'MetricRaw');
+      .filter(e => e !== 'Metric' && e !== 'MetricRaw');
     this.setState({ eventTypes });
     if (eventTypes.length > 0) setEventType(eventTypes[0]);
   }

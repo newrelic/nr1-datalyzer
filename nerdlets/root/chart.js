@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   LineChart,
   AreaChart,
@@ -7,17 +8,17 @@ import {
   Radio,
   Stack,
   StackItem,
-  navigation,
+  navigation
 } from 'nr1';
+
+import getQuery from './get-query';
 
 const CHART_TYPES = [
   { ChartType: LineChart, timeseries: true, title: 'Line' },
   { ChartType: AreaChart, timeseries: true, title: 'Area' },
   { ChartType: BarChart, timeseries: false, title: 'Bar' },
-  { ChartType: PieChart, timeseries: false, title: 'Pie' },
+  { ChartType: PieChart, timeseries: false, title: 'Pie' }
 ];
-
-import getQuery from './get-query';
 
 function openChartBuilder(query, account) {
   const nerdlet = {
@@ -26,8 +27,8 @@ function openChartBuilder(query, account) {
       initialActiveInterface: 'nrqlEditor',
       initialAccountId: account.id,
       initialNrqlValue: query,
-      isViewingQuery: true,
-    },
+      isViewingQuery: true
+    }
   };
   navigation.openOverlay(nerdlet);
 }
@@ -44,7 +45,17 @@ function Nrql({ query, account }) {
   );
 }
 
+Nrql.propTypes = {
+  query: PropTypes.string,
+  account: PropTypes.object
+};
+
 class ChartPicker extends React.PureComponent {
+  static propTypes = {
+    chart: PropTypes.string,
+    setChartType: PropTypes.func
+  };
+
   render() {
     const { chart, setChartType } = this.props;
     return (
@@ -59,7 +70,7 @@ class ChartPicker extends React.PureComponent {
             <StackItem key={chartType.title}>
               <Radio
                 label={chartType.title}
-                checked={chartType == chart}
+                checked={chartType === chart}
                 onClick={() => {
                   setChartType(chartType);
                 }}
@@ -72,11 +83,15 @@ class ChartPicker extends React.PureComponent {
   }
 }
 export default class Chart extends React.PureComponent {
+  static propTypes = {
+    attribute: PropTypes.string,
+    account: PropTypes.object
+  };
+
   constructor(props) {
     super(props);
     this.state = {
-      chart: CHART_TYPES[0],
-      timeseries: true,
+      chart: CHART_TYPES[0]
     };
   }
 
