@@ -1,12 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Dropdown, DropdownItem } from 'nr1';
 
 export default class AccountPicker extends React.PureComponent {
+  static propTypes = {
+    account: PropTypes.object,
+    accounts: PropTypes.array,
+    setAccount: PropTypes.func
+  };
+
   constructor(props) {
     super(props);
 
     this.state = {
-      filter: '',
+      filter: ''
     };
   }
 
@@ -25,7 +32,6 @@ export default class AccountPicker extends React.PureComponent {
       <Dropdown
         title={account.name}
         search={filter}
-        label="Account"
         onSearch={event => this.setState({ filter: event.target.value })}
         className="accountPicker"
       >

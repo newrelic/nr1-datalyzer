@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Grid, GridItem, Spinner } from 'nr1';
 
 import DimensionPicker from './dimension-picker';
@@ -9,7 +10,16 @@ import { getFilterWhere } from './get-query';
 import MetricsHeader from './metrics/metrics-header';
 import EventsHeader from './events/events-header';
 
-export default class Analyzer extends React.Component {
+export default class Analyzer extends React.PureComponent {
+  static propTypes = {
+    eventType: PropTypes.string,
+    account: PropTypes.object,
+    accounts: PropTypes.array,
+    dataType: PropTypes.string,
+    filterWhere: PropTypes.string,
+    entity: PropTypes.object
+  };
+
   constructor(props) {
     super(props);
 
@@ -24,30 +34,29 @@ export default class Analyzer extends React.Component {
       fn: 'average',
       filters: {},
       filterWhere: null,
-      eventType: this.props.eventType,
+      eventType: this.props.eventType
     };
   }
 
   onStateChange(prevProps) {
     if (
-      prevProps.account.id != this.props.account.id ||
-      prevProps.dataType != this.props.dataType
+      prevProps.account.id !== this.props.account.id ||
+      prevProps.dataType !== this.props.dataType
     ) {
       this.setState({
         dimension: null,
-        filters: {},
         attribute: null,
         filters: {},
-        filterWhere,
+        filterWhere: null
       });
     }
   }
 
   _setAttribute(attribute) {
     let { eventType } = this.state;
-    let { dataType } = this.props;
+    const { dataType } = this.props;
 
-    if (dataType == 'metric') {
+    if (dataType === 'metric') {
       eventType = 'Metric';
     }
 
@@ -55,7 +64,7 @@ export default class Analyzer extends React.Component {
       attribute,
       eventType,
       filters: {},
-      filterWhere: null,
+      filterWhere: null
     });
   }
 
@@ -68,7 +77,7 @@ export default class Analyzer extends React.Component {
       eventType,
       dimension: null,
       filters: {},
-      filterWhere: null,
+      filterWhere: null
     });
   }
 
@@ -79,9 +88,11 @@ export default class Analyzer extends React.Component {
   _setFilter(dimension, value) {
     const { filters } = this.state;
     filters[dimension] = filters[dimension] || [];
-    if (!filters[dimension].includes(value)) filters[dimension].push(value);
-
-    const filterWhere = getFilterWhere(this.state, filters);
+    if (!filters[dimension].includes(value)) {
+      filters[dimension].push(value);
+    }
+    const options = this.state;
+    const filterWhere = getFilterWhere(options, filters);
     this.setState({ filters, filterWhere, dimension: null });
   }
 
@@ -90,9 +101,12 @@ export default class Analyzer extends React.Component {
     filters[attribute] = filters[attribute].filter(v => v !== value);
 
     // if there are no more values on this attribute, delete the empty array
-    if (filters[attribute].length == 0) delete filters[attribute];
+    if (filters[attribute].length === 0) {
+      delete filters[attribute];
+    }
 
-    const filterWhere = getFilterWhere(this.state, filters);
+    const options = this.state;
+    const filterWhere = getFilterWhere(options, filters);
     this.setState({ filters, filterWhere, dimension: null });
   }
 
@@ -102,7 +116,7 @@ export default class Analyzer extends React.Component {
     if (!accounts && !entity) {
       return <Spinner fillContainer />;
     }
-    const Header = dataType == 'metric' ? MetricsHeader : EventsHeader;
+    const Header = dataType === 'metric' ? MetricsHeader : EventsHeader;
 
     return (
       <div style={{ height: '100%', boxSizing: 'border-box' }}>

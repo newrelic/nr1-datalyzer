@@ -1,12 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Tabs, TabsItem, Spinner } from 'nr1';
 
 import nrdbQuery from '../lib/nrdb-query';
 import quote from '../lib/quote';
-import { timePickerNrql } from './get-query';
+import { timeRangeToNrql } from '@newrelic/nr1-community';
 import Attribute from './attribute';
 
-export default class DimensionPicker extends React.Component {
+export default class DimensionPicker extends React.PureComponent {
+  static propTypes = {
+    attribute: PropTypes.string,
+    eventType: PropTypes.string,
+    dimension: PropTypes.string,
+    account: PropTypes.object,
+    entity: PropTypes.object,
+    platformUrlState: PropTypes.object,
+    setDimension: PropTypes.func,
+    filterWhere: PropTypes.string
+  };
+
   constructor(props) {
     super(props);
 
@@ -25,14 +37,20 @@ export default class DimensionPicker extends React.Component {
   }
 
   getNrql(select) {
-    const { filterWhere, eventType, attribute, entity } = this.props;
-    const timeRange = timePickerNrql(this.props);
+    const {
+      filterWhere,
+      eventType,
+      attribute,
+      entity,
+      platformUrlState
+    } = this.props;
+    const timeRange = timeRangeToNrql(platformUrlState);
 
-    let whereClause = ['true'];
-    if (eventType == 'Metric') {
+    const whereClause = ['true'];
+    if (eventType === 'Metric') {
       whereClause.push(`metricName = '${attribute}'`);
     }
-    if (entity && entity.domain == 'INFRA') {
+    if (entity && entity.domain === 'INFRA') {
       whereClause.push(`entityGuid = '${entity.guid}'`);
     } else if (entity) {
       whereClause.push(`appId = ${entity.applicationId}`);
@@ -54,24 +72,24 @@ export default class DimensionPicker extends React.Component {
     if (!this.props.eventType) return;
 
     // get all of the available string attributes
-    let results = await nrdbQuery(account.id, this.getNrql('keySet()'));
+    const results = await nrdbQuery(account.id, this.getNrql('keySet()'));
     const keys = results
-      .filter(d => d.type == 'string' && d.key !== 'metricName')
+      .filter(d => d.type === 'string' && d.key !== 'metricName')
       .map(d => {
         return { name: d.key };
       });
 
     const BATCH_SIZE = 50;
-    for (var i = 0; i < keys.length; i += BATCH_SIZE) {
+    for (let i = 0; i < keys.length; i += BATCH_SIZE) {
       const batch = keys.slice(i, i + BATCH_SIZE);
 
       // get the # of unique values for each string attribute
       const select = batch.map(d => `uniqueCount(${quote(d.name)})`);
-      results = await nrdbQuery(account.id, this.getNrql(select));
+      const results2 = await nrdbQuery(account.id, this.getNrql(select));
       batch.forEach(d => {
-        d.count = results[0][`uniqueCount.${d.name}`];
+        d.count = results2[0][`uniqueCount.${d.name}`];
 
-        if (d.count == 1) attributes.push(d);
+        if (d.count === 1) attributes.push(d);
         if (d.count > 1) dimensions.push(d);
       });
     }
@@ -96,7 +114,7 @@ export default class DimensionPicker extends React.Component {
     return (
       <ul className="dimensions-table">
         {dimensions.map(d => {
-          const selected = d.name == dimension ? 'selected' : '';
+          const selected = d.name === dimension ? 'selected' : '';
           return (
             <li
               key={d.name}

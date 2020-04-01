@@ -4,7 +4,7 @@ import {
   NerdletStateContext,
   EntityByGuidQuery,
   NerdGraphQuery,
-  Spinner,
+  Spinner
 } from 'nr1';
 import { NerdGraphError } from '@newrelic/nr1-community';
 import gql from 'graphql-tag';
@@ -33,7 +33,7 @@ const entityFragmentExtension = gql`
   }
 `;
 
-export default class RootNerdlet extends React.Component {
+export default class RootNerdlet extends React.PureComponent {
   constructor(props) {
     super(props);
     this._setAccount = this._setAccount.bind(this);
@@ -52,77 +52,81 @@ export default class RootNerdlet extends React.Component {
 
   render() {
     const { dataType } = this.state;
-    let { account } = this.state; //if we don't have an account, we're going to default to one below
+    let { account } = this.state; // if we don't have an account, we're going to default to one below
     return (
-      <PlatformStateContext.Consumer>
-        {launcherUrlState => (
-          <NerdletStateContext.Consumer>
-            {nerdletUrlState => {
-              //entity explorer
-              if (nerdletUrlState && nerdletUrlState.entityGuid) {
-                return (
-                  <EntityByGuidQuery
-                    entityGuid={nerdletUrlState.entityGuid}
-                    entityFragmentExtension={entityFragmentExtension}
-                  >
-                    {({ loading, error, data }) => {
-                      if (loading) {
-                        return <Spinner fillContainer />;
-                      }
+      <NerdletStateContext.Consumer>
+        {nerdletUrlState => {
+          // entity explorer
+          if (nerdletUrlState && nerdletUrlState.entityGuid) {
+            return (
+              <EntityByGuidQuery
+                entityGuid={nerdletUrlState.entityGuid}
+                entityFragmentExtension={entityFragmentExtension}
+              >
+                {({ loading, error, data }) => {
+                  if (loading) {
+                    return <Spinner fillContainer />;
+                  }
 
-                      if (error) {
-                        return <NerdGraphError error={error} />;
-                      }
-                      //console.log(data);
-                      const entity = get(data, 'entities[0]');
-                      return (
+                  if (error) {
+                    return <NerdGraphError error={error} />;
+                  }
+                  // console.log(data);
+                  const entity = get(data, 'entities[0]');
+                  return (
+                    <PlatformStateContext.Consumer>
+                      {platformUrlState => (
                         <Analyzer
-                          launcherUrlState={launcherUrlState}
                           nerdletUrlState={nerdletUrlState}
+                          platformUrlState={platformUrlState}
                           dataType={dataType}
                           account={entity.account}
                           entity={entity}
                           setAccount={this._setAccount}
                           setDataType={this._setDataType}
                         />
-                      );
-                    }}
-                  </EntityByGuidQuery>
-                );
-              } else {
-                //launcher
-                return (
-                  <NerdGraphQuery query={`{actor {accounts {name id}}}`}>
-                    {({ loading, error, data }) => {
-                      if (loading) {
-                        return <Spinner fillContainer />;
-                      }
+                      )}
+                    </PlatformStateContext.Consumer>
+                  );
+                }}
+              </EntityByGuidQuery>
+            );
+          } else {
+            // launcher
+            return (
+              <NerdGraphQuery query={`{actor {accounts {name id}}}`}>
+                {({ loading, error, data }) => {
+                  if (loading) {
+                    return <Spinner fillContainer />;
+                  }
 
-                      if (error) {
-                        return <NerdGraphError error={error} />;
-                      }
+                  if (error) {
+                    return <NerdGraphError error={error} />;
+                  }
 
-                      const accounts = get(data, 'actor.accounts');
-                      account = account || accounts[0];
-                      return (
+                  const accounts = get(data, 'actor.accounts');
+                  account = account || accounts[0];
+                  return (
+                    <PlatformStateContext.Consumer>
+                      {platformUrlState => (
                         <Analyzer
-                          launcherUrlState={launcherUrlState}
                           nerdletUrlState={nerdletUrlState}
+                          platformUrlState={platformUrlState}
                           dataType={dataType}
                           account={account}
                           accounts={accounts}
                           setAccount={this._setAccount}
                           setDataType={this._setDataType}
                         />
-                      );
-                    }}
-                  </NerdGraphQuery>
-                );
-              }
-            }}
-          </NerdletStateContext.Consumer>
-        )}
-      </PlatformStateContext.Consumer>
+                      )}
+                    </PlatformStateContext.Consumer>
+                  );
+                }}
+              </NerdGraphQuery>
+            );
+          }
+        }}
+      </NerdletStateContext.Consumer>
     );
   }
 }

@@ -1,22 +1,32 @@
 import React from 'react';
-import { Stack, StackItem } from 'nr1';
+import PropTypes from 'prop-types';
 import Select from 'react-select';
-
 import quote from '../../lib/quote';
 import nrdbQuery from '../../lib/nrdb-query';
 
 function label(attr) {
-  if (attr == '__count__') return 'count(*)';
+  if (attr === '__count__') return 'count(*)';
   return attr;
 }
-export default class AttributePicker extends React.Component {
+export default class AttributePicker extends React.PureComponent {
+  static propTypes = {
+    dataType: PropTypes.string,
+    eventType: PropTypes.string,
+    account: PropTypes.object,
+    attribute: PropTypes.string,
+    setAttribute: PropTypes.func
+  };
+
   constructor(props) {
     super(props);
     this.state = {};
   }
 
   componentDidUpdate({ eventType, dataType }) {
-    if (eventType != this.props.eventType || dataType != this.props.dataType) {
+    if (
+      eventType !== this.props.eventType ||
+      dataType !== this.props.dataType
+    ) {
       this.loadAttributes();
     }
   }
@@ -29,10 +39,10 @@ export default class AttributePicker extends React.Component {
     // as numeric attributes that end in "_id" or "Id" (which are assumed
     // to be identifiers and not really worth plotting as numerical data)
     const attributes = (await nrdbQuery(account.id, nrql))
-      .filter(a => a.type == 'numeric')
+      .filter(a => a.type === 'numeric')
       .map(a => a.key)
       .filter(
-        a => !(a.endsWith('_id') || a.endsWith('Id') || a == 'timestamp')
+        a => !(a.endsWith('_id') || a.endsWith('Id') || a === 'timestamp')
       );
 
     attributes.unshift('__count__');

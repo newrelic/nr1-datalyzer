@@ -1,13 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { TableChart } from 'nr1';
 
 import getMetricQuery from './get-query';
 
-export default class FacetTable extends React.Component {
+export default class FacetTable extends React.PureComponent {
+  static propTypes = {
+    account: PropTypes.object,
+    setFilter: PropTypes.func,
+    attribute: PropTypes.string,
+    dimension: PropTypes.string
+  };
+
   constructor(props) {
     super(props);
     this.state = {
-      limit: '1000',
+      limit: '1000'
     };
   }
 

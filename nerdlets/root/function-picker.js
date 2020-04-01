@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Select from 'react-select';
-import { Stack, StackItem } from 'nr1';
 
 const FUNCTIONS = [
   { value: 'average', label: 'Average' },
@@ -8,17 +8,22 @@ const FUNCTIONS = [
   { value: 'latest', label: 'Latest' },
   { value: 'median', label: 'Median' },
   { value: 'max', label: 'Maximum' },
-  { value: 'min', label: 'Minimum' },
+  { value: 'min', label: 'Minimum' }
 ];
 
-export default class FunctionPicker extends React.Component {
+export default class FunctionPicker extends React.PureComponent {
+  static propTypes = {
+    setFunction: PropTypes.func,
+    attribute: PropTypes.string
+  };
+
   constructor(props) {
     super(props);
   }
 
   render() {
-    const { value, setFunction, attribute } = this.props;
-    const isCount = attribute == '__count__';
+    const { setFunction, attribute } = this.props;
+    const isCount = attribute === '__count__';
 
     if (!attribute || isCount) return <div />;
 
