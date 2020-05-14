@@ -21,7 +21,7 @@ export default function quote(s) {
   if (!s) return '';
 
   /* eslint-disable no-useless-escape */
-  if (s.match(/[\.\s:-@#\!\\\/]/)) {
+  if (s.match(/[\s:-@#\!\\\/]/)) {
     return `\`${s}\``;
   }
   /* eslint-enable */
