@@ -22,7 +22,8 @@ const DOMAIN_EVENT_TYPES = {
     'MobileCrash',
     'MobileHandledException'
   ],
-  INFRA: ['SystemSample', 'ProcessSample']
+  INFRA: ['SystemSample', 'ProcessSample'],
+  EXT: []
 };
 
 export default class EventTypePicker extends React.PureComponent {

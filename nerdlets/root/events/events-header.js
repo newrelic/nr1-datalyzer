@@ -8,23 +8,24 @@ import FunctionPicker from '../function-picker';
 
 export default class EventsHeader extends React.PureComponent {
   static propTypes = {
-    nerdletUrlState: PropTypes.object
+    nerdletUrlState: PropTypes.object,
+    entity: PropTypes.object
   };
 
   render() {
-    const {entity} = this.props
-    
+    const { entity } = this.props;
+
     // if running in the entity explorer, then the selected entity implies
     // the account id. Also we only support associated dimensional metrics for APM
     // entities at this time
     const showAccountPicker = !entity;
-    const showDataTypePicker = entity || showAccountPicker
+    const showDataTypePicker = entity || showAccountPicker;
 
     return (
       <div className="utility-bar">
         {showAccountPicker && <AccountPicker {...this.props} />}
         {showDataTypePicker && <DataTypePicker {...this.props} />}
-        {showDataTypePicker && <hr/>}
+        {showDataTypePicker && <hr />}
         <EventTypePicker {...this.props} {...this.state} />
         <AttributePicker {...this.props} {...this.state} />
         <FunctionPicker {...this.props} {...this.state} />

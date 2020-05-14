@@ -39,7 +39,6 @@ export default class Analyzer extends React.PureComponent {
   }
 
   onStateChange(prevProps) {
-    console.log("State Change", prevProps)
     if (
       prevProps.account.id !== this.props.account.id ||
       prevProps.dataType !== this.props.dataType

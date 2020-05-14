@@ -14,7 +14,8 @@ const FUNCTIONS = [
 export default class FunctionPicker extends React.PureComponent {
   static propTypes = {
     setFunction: PropTypes.func,
-    attribute: PropTypes.string
+    attribute: PropTypes.string,
+    fn: PropTypes.string
   };
 
   constructor(props) {
@@ -27,7 +28,7 @@ export default class FunctionPicker extends React.PureComponent {
 
     if (!attribute || isCount) return <div />;
 
-    const value = fn ? FUNCTIONS.find(f => f.value == fn) : FUNCTIONS[0]
+    const value = fn ? FUNCTIONS.find(f => f.value === fn) : FUNCTIONS[0];
 
     const options = FUNCTIONS;
     return (
