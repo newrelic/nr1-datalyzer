@@ -62,8 +62,11 @@ export default class MetricPicker extends React.PureComponent {
       nrql = `${nrql} WHERE entity.guid = '${entity.guid}'`;
     } else if (entity) {
       nrql = `${nrql} WHERE appId = ${entity.applicationId}`;
+    } else {
+      nrql = `${nrql} WHERE entity.guid IS NULL AND entityGuid IS NULL`;
     }
     const results = await nrdbQuery(account.id, nrql);
+
     const metricNames = results
       .map(r => r.member)
       .flat()

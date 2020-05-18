@@ -62,11 +62,8 @@ export default class DimensionPicker extends React.PureComponent {
     if (filterWhere) whereClause.push(`${filterWhere}`);
     if (whereClause.length === 0) whereClause.push('true');
 
-    const nrql = `SELECT ${select} FROM ${quote(
-      eventType
-    )} WHERE ${whereClause.join(' AND ')} ${timeRange}`;
-
-    return nrql;
+    // eslint-disable-next-line prettier/prettier
+    return `SELECT ${select} FROM ${quote(eventType)} WHERE ${whereClause.join(' AND ')} ${timeRange}`;
   }
 
   async loadDimensions() {
