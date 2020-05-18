@@ -58,10 +58,7 @@ export default class MetricPicker extends React.PureComponent {
     let nrql = `SELECT uniques(metricName) as member FROM Metric`;
     if (domain === 'INFRA') {
       nrql = `${nrql} WHERE entityGuid = '${entity.guid}'`;
-    } else if (domain === 'APM') {
-      nrql = `${nrql} WHERE entity.guid IS NOT NULL`;
-      // nrql = nrql + ` WHERE entity.guid = '${entity.guid}'`;
-    } else if (domain === 'EXT') {
+    } else if (domain === 'APM' || domain === 'EXT') {
       nrql = `${nrql} WHERE entity.guid = '${entity.guid}'`;
     } else if (entity) {
       nrql = `${nrql} WHERE appId = ${entity.applicationId}`;

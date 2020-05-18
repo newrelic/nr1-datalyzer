@@ -52,11 +52,9 @@ export default class DimensionPicker extends React.PureComponent {
     if (isMetric && attribute) {
       whereClause.push(`${attribute} IS NOT NULL`);
     }
-    if (
-      domain === 'INFRA' ||
-      domain === 'EXT' ||
-      (domain === 'APM' && isMetric)
-    ) {
+
+    // eslint-disable-next-line prettier/prettier
+    if (domain === 'INFRA' || domain === 'EXT' ||(domain === 'APM' && isMetric)) {
       whereClause.push(`entity.guid = '${entity.guid}'`);
     } else if (entity) {
       whereClause.push(`appId = ${entity.applicationId}`);
