@@ -1,3 +1,10 @@
+# [0.6.0](https://github.com/newrelic/nr1-datalyzer/compare/v0.5.0...v0.6.0) (2020-05-19)
+
+
+### Features
+
+* bumping version for release ([90b8e4a](https://github.com/newrelic/nr1-datalyzer/commit/90b8e4a4b41b68d8e8f3da03b2b44df17c97341a))
+
 # [0.5.0](https://github.com/newrelic/nr1-datalyzer/compare/v0.4.0...v0.5.0) (2020-04-01)
 
 
