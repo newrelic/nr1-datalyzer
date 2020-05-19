@@ -38,11 +38,12 @@ export default class Analyzer extends React.PureComponent {
     };
   }
 
-  onStateChange(prevProps) {
+  componentDidUpdate(prevProps) {
     if (
       prevProps.account.id !== this.props.account.id ||
       prevProps.dataType !== this.props.dataType
     ) {
+      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
         dimension: null,
         attribute: null,
@@ -63,6 +64,7 @@ export default class Analyzer extends React.PureComponent {
     this.setState({
       attribute,
       eventType,
+      dimension: null,
       filters: {},
       filterWhere: null
     });

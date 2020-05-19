@@ -45,22 +45,25 @@ export default class DimensionPicker extends React.PureComponent {
       platformUrlState
     } = this.props;
     const timeRange = timeRangeToNrql(platformUrlState);
+    const domain = entity && entity.domain;
+    const isMetric = eventType === 'Metric';
 
-    const whereClause = ['true'];
-    if (eventType === 'Metric') {
-      whereClause.push(`metricName = '${attribute}'`);
+    const whereClause = [];
+    if (isMetric && attribute) {
+      whereClause.push(`${attribute} IS NOT NULL`);
     }
-    if (entity && entity.domain === 'INFRA') {
-      whereClause.push(`entityGuid = '${entity.guid}'`);
+
+    // eslint-disable-next-line prettier/prettier
+    if (domain === 'INFRA' || domain === 'EXT' ||(domain === 'APM' && isMetric)) {
+      whereClause.push(`entity.guid = '${entity.guid}'`);
     } else if (entity) {
       whereClause.push(`appId = ${entity.applicationId}`);
     }
     if (filterWhere) whereClause.push(`${filterWhere}`);
+    if (whereClause.length === 0) whereClause.push('true');
 
-    const nrql = `SELECT ${select} FROM ${quote(
-      eventType
-    )} WHERE ${whereClause.join(' AND ')} ${timeRange}`;
-    return nrql;
+    // eslint-disable-next-line prettier/prettier
+    return `SELECT ${select} FROM ${quote(eventType)} WHERE ${whereClause.join(' AND ')} ${timeRange}`;
   }
 
   async loadDimensions() {

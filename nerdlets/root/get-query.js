@@ -11,7 +11,13 @@ export function getFilterWhere(props, filters) {
     }
   });
 
-  if (props.entity && props.entity.domain === 'INFRA') {
+  const domain = props.entity && props.entity.domain;
+  const isMetric = props.eventType === 'Metric';
+
+  // eslint-disable-next-line prettier/prettier
+  if (domain === 'INFRA' || domain === 'EXT' ||(domain === 'APM' && isMetric)) {
+    clauses.push(`entity.guid = '${props.entity.guid}'`);
+  } else if (domain === 'APM') {
     clauses.push(`entityGuid = '${props.entity.guid}'`);
   } else if (props.entity) {
     clauses.push(`appId = ${props.entity.applicationId}`);

@@ -26,7 +26,8 @@ export default class MetricPicker extends React.PureComponent {
     dataType: PropTypes.string,
     account: PropTypes.object,
     setAttribute: PropTypes.func,
-    attribute: PropTypes.string
+    attribute: PropTypes.string,
+    entity: PropTypes.object
   };
 
   constructor(props) {
@@ -51,9 +52,19 @@ export default class MetricPicker extends React.PureComponent {
   // TODO currently only loads 1000 metrics. We should reload
   // on change of user input strings
   async loadMetricNames() {
-    const { account, setAttribute } = this.props;
+    const { account, setAttribute, entity } = this.props;
+    const domain = entity && entity.domain;
 
-    const nrql = `SELECT uniques(metricName) as member FROM Metric`;
+    let nrql = `SELECT uniques(metricName) as member FROM Metric`;
+    if (domain === 'INFRA') {
+      nrql = `${nrql} WHERE entityGuid = '${entity.guid}'`;
+    } else if (domain === 'APM' || domain === 'EXT') {
+      nrql = `${nrql} WHERE entity.guid = '${entity.guid}'`;
+    } else if (entity) {
+      nrql = `${nrql} WHERE appId = ${entity.applicationId}`;
+    } else {
+      nrql = `${nrql} WHERE entity.guid IS NULL AND entityGuid IS NULL`;
+    }
     const results = await nrdbQuery(account.id, nrql);
 
     const metricNames = results

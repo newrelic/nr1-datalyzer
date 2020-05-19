@@ -14,7 +14,8 @@ const FUNCTIONS = [
 export default class FunctionPicker extends React.PureComponent {
   static propTypes = {
     setFunction: PropTypes.func,
-    attribute: PropTypes.string
+    attribute: PropTypes.string,
+    fn: PropTypes.string
   };
 
   constructor(props) {
@@ -22,16 +23,19 @@ export default class FunctionPicker extends React.PureComponent {
   }
 
   render() {
-    const { setFunction, attribute } = this.props;
+    const { setFunction, attribute, fn } = this.props;
     const isCount = attribute === '__count__';
 
     if (!attribute || isCount) return <div />;
+
+    const value = fn ? FUNCTIONS.find(f => f.value === fn) : FUNCTIONS[0];
 
     const options = FUNCTIONS;
     return (
       <div className="react-select-input-group">
         <label>Function</label>
         <Select
+          value={value}
           options={options}
           onChange={s => setFunction(s.value)}
           classNamePrefix="react-select"
