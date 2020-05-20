@@ -1,3 +1,10 @@
+## [0.6.1](https://github.com/newrelic/nr1-datalyzer/compare/v0.6.0...v0.6.1) (2020-05-20)
+
+
+### Bug Fixes
+
+* update catalog screenshots with correct dimensions ([#36](https://github.com/newrelic/nr1-datalyzer/issues/36)) ([4355569](https://github.com/newrelic/nr1-datalyzer/commit/43555692394ee9aec8e9e14bdcbff8f7a23f03a2))
+
 # [0.6.0](https://github.com/newrelic/nr1-datalyzer/compare/v0.5.0...v0.6.0) (2020-05-19)
 
 
