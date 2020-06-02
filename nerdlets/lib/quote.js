@@ -15,6 +15,7 @@ const KEYWORDS = {
   by: true,
   nocache: true,
   join: true,
+  events: true,
   end: true
 };
 
@@ -30,7 +31,7 @@ export default function quote(s) {
   if (KEYWORDS[s.toLowerCase()]) {
     doQuote = true;
   }
-  s.split(/[\.-]/).forEach(term => {
+  s.split(/[\.-_]/).forEach(term => {
     term = term.toLowerCase();
     if (KEYWORDS[term]) {
       doQuote = true;
