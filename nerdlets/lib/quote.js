@@ -19,27 +19,25 @@ const KEYWORDS = {
 };
 
 export default function quote(s) {
-  let doQuote = false
+  let doQuote = false;
   if (!s) return '';
 
   /* eslint-disable no-useless-escape */
   if (s.match(/[\s:-@#\!\\\/]/)) {
-    doQuote = true
+    doQuote = true;
   }
-  /* eslint-enable */
 
   if (KEYWORDS[s.toLowerCase()]) {
-    doQuote = true
+    doQuote = true;
   }
   s.split(/[\.-]/).forEach(term => {
-    term = term.toLowerCase()
+    term = term.toLowerCase();
     if (KEYWORDS[term]) {
-      doQuote = true
+      doQuote = true;
     }
-  })
+  });
+  /* eslint-enable */
 
-  if(doQuote) 
-    return `\`${s}\`` 
-  else 
-   return s;
+  if (doQuote) return `\`${s}\``;
+  else return s;
 }
