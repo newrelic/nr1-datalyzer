@@ -14,20 +14,31 @@ const KEYWORDS = {
   order: true,
   by: true,
   nocache: true,
+  join: true,
+  events: true,
   end: true
 };
 
 export default function quote(s) {
+  let doQuote = false;
   if (!s) return '';
 
   /* eslint-disable no-useless-escape */
   if (s.match(/[\s:-@#\!\\\/]/)) {
-    return `\`${s}\``;
+    doQuote = true;
   }
-  /* eslint-enable */
 
   if (KEYWORDS[s.toLowerCase()]) {
-    return `\`${s}\``;
+    doQuote = true;
   }
-  return s;
+  s.split(/[\.-_]/).forEach(term => {
+    term = term.toLowerCase();
+    if (KEYWORDS[term]) {
+      doQuote = true;
+    }
+  });
+  /* eslint-enable */
+
+  if (doQuote) return `\`${s}\``;
+  else return s;
 }
