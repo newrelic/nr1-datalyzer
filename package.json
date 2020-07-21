@@ -13,7 +13,7 @@
     "eslint-fix": "eslint nerdlets/ --fix"
   },
   "dependencies": {
-    "@newrelic/nr1-community": "^1.0.1",
+    "@newrelic/nr1-community": "^1.2.0",
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.3",
     "lodash.get": "^4.4.2",
