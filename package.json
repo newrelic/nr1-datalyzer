@@ -15,7 +15,7 @@
   "dependencies": {
     "@newrelic/nr1-community": "^1.2.0",
     "graphql": "^14.6.0",
-    "graphql-tag": "^2.10.3",
+    "graphql-tag": "^2.10.4",
     "lodash.get": "^4.4.2",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
