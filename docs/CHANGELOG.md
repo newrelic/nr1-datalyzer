@@ -1,3 +1,13 @@
+## [0.6.2](https://github.com/newrelic/nr1-datalyzer/compare/v0.6.1...v0.6.2) (2020-08-24)
+
+
+### Bug Fixes
+
+* target correct branch for Push Commit action ([#46](https://github.com/newrelic/nr1-datalyzer/issues/46)) ([abe59dc](https://github.com/newrelic/nr1-datalyzer/commit/abe59dc72eb5deb5d6c7058608ec95fc14abad40))
+* upgrade @newrelic/nr1-community from 1.1.1 to 1.2.0 ([cc61705](https://github.com/newrelic/nr1-datalyzer/commit/cc61705eeb52e518753e99d9802f311596c7e6ef))
+* upgrade graphql from 14.6.0 to 14.7.0 ([#42](https://github.com/newrelic/nr1-datalyzer/issues/42)) ([c628299](https://github.com/newrelic/nr1-datalyzer/commit/c628299c77a760e59e112cc8a8ad0346b1a75552))
+* upgrade graphql-tag from 2.10.3 to 2.10.4 ([#43](https://github.com/newrelic/nr1-datalyzer/issues/43)) ([3082b2a](https://github.com/newrelic/nr1-datalyzer/commit/3082b2a41f0bbdd73ddc37f7fe28811ef7ee662a))
+
 ## [0.6.1](https://github.com/newrelic/nr1-datalyzer/compare/v0.6.0...v0.6.1) (2020-05-20)
 
 
