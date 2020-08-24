@@ -36,7 +36,7 @@ code, the source code can be found at [https://github.com/newrelic/nr1-datalyzer
 
 ### @newrelic/nr1-community
 
-This product includes source derived from [@newrelic/nr1-community](https://github.com/newrelic/nr1-community) ([v1.1.1](https://github.com/newrelic/nr1-community/tree/v1.1.1)), distributed under the [Apache-2.0 License](https://github.com/newrelic/nr1-community/blob/v1.1.1/LICENSE):
+This product includes source derived from [@newrelic/nr1-community](https://github.com/newrelic/nr1-community) ([v1.2.0](https://github.com/newrelic/nr1-community/tree/v1.2.0)), distributed under the [Apache-2.0 License](https://github.com/newrelic/nr1-community/blob/v1.2.0/LICENSE):
 
 ```
                                  Apache License
@@ -245,7 +245,7 @@ This product includes source derived from [@newrelic/nr1-community](https://gith
 
 ### graphql-tag
 
-This product includes source derived from [graphql-tag](https://github.com/apollographql/graphql-tag) ([v2.10.3](https://github.com/apollographql/graphql-tag/tree/v2.10.3)), distributed under the [MIT License](https://github.com/apollographql/graphql-tag/blob/v2.10.3/LICENSE):
+This product includes source derived from [graphql-tag](https://github.com/apollographql/graphql-tag) ([v2.10.4](https://github.com/apollographql/graphql-tag/tree/v2.10.4)), distributed under the [MIT License](https://github.com/apollographql/graphql-tag/blob/v2.10.4/LICENSE):
 
 ```
 The MIT License (MIT)
@@ -274,7 +274,7 @@ SOFTWARE.
 
 ### graphql
 
-This product includes source derived from [graphql](https://github.com/graphql/graphql-js) ([v14.6.0](https://github.com/graphql/graphql-js/tree/v14.6.0)), distributed under the [MIT License](https://github.com/graphql/graphql-js/blob/v14.6.0/LICENSE):
+This product includes source derived from [graphql](https://github.com/graphql/graphql-js) ([v14.7.0](https://github.com/graphql/graphql-js/tree/v14.7.0)), distributed under the [MIT License](https://github.com/graphql/graphql-js/blob/v14.7.0/LICENSE):
 
 ```
 MIT License
@@ -671,7 +671,7 @@ This product includes source derived from [@newrelic/eslint-plugin-newrelic](htt
 
 ### @semantic-release/changelog
 
-This product includes source derived from [@semantic-release/changelog](https://github.com/semantic-release/changelog) ([v3.0.6](https://github.com/semantic-release/changelog/tree/v3.0.6)), distributed under the [MIT License](https://github.com/semantic-release/changelog/blob/v3.0.6/LICENSE):
+This product includes source derived from [@semantic-release/changelog](https://github.com/semantic-release/changelog) ([v5.0.1](https://github.com/semantic-release/changelog/tree/v5.0.1)), distributed under the [MIT License](https://github.com/semantic-release/changelog/blob/v5.0.1/LICENSE):
 
 ```
 MIT License
@@ -700,7 +700,7 @@ SOFTWARE.
 
 ### @semantic-release/git
 
-This product includes source derived from [@semantic-release/git](https://github.com/semantic-release/git) ([v7.0.18](https://github.com/semantic-release/git/tree/v7.0.18)), distributed under the [MIT License](https://github.com/semantic-release/git/blob/v7.0.18/LICENSE):
+This product includes source derived from [@semantic-release/git](https://github.com/semantic-release/git) ([v9.0.0](https://github.com/semantic-release/git/tree/v9.0.0)), distributed under the [MIT License](https://github.com/semantic-release/git/blob/v9.0.0/LICENSE):
 
 ```
 MIT License
