@@ -3,6 +3,19 @@
 
 ### Bug Fixes
 
+* Trigger release and changelog generation (via GH Actions) ([dc34e32](https://github.com/newrelic/nr1-datalyzer/commit/dc34e329ea3dd676ad77b99307bebb629874438b))
+* update master to main ([01ab116](https://github.com/newrelic/nr1-datalyzer/commit/01ab1166a190ca3230fd4224b081b3ecc9588fb9))
+
+
+### Features
+
+* heatmap implementation ([bd2ab33](https://github.com/newrelic/nr1-datalyzer/commit/bd2ab33172340cd307e62fd9eeb61c8ff048748b))
+
+# [0.7.0](https://github.com/newrelic/nr1-datalyzer/compare/v0.6.2...v0.7.0) (2020-09-02)
+
+
+### Bug Fixes
+
 * update master to main ([01ab116](https://github.com/newrelic/nr1-datalyzer/commit/01ab1166a190ca3230fd4224b081b3ecc9588fb9))
 
 
