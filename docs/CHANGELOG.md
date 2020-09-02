@@ -1,3 +1,10 @@
+# [0.7.0](https://github.com/newrelic/nr1-datalyzer/compare/v0.6.2...v0.7.0) (2020-09-02)
+
+
+### Features
+
+* heatmap implementation ([bd2ab33](https://github.com/newrelic/nr1-datalyzer/commit/bd2ab33172340cd307e62fd9eeb61c8ff048748b))
+
 ## [0.6.2](https://github.com/newrelic/nr1-datalyzer/compare/v0.6.1...v0.6.2) (2020-08-24)
 
 
