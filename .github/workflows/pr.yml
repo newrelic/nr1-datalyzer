@@ -3,11 +3,10 @@ name: Pull Request
 on:
   pull_request:
     branches:
-      - master
-      - develop
+      - main
 
   repository_dispatch:
-    types: [pull-request-develop, pull-request-master]
+    types: [pull-request]
 
 jobs:
   checkout-and-build-pr:

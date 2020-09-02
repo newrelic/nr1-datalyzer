@@ -15,15 +15,15 @@
   "dependencies": {
     "@newrelic/nr1-community": "^1.2.0",
     "graphql": "^14.7.0",
-    "graphql-tag": "^2.10.4",
+    "graphql-tag": "^2.11.0",
     "lodash.get": "^4.4.2",
     "prop-types": "^15.6.2",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
+    "react": "16.6.3",
+    "react-dom": "16.6.3",
     "react-select": "^3.0.4"
   },
   "devDependencies": {
-    "@newrelic/eslint-plugin-newrelic": "^0.3.0",
+    "@newrelic/eslint-plugin-newrelic": "^0.3.1",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
     "eslint": "^6.8.0",
