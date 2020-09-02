@@ -5,10 +5,17 @@ import { Grid, GridItem, Spinner } from 'nr1';
 import DimensionPicker from './dimension-picker';
 import Chart from './chart';
 import FacetTable from './facet-table';
+import ContentPicker from './content-picker';
 import Filters from './filters';
 import { getFilterWhere } from './get-query';
 import MetricsHeader from './metrics/metrics-header';
 import EventsHeader from './events/events-header';
+import Heatmap from './heatmap';
+
+const CONTENT_TYPES = {
+  TABLE: 'Table',
+  HEATMAP: 'Heatmap'
+};
 
 export default class Analyzer extends React.PureComponent {
   static propTypes = {
@@ -34,7 +41,8 @@ export default class Analyzer extends React.PureComponent {
       fn: 'average',
       filters: {},
       filterWhere: null,
-      eventType: this.props.eventType
+      eventType: this.props.eventType,
+      contentType: CONTENT_TYPES.TABLE
     };
   }
 
@@ -112,8 +120,13 @@ export default class Analyzer extends React.PureComponent {
     this.setState({ filters, filterWhere, dimension: null });
   }
 
+  setContentType = contentType => {
+    this.setState({ contentType });
+  };
+
   render() {
     const { dataType, accounts, entity } = this.props;
+    const { dimension, attribute, contentType } = this.state;
 
     if (!accounts && !entity) {
       return <Spinner fillContainer />;
@@ -148,11 +161,22 @@ export default class Analyzer extends React.PureComponent {
           </GridItem>
           <GridItem columnSpan={9} className="primary-chart-grid-item">
             <Chart {...this.props} {...this.state} />
-            <FacetTable
-              {...this.props}
-              {...this.state}
-              setFilter={this._setFilter}
-            />
+            {dimension && attribute && (
+              <ContentPicker
+                setContentType={this.setContentType}
+                contentTypes={CONTENT_TYPES}
+                selectedType={this.state.contentType}
+              />
+            )}
+            {contentType === CONTENT_TYPES.TABLE ? (
+              <FacetTable
+                {...this.props}
+                {...this.state}
+                setFilter={this._setFilter}
+              />
+            ) : (
+              <Heatmap {...this.props} {...this.state} />
+            )}
           </GridItem>
         </Grid>
       </div>
