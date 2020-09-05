@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "Wed Sep 02 2020 03:46:57 GMT+0000 (Coordinated Universal Time)",
+  "lastUpdated": "Sat Sep 05 2020 00:42:45 GMT+0000 (Coordinated Universal Time)",
   "projectName": "nr1-datalyzer",
   "projectUrl": "https://github.com/newrelic/nr1-datalyzer",
   "includeDev": true,
@@ -63,17 +63,6 @@
       "licenseUrl": "https://github.com/facebook/prop-types/blob/v15.7.2/LICENSE",
       "licenseTextSource": "file"
     },
-    "react-dom@16.6.3": {
-      "name": "react-dom",
-      "version": "16.6.3",
-      "range": "16.6.3",
-      "licenses": "MIT",
-      "repoUrl": "https://github.com/facebook/react",
-      "versionedRepoUrl": "https://github.com/facebook/react/tree/v16.6.3",
-      "licenseFile": "node_modules/react-dom/LICENSE",
-      "licenseUrl": "https://github.com/facebook/react/blob/v16.6.3/LICENSE",
-      "licenseTextSource": "file"
-    },
     "react-select@3.1.0": {
       "name": "react-select",
       "version": "3.1.0",
@@ -85,17 +74,6 @@
       "licenseUrl": "https://github.com/JedWatson/react-select/blob/v3.1.0/README.md",
       "licenseTextSource": "spdx",
       "publisher": "Jed Watson"
-    },
-    "react@16.6.3": {
-      "name": "react",
-      "version": "16.6.3",
-      "range": "16.6.3",
-      "licenses": "MIT",
-      "repoUrl": "https://github.com/facebook/react",
-      "versionedRepoUrl": "https://github.com/facebook/react/tree/v16.6.3",
-      "licenseFile": "node_modules/react/LICENSE",
-      "licenseUrl": "https://github.com/facebook/react/blob/v16.6.3/LICENSE",
-      "licenseTextSource": "file"
     }
   },
   "devDependencies": {
@@ -161,6 +139,28 @@
       "licenseUrl": "https://github.com/prettier/prettier/blob/v1.19.1/LICENSE",
       "licenseTextSource": "file",
       "publisher": "James Long"
+    },
+    "react-dom@16.6.3": {
+      "name": "react-dom",
+      "version": "16.6.3",
+      "range": "16.6.3",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/facebook/react",
+      "versionedRepoUrl": "https://github.com/facebook/react/tree/v16.6.3",
+      "licenseFile": "node_modules/react-dom/LICENSE",
+      "licenseUrl": "https://github.com/facebook/react/blob/v16.6.3/LICENSE",
+      "licenseTextSource": "file"
+    },
+    "react@16.6.3": {
+      "name": "react",
+      "version": "16.6.3",
+      "range": "16.6.3",
+      "licenses": "MIT",
+      "repoUrl": "https://github.com/facebook/react",
+      "versionedRepoUrl": "https://github.com/facebook/react/tree/v16.6.3",
+      "licenseFile": "node_modules/react/LICENSE",
+      "licenseUrl": "https://github.com/facebook/react/blob/v16.6.3/LICENSE",
+      "licenseTextSource": "file"
     }
   }
 }
