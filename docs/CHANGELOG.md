@@ -1,3 +1,10 @@
+## [0.7.1](https://github.com/newrelic/nr1-datalyzer/compare/v0.7.0...v0.7.1) (2021-04-02)
+
+
+### Bug Fixes
+
+* linting errors in index.js ([cf398d5](https://github.com/newrelic/nr1-datalyzer/commit/cf398d50328a130eb9448ee3994ad74181b8dfd5))
+
 # [0.7.0](https://github.com/newrelic/nr1-datalyzer/compare/v0.6.2...v0.7.0) (2020-09-02)
 
 
