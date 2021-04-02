@@ -94,7 +94,7 @@ export default class RootNerdlet extends React.PureComponent {
           } else {
             // launcher
             return (
-              <NerdGraphQuery query={`{actor {accounts {name id}}}`}>
+              <NerdGraphQuery query="{actor {accounts {name id}}}">
                 {({ loading, error, data }) => {
                   if (loading) {
                     return <Spinner fillContainer />;
