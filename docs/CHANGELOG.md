@@ -1,3 +1,10 @@
+# [0.8.0](https://github.com/newrelic/nr1-datalyzer/compare/v0.7.1...v0.8.0) (2021-10-01)
+
+
+### Features
+
+* update semantic release with node ([de124bf](https://github.com/newrelic/nr1-datalyzer/commit/de124bf8a2cc9cdb2259d028c5ddddd30044339a))
+
 ## [0.7.1](https://github.com/newrelic/nr1-datalyzer/compare/v0.7.0...v0.7.1) (2021-04-02)
 
 
