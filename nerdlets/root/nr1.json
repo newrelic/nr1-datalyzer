@@ -1,14 +1,30 @@
 {
-    "schemaType": "NERDLET",
-    "id": "root",
-    "displayName": "Datalyzer",
-    "description": "Slice and dice all the data in NRDB",
-    "actionCategory": "troubleshoot",
+  "schemaType": "NERDLET",
+  "id": "root",
+  "displayName": "Datalyzer",
+  "description": "Slice and dice all the data in NRDB",
+  "context": {
     "entities": [
-      {"domain": "APM", "type": "APPLICATION"},
-      {"domain": "MOBILE", "type": "APPLICATION"},
-      {"domain": "BROWSER", "type": "APPLICATION"},
-      {"domain": "INFRA", "type": "HOST"},
-      {"domain": "EXT", "type": "SERVICE"}
-  ]
+      {
+        "domain": "APM",
+        "type": "APPLICATION"
+      },
+      {
+        "domain": "MOBILE",
+        "type": "APPLICATION"
+      },
+      {
+        "domain": "BROWSER",
+        "type": "APPLICATION"
+      },
+      {
+        "domain": "INFRA",
+        "type": "HOST"
+      },
+      {
+        "domain": "EXT",
+        "type": "SERVICE"
+      }
+    ]
+  }
 }
