@@ -1,3 +1,10 @@
+## [0.8.1](https://github.com/newrelic/nr1-datalyzer/compare/v0.8.0...v0.8.1) (2021-10-19)
+
+
+### Bug Fixes
+
+* fix deprecated platform parameters ([fea8c07](https://github.com/newrelic/nr1-datalyzer/commit/fea8c07ab3ab2bb1a7ff163da8361cd1baf14273))
+
 # [0.8.0](https://github.com/newrelic/nr1-datalyzer/compare/v0.7.1...v0.8.0) (2021-10-01)
 
 
