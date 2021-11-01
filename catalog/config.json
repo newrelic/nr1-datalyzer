@@ -2,6 +2,8 @@
   "tagline": "Explore event and metric data",
   "repository": "https://github.com/newrelic/nr1-datalyzer.git",
   "details": "Datalyzer provides a simple, curated way to explore your data within New Relic.\n\nUsers can create basic charts and queries, which can be run inside the Chart Builder. From the Chart Builder, you can change the chart type, change the query and add the chart to a dashboard.\n\nDatalyzer can be accessed both globally, and in the context of a Service, Mobile or Browser application.\n\nUsing Datalyzer from a Service, Mobile or Browser application limits the events, metrics, attributes and dimensions to data reported by those entities.",
+  "categoryTerms": [],
+  "keywords": ["nrql", "nrdb"],
   "support": {
     "issues": {
       "url": "https://github.com/newrelic/nr1-datalyzer/issues"
