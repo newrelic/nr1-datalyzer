@@ -1,3 +1,10 @@
+# [0.9.0](https://github.com/newrelic/nr1-datalyzer/compare/v0.8.1...v0.9.0) (2021-11-05)
+
+
+### Features
+
+* add catalog keywords ([7b9f9e5](https://github.com/newrelic/nr1-datalyzer/commit/7b9f9e5e32645655e4038bcea4a39437f8accb56))
+
 ## [0.8.1](https://github.com/newrelic/nr1-datalyzer/compare/v0.8.0...v0.8.1) (2021-10-19)
 
 
