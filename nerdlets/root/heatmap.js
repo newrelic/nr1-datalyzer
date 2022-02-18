@@ -14,7 +14,7 @@ const Heatmap = props => {
     <HeatmapChart
       className="primary-chart"
       query={query}
-      accountId={account.id}
+      accountIds={[account.id]}
       fullWidth
       style={{ height: '300px' }}
     />
