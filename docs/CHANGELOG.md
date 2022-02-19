@@ -1,3 +1,10 @@
+## [0.9.1](https://github.com/newrelic/nr1-datalyzer/compare/v0.9.0...v0.9.1) (2022-02-19)
+
+
+### Bug Fixes
+
+* app deprecation update ([9ee4c93](https://github.com/newrelic/nr1-datalyzer/commit/9ee4c93f3c7205ea76bb944fdf025af792fdcc1c))
+
 # [0.9.0](https://github.com/newrelic/nr1-datalyzer/compare/v0.8.1...v0.9.0) (2021-11-05)
 
 
