@@ -35,7 +35,7 @@ export default class FacetTable extends React.PureComponent {
         <TableChart
           className="primary-table"
           fullWidth
-          accountId={account.id}
+          accountIds={[account.id]}
           query={query}
           onClickTable={onClickRow}
         />

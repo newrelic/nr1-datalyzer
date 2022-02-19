@@ -115,7 +115,7 @@ export default class Chart extends React.PureComponent {
         <ChartType
           fullWidth
           className="primary-chart"
-          accountId={this.props.account.id}
+          accountIds={[this.props.account.id]}
           query={query}
           style={{ height: '300px' }}
         />
